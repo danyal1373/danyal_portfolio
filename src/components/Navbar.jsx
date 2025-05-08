@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Tabs, Tab, useScrollTrigger, Slide, ButtonBase, useTheme, useMediaQuery, Box, Collapse, List, ListItem, ListItemButton, ListItemText, Divider } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Tabs, Tab, useScrollTrigger, Slide, ButtonBase, useTheme, useMediaQuery, Box, Collapse, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { useContext, useState, useEffect } from 'react';
 import { ColorModeContext } from '../ThemeContext';
 import Brightness4Icon from '@mui/icons-material/Brightness4';

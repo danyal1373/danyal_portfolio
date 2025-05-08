@@ -8,11 +8,6 @@ import { useTheme } from '@mui/material/styles';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import PageLoader from './components/PageLoader';
-import ProjectsPage from './ProjectsPage';
-import AboutPage from './AboutPage';
-import PhotosPage from './PhotosPage';
-import ResearchPage from './ResearchPage';
-import ProjectOutlinePage from './ProjectOutlinePage';
 import SkillCard from './components/SkillCard';
 import CodeIcon from '@mui/icons-material/Code';
 import BrushIcon from '@mui/icons-material/Brush';
@@ -20,8 +15,6 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import AdbIcon from '@mui/icons-material/Adb';
 import StorageIcon from '@mui/icons-material/Storage';
 import WebAssetIcon from '@mui/icons-material/WebAsset';
-import AstrophotographyPage from './AstrophotographyPage';
-import PreviousWorkPage from './PreviousWorkPage';
 
 // Lazy load pages
 const ProjectsPageLazy = React.lazy(() => import('./ProjectsPage'));
