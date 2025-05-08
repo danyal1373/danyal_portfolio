@@ -18,6 +18,7 @@ function HideOnScroll({ children }) {
 
 const tabRoutes = [
   { label: 'Projects', path: '/projects' },
+  { label: 'Previous Work', path: '/previous-work' },
   { label: 'About', path: '/about' },
   { label: 'Photos', path: '/photos' },
   { label: 'Research', path: '/research' },
@@ -67,42 +68,65 @@ export default function Navbar() {
             borderBottom: '1px solid rgba(255,255,255,0.1)',
           }}
         >
-          <Toolbar>
-            <ButtonBase onClick={() => navigate('/')} sx={{ borderRadius: '50%', mr: 3 }}>
-              <SampleIcon />
-            </ButtonBase>
-            
-            {isMobile ? (
-              <>
-                <Box sx={{ flexGrow: 1 }} />
-                <IconButton
-                  edge="end"
-                  color="inherit"
-                  aria-label="menu"
-                  onClick={handleMobileMenuToggle}
-                >
-                  <MenuIcon />
-                </IconButton>
-              </>
-            ) : (
-              <Tabs
-                value={tab}
-                onChange={handleTabChange}
-                textColor="inherit"
-                indicatorColor="secondary"
-                sx={{ flexGrow: 1 }}
-                centered
+          <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
+            <Toolbar sx={{ px: { xs: 2, md: 0 } }}>
+              <ButtonBase 
+                onClick={() => navigate('/')} 
+                sx={{ 
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: 40,
+                  height: 40,
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  }
+                }}
               >
-                {tabRoutes.map((tab, idx) => (
-                  <Tab key={tab.path} label={tab.label} />
-                ))}
-              </Tabs>
-            )}
+                <SampleIcon />
+              </ButtonBase>
+              
+              {isMobile ? (
+                <>
+                  <Box sx={{ flexGrow: 1 }} />
+                  <IconButton
+                    edge="end"
+                    color="inherit"
+                    aria-label="menu"
+                    onClick={handleMobileMenuToggle}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                </>
+              ) : (
+                <Tabs
+                  value={tab}
+                  onChange={handleTabChange}
+                  textColor="inherit"
+                  indicatorColor="secondary"
+                  sx={{ flexGrow: 1, ml: 4 }}
+                >
+                  {tabRoutes.map((tab, idx) => (
+                    <Tab key={tab.path} label={tab.label} />
+                  ))}
+                </Tabs>
+              )}
 
-            <IconButton onClick={toggleColorMode} color="inherit">
-              {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
-            </IconButton>
-          </Toolbar>
+              <IconButton 
+                onClick={toggleColorMode} 
+                color="inherit"
+                sx={{ 
+                  ml: 2,
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  }
+                }}
+              >
+                {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+              </IconButton>
+            </Toolbar>
+          </Box>
         </AppBar>
       </HideOnScroll>
 

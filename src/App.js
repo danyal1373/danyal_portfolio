@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Box, Typography, Card, CardContent } from '@mui/material';
 import AnimatedCircle from './components/AnimatedCircle';
 import GlassyProjectCard from './components/GlassyProjectCard';
 import { useTheme } from '@mui/material/styles';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import PageLoader from './components/PageLoader';
 import ProjectsPage from './ProjectsPage';
 import AboutPage from './AboutPage';
 import PhotosPage from './PhotosPage';
@@ -19,11 +21,21 @@ import AdbIcon from '@mui/icons-material/Adb';
 import StorageIcon from '@mui/icons-material/Storage';
 import WebAssetIcon from '@mui/icons-material/WebAsset';
 import AstrophotographyPage from './AstrophotographyPage';
+import PreviousWorkPage from './PreviousWorkPage';
+
+// Lazy load pages
+const ProjectsPageLazy = React.lazy(() => import('./ProjectsPage'));
+const AboutPageLazy = React.lazy(() => import('./AboutPage'));
+const PhotosPageLazy = React.lazy(() => import('./PhotosPage'));
+const ResearchPageLazy = React.lazy(() => import('./ResearchPage'));
+const ProjectOutlinePageLazy = React.lazy(() => import('./ProjectOutlinePage'));
+const PreviousWorkPageLazy = React.lazy(() => import('./PreviousWorkPage'));
+const AstrophotographyPageLazy = React.lazy(() => import('./AstrophotographyPage'));
 
 function PlaceholderPage({ title }) {
   const theme = useTheme();
   return (
-    <Box sx={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: theme.palette.background.default }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: theme.palette.background.default }}>
       <Typography variant="h3" color="text.secondary">{title}</Typography>
     </Box>
   );
@@ -38,7 +50,7 @@ function HomePage() {
     <>
       <Box
         sx={{
-          minHeight: '90vh',
+          minHeight: '60vh',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
@@ -283,8 +295,8 @@ function HomePage() {
           <Box sx={{ flex: 1.2, minWidth: 240, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Box
               component="img"
-              src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=facearea&w=400&h=400&q=80"
-              alt="Profile"
+              src="/images/profile.jpg"
+              alt="Danyal Ghanbari"
               sx={{
                 width: '100%',
                 maxWidth: 320,
@@ -303,19 +315,26 @@ function HomePage() {
 }
 
 export default function App() {
+  const location = useLocation();
+
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/projects" element={<ProjectsPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/photos" element={<PhotosPage />} />
-        <Route path="/photos/astrophotography" element={<AstrophotographyPage />} />
-        <Route path="/research" element={<ResearchPage />} />
-        <Route path="/resume" element={<PlaceholderPage title="Resume" />} />
-        <Route path="/project-outline" element={<ProjectOutlinePage />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Suspense fallback={<PageLoader />}>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects" element={<ProjectsPageLazy />} />
+            <Route path="/previous-work" element={<PreviousWorkPageLazy />} />
+            <Route path="/about" element={<AboutPageLazy />} />
+            <Route path="/photos" element={<PhotosPageLazy />} />
+            <Route path="/photos/astrophotography" element={<AstrophotographyPageLazy />} />
+            <Route path="/research" element={<ResearchPageLazy />} />
+            <Route path="/resume" element={<PlaceholderPage title="Resume" />} />
+            <Route path="/project-outline" element={<ProjectOutlinePageLazy />} />
+          </Routes>
+        </Suspense>
+      </AnimatePresence>
       <Footer />
     </>
   );
