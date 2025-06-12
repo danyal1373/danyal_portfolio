@@ -32,7 +32,7 @@ export default function GlassyProjectCard({ title, color = 'primary', icon }) {
         border: `1.5px solid ${theme.palette.divider}`,
         boxShadow: '0 4px 30px rgba(0,0,0,0.08)',
         backdropFilter: 'blur(12px)',
-        borderRadius: 2,
+        borderRadius: (theme) => theme.shape.borderRadius,
         position: 'relative',
         overflow: 'hidden',
         transition: 'box-shadow 0.3s',

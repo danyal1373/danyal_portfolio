@@ -9,6 +9,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import PageLoader from './components/PageLoader';
 import SkillCard from './components/SkillCard';
+import SpiderChart from './components/SpiderChart';
 import CodeIcon from '@mui/icons-material/Code';
 import BrushIcon from '@mui/icons-material/Brush';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
@@ -34,10 +35,27 @@ function PlaceholderPage({ title }) {
   );
 }
 
+// Add SwappingFactionText component
+const factionText = {
+  business: 'Business: Strategic thinking, leadership, and decision making drive innovation and growth.',
+  design: 'Design: Creativity, user research, and visual storytelling shape delightful experiences.',
+  engineering: 'Engineering: Technical expertise, problem solving, and architecture build robust solutions.'
+};
+
+function SwappingFactionText({ faction = 'business' }) {
+  return (
+    <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 400, fontSize: { xs: 18, md: 22 }, textAlign: 'left', maxWidth: 420 }}>
+      {factionText[faction]}
+    </Typography>
+  );
+}
+
 function HomePage() {
   const theme = useTheme();
-  // State for About card glow
   const [glowPos, setGlowPos] = useState(null);
+  const [faction, setFaction] = useState('business');
+  const [hoveredFaction, setHoveredFaction] = useState(null);
+  const displayFaction = hoveredFaction || faction;
 
   return (
     <>
@@ -58,7 +76,6 @@ function HomePage() {
         <AnimatedCircle color="#D11B28" size={250} frequency={0.5} phase={0} />
         <AnimatedCircle color="#ECB145" size={250} frequency={0.7} phase={1} />
         <AnimatedCircle color="#21A6C0" size={250} frequency={0.6} phase={2} />
-        
         <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%', position: 'relative', zIndex: 1 }}>
           {/* Large faded name */}
           <Typography
@@ -156,6 +173,77 @@ function HomePage() {
           </Box>
         </Box>
       </Box>
+
+      {/* Skills Radar Section */}
+      <Box
+        sx={{
+          position: 'relative',
+          py: { xs: 8, md: 12 },
+          background: 'transparent',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Background circles for skills section - shifted left by 2048px */}
+        <AnimatedCircle color="#21A6C0" size={4500} frequency={0.22} phase={0} style={{ top: '30%', left: 'calc(35% - 2048px)' }} />
+        <AnimatedCircle color="#ECB145" size={4500} frequency={0.22} phase={1} style={{ top: '30%', left: 'calc(45% - 2048px)' }} />
+        <AnimatedCircle color="#D11B28" size={4500} frequency={0.22} phase={2} style={{ top: '30%', left: 'calc(55% - 2048px)' }} />
+        <Box sx={{ maxWidth: 1100, mx: 'auto', position: 'relative', zIndex: 1 }}>
+          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, ml: 2, fontWeight: 400 }}>
+            Skills Overview
+          </Typography>
+          {/* Glossy, slightly darker background for the chart */}
+          <Box sx={{
+            position: 'relative',
+            bgcolor: theme.palette.mode === 'dark' ? 'rgba(34,36,40,0.45)' : 'rgba(255,255,255,0.45)',
+            borderRadius: (theme) => theme.shape.borderRadius,
+            boxShadow: '0 8px 40px 0 rgba(0,0,0,0.22)',
+            border: `1.5px solid ${theme.palette.divider}`,
+            backdropFilter: 'blur(32px)',
+            p: { xs: 2, md: 4 },
+            px: { xs: 2, md: 6 },
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: 'stretch',
+            maxWidth: 1100,
+            minHeight: 340,
+            mx: 'auto',
+            overflow: 'hidden',
+            '::before': {
+              content: '""',
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              width: '100%',
+              height: '100%',
+              pointerEvents: 'none',
+              background: 'linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 60%, rgba(255,255,255,0.04) 100%)',
+              zIndex: 2,
+            },
+            '::after': {
+              content: '""',
+              position: 'absolute',
+              left: 0,
+              top: 0,
+              width: '100%',
+              height: '100%',
+              pointerEvents: 'none',
+              opacity: 0.18,
+              zIndex: 3,
+              backgroundImage: 'url("https://www.transparenttextures.com/patterns/noise.png")',
+              backgroundRepeat: 'repeat',
+            },
+          }}>
+            {/* Chart on left, swapping text on right */}
+            <Box sx={{ flex: { xs: 'unset', md: '1 1 33%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4 }}>
+              <SpiderChart textColor={theme.palette.text.primary} showOnlyChart faction={displayFaction} setFaction={setFaction} setHoveredFaction={setHoveredFaction} />
+            </Box>
+            <Box sx={{ flex: { xs: 'unset', md: '2 1 67%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, p: { xs: 2, md: 4 } }}>
+              <SwappingFactionText faction={displayFaction} />
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
       {/* Projects Section */}
       <Box
         sx={{
@@ -231,7 +319,7 @@ function HomePage() {
               border: `1.5px solid ${theme.palette.divider}`,
               boxShadow: '0 4px 30px rgba(0,0,0,0.08)',
               backdropFilter: 'blur(12px)',
-              borderRadius: 2,
+              borderRadius: (theme) => theme.shape.borderRadius,
               position: 'relative',
               overflow: 'hidden',
               px: 3,
@@ -266,7 +354,7 @@ function HomePage() {
                   width: '100%',
                   height: '100%',
                   zIndex: 10,
-                  borderRadius: 2,
+                  borderRadius: (theme) => theme.shape.borderRadius,
                   boxShadow: `0 0 24px 6px ${theme.palette.primary.main}55`,
                   opacity: 0.5,
                   maskImage: `radial-gradient(circle at ${glowPos.x}px ${glowPos.y}px, white 30%, transparent 70%)`,
@@ -295,7 +383,7 @@ function HomePage() {
                 maxWidth: 320,
                 height: 340,
                 objectFit: 'cover',
-                borderRadius: 2,
+                borderRadius: (theme) => theme.shape.borderRadius,
                 boxShadow: '0 4px 30px rgba(0,0,0,0.10)',
                 filter: 'grayscale(100%)',
               }}

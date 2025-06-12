@@ -3,7 +3,7 @@ import { Card, CardMedia, CardContent, Typography, Box } from '@mui/material';
 
 export default function PhotoCard({ image, title, date, location, camera, description, onImageClick }) {
   return (
-    <Card sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, borderRadius: 2, boxShadow: 2, mb: 3, minHeight: 200 }}>
+    <Card sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, borderRadius: (theme) => theme.shape.borderRadius, boxShadow: 2, mb: 3, minHeight: 200 }}>
       <Box sx={{ flexBasis: { xs: '100%', sm: '75%' }, flexGrow: 0, flexShrink: 0, position: 'relative', width: { xs: '100%', sm: 'auto' }, aspectRatio: '4/3', minWidth: 0, cursor: onImageClick ? 'pointer' : 'default' }} onClick={onImageClick}>
         <CardMedia
           component="img"
@@ -16,7 +16,7 @@ export default function PhotoCard({ image, title, date, location, camera, descri
             width: '100%',
             height: '100%',
             objectFit: 'cover',
-            borderRadius: 2,
+            borderRadius: (theme) => theme.shape.borderRadius,
             borderTopRightRadius: { sm: 0 },
             borderBottomLeftRadius: { sm: 0 },
           }}

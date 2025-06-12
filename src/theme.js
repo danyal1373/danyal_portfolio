@@ -9,7 +9,7 @@ export const lightTheme = createTheme({
     text: { primary: '#191C20', secondary: '#42474E' },
     error: { main: '#BA1A1A', contrastText: '#FFFFFF' }
   },
-  shape: { borderRadius: 12 },
+  shape: { borderRadius: 3 },
 });
 
 export const darkTheme = createTheme({
@@ -21,5 +21,5 @@ export const darkTheme = createTheme({
     text: { primary: '#E1E2E8', secondary: '#C3C7CF' },
     error: { main: '#FFB4AB', contrastText: '#690005' }
   },
-  shape: { borderRadius: 12 },
+  shape: { borderRadius: 3 },
 });

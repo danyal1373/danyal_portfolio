@@ -52,7 +52,7 @@ export default function AboutPage() {
           <Typography variant="body1" sx={{ color: 'text.secondary', mb: 2 }}>{aboutText}</Typography>
         </Box>
         <Box sx={{ flex: 1, display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
-          <Box sx={{ width: 140, height: 180, bgcolor: 'divider', borderRadius: 2 }} />
+          <Box sx={{ width: 140, height: 180, bgcolor: 'divider', borderRadius: (theme) => theme.shape.borderRadius }} />
         </Box>
       </Box>
       {/* Experience Section */}
@@ -61,7 +61,7 @@ export default function AboutPage() {
         <Grid container spacing={2}>
           {experiences.map((exp, idx) => (
             <Grid item xs={12} key={idx}>
-              <Card sx={{ display: 'flex', alignItems: 'flex-start', p: 2, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 1 }}>
+              <Card sx={{ display: 'flex', alignItems: 'flex-start', p: 2, bgcolor: 'background.paper', borderRadius: (theme) => theme.shape.borderRadius, boxShadow: 1 }}>
                 <Avatar sx={{ width: 56, height: 56, bgcolor: 'divider', mr: 2 }}>{exp.company[0]}</Avatar>
                 <Box sx={{ flex: 1 }}>
                   <Typography variant="subtitle1" sx={{ color: 'text.primary', fontWeight: 600 }}>{exp.company}</Typography>
@@ -85,7 +85,7 @@ export default function AboutPage() {
         <Grid container spacing={1}>
           {skills.map(skill => (
             <Grid item xs={6} sm={4} md={2} key={skill}>
-              <Card sx={{ p: 1, bgcolor: 'background.paper', borderRadius: 2, boxShadow: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Card sx={{ p: 1, bgcolor: 'background.paper', borderRadius: (theme) => theme.shape.borderRadius, boxShadow: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Chip label={skill} size="small" color="secondary" variant="outlined" />
               </Card>
             </Grid>

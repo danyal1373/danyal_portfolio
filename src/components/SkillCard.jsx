@@ -5,7 +5,7 @@ export default function SkillCard({ icon, name, color }) {
   return (
     <Card
       sx={{
-        borderRadius: 2,
+        borderRadius: (theme) => theme.shape.borderRadius,
         boxShadow: 1,
         transition: 'box-shadow 0.3s, border-color 0.3s, background 0.3s',
         border: '2px solid transparent',

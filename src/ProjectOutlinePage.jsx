@@ -14,10 +14,10 @@ export default function ProjectOutlinePage() {
           component="img"
           src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"
           alt="Ignik Outdoors Team"
-          sx={{ width: '100%', borderRadius: 2, mb: 2, objectFit: 'cover', maxHeight: 260 }}
+          sx={{ width: '100%', borderRadius: (theme) => theme.shape.borderRadius, mb: 2, objectFit: 'cover', maxHeight: 260 }}
         />
         <PasswordProtectedContent checkPassword={checkProjectPassword}>
-          <Card sx={{ p: 4, borderRadius: 2, boxShadow: 1, bgcolor: 'background.paper', textAlign: 'center', position: 'relative', minHeight: 220 }}>
+          <Card sx={{ p: 4, borderRadius: (theme) => theme.shape.borderRadius, boxShadow: 1, bgcolor: 'background.paper', textAlign: 'center', position: 'relative', minHeight: 220 }}>
             <Typography variant="h6" sx={{ color: 'text.primary', mb: 2 }}>
               Welcome to the protected project content!
             </Typography>
