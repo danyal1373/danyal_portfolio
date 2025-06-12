@@ -25,6 +25,7 @@ const ResearchPageLazy = React.lazy(() => import('./ResearchPage'));
 const ProjectOutlinePageLazy = React.lazy(() => import('./ProjectOutlinePage'));
 const PreviousWorkPageLazy = React.lazy(() => import('./PreviousWorkPage'));
 const AstrophotographyPageLazy = React.lazy(() => import('./AstrophotographyPage'));
+const SwarmPageLazy = React.lazy(() => import('./SwarmPage'));
 
 function PlaceholderPage({ title }) {
   const theme = useTheme();
@@ -413,6 +414,11 @@ export default function App() {
             <Route path="/research" element={<ResearchPageLazy />} />
             <Route path="/resume" element={<PlaceholderPage title="Resume" />} />
             <Route path="/project-outline" element={<ProjectOutlinePageLazy />} />
+            <Route path="/swarm" element={
+              <Suspense fallback={<PageLoader />}>
+                <SwarmPageLazy />
+              </Suspense>
+            } />
           </Routes>
         </Suspense>
       </AnimatePresence>
