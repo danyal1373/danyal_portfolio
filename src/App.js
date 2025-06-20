@@ -16,6 +16,10 @@ import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import AdbIcon from '@mui/icons-material/Adb';
 import StorageIcon from '@mui/icons-material/Storage';
 import WebAssetIcon from '@mui/icons-material/WebAsset';
+import CategoryIcon from '@mui/icons-material/Category';
+import CampaignIcon from '@mui/icons-material/Campaign';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import { PasswordProvider } from './contexts/PasswordContext';
 
 // Lazy load pages
 const ProjectsPageLazy = React.lazy(() => import('./ProjectsPage'));
@@ -26,6 +30,7 @@ const ProjectOutlinePageLazy = React.lazy(() => import('./ProjectOutlinePage'));
 const PreviousWorkPageLazy = React.lazy(() => import('./PreviousWorkPage'));
 const AstrophotographyPageLazy = React.lazy(() => import('./AstrophotographyPage'));
 const SwarmPageLazy = React.lazy(() => import('./SwarmPage'));
+const ProjectDetailPageLazy = React.lazy(() => import('./components/ProjectDetailPage'));
 
 function PlaceholderPage({ title }) {
   const theme = useTheme();
@@ -195,11 +200,13 @@ function HomePage() {
           {/* Glossy, slightly darker background for the chart */}
           <Box sx={{
             position: 'relative',
-            bgcolor: theme.palette.mode === 'dark' ? 'rgba(34,36,40,0.45)' : 'rgba(255,255,255,0.45)',
-            borderRadius: (theme) => theme.shape.borderRadius,
-            boxShadow: '0 8px 40px 0 rgba(0,0,0,0.22)',
-            border: `1.5px solid ${theme.palette.divider}`,
-            backdropFilter: 'blur(32px)',
+            // Glassmorphism core styles:
+            background: 'rgba(255,255,255,0.18)',
+            border: '1.5px solid rgba(255,255,255,0.35)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            borderRadius: (theme) => theme.shape.borderRadius * 1.5,
             p: { xs: 2, md: 4 },
             px: { xs: 2, md: 6 },
             display: 'flex',
@@ -209,29 +216,25 @@ function HomePage() {
             minHeight: 340,
             mx: 'auto',
             overflow: 'hidden',
-            '::before': {
+            '&::before': {
               content: '""',
               position: 'absolute',
               left: 0,
               top: 0,
               width: '100%',
-              height: '100%',
+              height: '60px',
               pointerEvents: 'none',
-              background: 'linear-gradient(120deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 60%, rgba(255,255,255,0.04) 100%)',
+              background: 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 100%)',
               zIndex: 2,
             },
-            '::after': {
+            '&::after': {
               content: '""',
               position: 'absolute',
-              left: 0,
-              top: 0,
-              width: '100%',
-              height: '100%',
+              inset: 0,
+              borderRadius: 'inherit',
+              boxShadow: 'inset 0 1.5px 12px 0 rgba(255,255,255,0.18)',
               pointerEvents: 'none',
-              opacity: 0.18,
               zIndex: 3,
-              backgroundImage: 'url("https://www.transparenttextures.com/patterns/noise.png")',
-              backgroundRepeat: 'repeat',
             },
           }}>
             {/* Chart on left, swapping text on right */}
@@ -263,10 +266,10 @@ function HomePage() {
             Projects
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2, justifyContent: 'center', alignItems: 'stretch' }}>
-            <GlassyProjectCard title="Product Development" color="primary" />
-            <GlassyProjectCard title="Engineering Design and Prototyping" color="primary" />
-            <GlassyProjectCard title="Marketing/Branding" color="error" />
-            <GlassyProjectCard title="User Research" color="warning" />
+            <GlassyProjectCard title="Product Development" color="primary" icon={<CategoryIcon />} />
+            <GlassyProjectCard title="Engineering Design and Prototyping" color="primary" icon={<DesignServicesIcon />} />
+            <GlassyProjectCard title="Marketing/Branding" color="error" icon={<CampaignIcon />} />
+            <GlassyProjectCard title="User Research" color="warning" icon={<PersonSearchIcon />} />
           </Box>
         </Box>
       </Box>
@@ -316,11 +319,13 @@ function HomePage() {
             sx={{
               flex: 2,
               minWidth: 320,
-              background: theme.palette.background.paper + 'cc',
-              border: `1.5px solid ${theme.palette.divider}`,
-              boxShadow: '0 4px 30px rgba(0,0,0,0.08)',
-              backdropFilter: 'blur(12px)',
-              borderRadius: (theme) => theme.shape.borderRadius,
+              // Glassmorphism core styles:
+              background: 'rgba(255,255,255,0.18)',
+              border: '1.5px solid rgba(255,255,255,0.35)',
+              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
+              backdropFilter: 'blur(24px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+              borderRadius: (theme) => theme.shape.borderRadius * 1.5,
               position: 'relative',
               overflow: 'hidden',
               px: 3,
@@ -330,8 +335,28 @@ function HomePage() {
               flexDirection: 'column',
               justifyContent: 'flex-start',
               cursor: 'pointer',
-              transition: 'box-shadow 0.2s',
-              boxShadow: glowPos ? `0 0 0 3px ${theme.palette.primary.main}33` : '0 4px 30px rgba(0,0,0,0.08)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '60px',
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 100%)',
+                borderRadius: 'inherit',
+                pointerEvents: 'none',
+                zIndex: 1,
+              },
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                inset: 0,
+                borderRadius: 'inherit',
+                boxShadow: 'inset 0 1.5px 12px 0 rgba(255,255,255,0.18)',
+                pointerEvents: 'none',
+                zIndex: 1,
+              },
             }}
             onMouseMove={e => {
               const rect = e.currentTarget.getBoundingClientRect();
@@ -364,12 +389,12 @@ function HomePage() {
                 }}
               />
             )}
-            <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 300, position: 'absolute', top: 24, left: 24, zIndex: 2 }}>
+            <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 300, position: 'absolute', top: 24, left: 24, zIndex: 3 }}>
               About
             </Typography>
-            <CardContent sx={{ color: theme.palette.text.secondary, fontWeight: 400, fontSize: 16 }}>
+            <CardContent sx={{ color: theme.palette.text.secondary, fontWeight: 400, fontSize: 16, position: 'relative', zIndex: 3 }}>
               <Typography paragraph>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, sit amet tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.
+                Award Winning Innovator with background in Mechanical Engineer pursued graduate degrees in MBA (Marketing) and Integrated Innovation in Products and Services (MIIPS) from Carnegie Mellon University; This mix of my career and education has given me a unique perspective on human-centered innovation; for more than a decade, I've taken photographs of the night sky, and I've attended photography exhibitions at Lisboa Jubilee Art, Zanjan, etc. My passion for exploring new edges of technology and scientific world never settles in me. Currently, I'm working at CCC Intelligent Solutions as R&D Engineer and willing to explore beyond the horizon.
               </Typography>
             </CardContent>
           </Card>
@@ -400,13 +425,14 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <>
+    <PasswordProvider>
       <Navbar />
       <AnimatePresence mode="wait">
         <Suspense fallback={<PageLoader />}>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPageLazy />} />
+            <Route path="/projects/:projectId" element={<ProjectDetailPageLazy />} />
             <Route path="/previous-work" element={<PreviousWorkPageLazy />} />
             <Route path="/about" element={<AboutPageLazy />} />
             <Route path="/photos" element={<PhotosPageLazy />} />
@@ -423,6 +449,6 @@ export default function App() {
         </Suspense>
       </AnimatePresence>
       <Footer />
-    </>
+    </PasswordProvider>
   );
 }

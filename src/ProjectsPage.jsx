@@ -1,142 +1,282 @@
-import React from 'react';
-import { Box, Typography, Card, CardContent, Divider, Grid, Button } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, Typography, Card, Divider, Grid, Button, Chip } from '@mui/material';
 import AnimatedCircle from './components/AnimatedCircle';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import LockIcon from '@mui/icons-material/Lock';
 import { useTheme } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
+import { getAllProjects, getFeaturedProjects, getAllCategories } from './utils/projectDataService';
+import { usePassword } from './contexts/PasswordContext';
+import CategoryProjectCard from './components/CategoryProjectCard';
+import { useGlassmorphism } from './hooks/useGlassmorphism';
 
-const featured = [
-  {
-    title: "Ignik Outdoors",
-    subtitle: "Featured 1",
-    image: "https://via.placeholder.com/800x240",
-    tags: ["Sustainability", "Heat", "Outdoors"]
-  },
-  {
-    title: "Ignik Outdoors",
-    subtitle: "Featured 2",
-    image: "https://via.placeholder.com/800x240",
-    tags: ["Eco-friendly", "Startup"]
-  }
-];
+const FeaturedProjectCard = ({ project }) => {
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const { isProjectUnlocked } = usePassword();
+  const glassmorphism = useGlassmorphism();
 
-const projects = Array.from({ length: 12 }).map((_, idx) => ({
-  title: `Project ${idx + 1}`,
-  subtitle: "Ignik Outdoors",
-  tags: ["UX", "Hardware"]
-}));
+  const handleProjectClick = () => {
+    navigate(`/projects/${project.id}`);
+  };
+
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`,
+      opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
+      pointerEvents: 'none',
+    },
+  };
+
+  return (
+    <Card
+      sx={{
+        ...glassmorphism.base,
+        ...glassmorphism.withHighlights,
+        ...glassmorphism.hover,
+        ...noisyBackgroundStyle,
+        height: { xs: 400, md: 450 },
+        p: { xs: 2, sm: 3, md: 4 },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        cursor: 'pointer',
+        textAlign: 'center',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+      }}
+      onClick={handleProjectClick}
+      variant="elevation"
+      elevation={0}
+    >
+      <Box
+        component="img"
+        src={project.image}
+        alt={project.title}
+        sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          maxHeight: '60%',
+          maxWidth: { xs: '80%', md: '50%' },
+          objectFit: 'contain',
+          opacity: 0.5,
+          filter: theme.palette.mode === 'dark' ? 'brightness(0) invert(1)' : 'none',
+          zIndex: 0,
+        }}
+        onError={(e) => { e.target.src = 'https://via.placeholder.com/400x120?text=Image+Not+Found'; e.target.style.opacity = '0.1'; }}
+      />
+      
+      <Box sx={{ position: 'absolute', top: { xs: 24, md: 32 }, left: { xs: 24, md: 32 }, textAlign: 'left', zIndex: 1 }}>
+        <Typography variant="h6" sx={{ color: 'text.secondary', opacity: 0.8, fontSize: { xs: '1rem', md: '1.25rem' } }}>
+          {project.subtitle}
+        </Typography>
+      </Box>
+
+      {project.passwordProtected && (
+        <Box sx={{ position: 'absolute', top: { xs: 24, md: 32 }, right: { xs: 24, md: 32 }, zIndex: 1 }}>
+          <LockIcon
+            sx={{
+              fontSize: { xs: 24, md: 28 },
+              color: '#D94A4A',
+              opacity: isProjectUnlocked(project.id) ? 0.6 : 1,
+            }}
+          />
+        </Box>
+      )}
+
+      <Box sx={{
+        position: 'absolute',
+        bottom: { xs: 24, md: 32 },
+        left: { xs: 24, md: 32 },
+        right: { xs: 24, md: 32 },
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        gap: 2,
+        zIndex: 1,
+      }}>
+        <Box sx={{ textAlign: 'left', flexShrink: 1, minWidth: 0 }}>
+          <Typography variant="h4" sx={{ color: 'text.primary', fontWeight: 700, fontSize: { xs: '1.75rem', md: '2.5rem' } }}>
+            {project.title}
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'error.main', mt: 1, fontWeight: 500 }}>
+            {project.category}
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1, display: { xs: 'none', md: 'block' } }}>
+            {project.description}
+          </Typography>
+        </Box>
+
+        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: 'flex-end', flexShrink: 0 }}>
+          {project.tags.map((tag, i) => (
+            <Chip
+              key={i}
+              label={tag}
+              size="small"
+              sx={{
+                ...glassmorphism.base,
+                borderWidth: '1px',
+                borderStyle: 'solid',
+                borderColor: 'rgba(255, 255, 255, 0.2)',
+                color: 'text.secondary',
+              }}
+              variant="outlined"
+            />
+          ))}
+        </Box>
+      </Box>
+    </Card>
+  );
+};
+
 
 export default function ProjectsPage() {
   const theme = useTheme();
+  const navigate = useNavigate();
+  
+  const featuredProjects = getFeaturedProjects();
+  const allProjects = getAllProjects();
+  const categories = getAllCategories();
+
+  const projectsByCategory = categories.reduce((acc, category) => {
+    const projs = allProjects.filter(p => p.category === category && !p.featured);
+    if (projs.length > 0) {
+      acc[category] = projs;
+    }
+    return acc;
+  }, {});
+
   return (
-    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4, position: 'relative', overflow: 'hidden' }}>
-      {/* Background circles */}
-      <AnimatedCircle color="primary" size={420} frequency={0.22} phase={0} style={{ top: '8%', left: '60%' }} />
-      <AnimatedCircle color="error" size={420} frequency={0.25} phase={1.2} style={{ top: '18%', left: '75%' }} />
-      <AnimatedCircle color="warning" size={420} frequency={0.21} phase={2.1} style={{ top: '28%', left: '50%' }} />
-      <Box sx={{ maxWidth: 1100, mx: 'auto', position: 'relative', zIndex: 1 }}>
-        <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, mt: 2, fontWeight: 400 }}>
-          Projects
-        </Typography>
-        {/* Featured Projects */}
-        <Grid container spacing={4} sx={{ mb: 4 }}>
-          {featured.map((item, idx) => (
-            <Grid item xs={12} md={6} key={idx}>
-              <Card
-                sx={{
-                  background: theme.palette.background.paper + 'cc',
-                  border: `1.5px solid ${theme.palette.divider}`,
-                  boxShadow: '0 4px 30px rgba(0,0,0,0.08)',
-                  backdropFilter: 'blur(12px)',
-                  borderRadius: (theme) => theme.shape.borderRadius,
-                  overflow: 'hidden',
-                  minHeight: 260,
-                  position: 'relative',
-                  mb: 2,
-                }}
-              >
-                <Box sx={{ position: 'absolute', top: 0, right: 0, width: '60%', height: '100%', zIndex: 0 }}>
-                  <AnimatedCircle color="primary" size={320} frequency={0.18} phase={idx} style={{ top: '50%', left: '80%' }} />
-                  <AnimatedCircle color="error" size={320} frequency={0.19} phase={idx + 1} style={{ top: '60%', left: '60%' }} />
-                </Box>
-                <CardContent sx={{ position: 'relative', zIndex: 1 }}>
-                  <Typography variant="subtitle2" sx={{ color: theme.palette.error.main, fontWeight: 500 }}>
-                    {item.subtitle}
-                  </Typography>
-                  <Typography variant="h6" sx={{ color: theme.palette.primary.main, fontWeight: 700, mb: 1 }}>
-                    {item.title}
-                  </Typography>
-                  <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                    {item.tags.map((tag, i) => (
-                      <Typography key={i} variant="caption" sx={{ color: theme.palette.text.secondary, background: theme.palette.background.paper, borderRadius: 1, px: 1, py: 0.2, opacity: 0.7 }}>
-                        {tag}
-                      </Typography>
-                    ))}
-                  </Box>
-                  <Box component="img" src={item.image} alt={item.title} sx={{ width: '100%', borderRadius: 1, mt: 1, boxShadow: 1 }} />
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <Divider sx={{ my: 4 }} />
-        {/* Project Grid */}
-        <Grid container spacing={2} sx={{ mb: 4 }}>
-          {projects.map((item, idx) => (
-            <Grid item xs={12} sm={6} md={3} key={idx}>
-              <Card
-                sx={{
-                  background: theme.palette.background.paper + 'cc',
-                  border: `1.5px solid ${theme.palette.divider}`,
-                  boxShadow: '0 4px 30px rgba(0,0,0,0.08)',
-                  backdropFilter: 'blur(12px)',
-                  borderRadius: (theme) => theme.shape.borderRadius,
-                  overflow: 'hidden',
-                  minHeight: 160,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'flex-end',
-                  position: 'relative',
-                  p: 2,
-                }}
-              >
-                <Typography variant="subtitle2" sx={{ color: theme.palette.error.main, fontWeight: 500 }}>
-                  {item.subtitle}
+    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh' }}>
+      {/* --- FIXED BACKGROUND --- */}
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        overflow: 'hidden',
+        zIndex: 0,
+      }}>
+          <AnimatedCircle color="#D11B28" size={800} frequency={0.22} phase={0} style={{ top: '50%', left: '55%' }} />
+          <AnimatedCircle color="#ECB145" size={800} frequency={0.25} phase={1.2} style={{ top: '50%', left: '60%' }} />
+          <AnimatedCircle color="#21A6C0" size={800} frequency={0.21} phase={2.1} style={{ top: '50%', left: '50%' }} />
+      </Box>
+      
+      {/* --- SCROLLABLE CONTENT --- */}
+      <Box sx={{ position: 'relative', zIndex: 1, py: 4 }}>
+        <Box sx={{ maxWidth: 1100, mx: 'auto' }}>
+            <Typography 
+              variant="h1"
+              sx={{ 
+                color: theme.palette.text.primary, 
+                mb: 4, 
+                mt: 2, 
+                fontWeight: 100,
+                fontSize: { xs: '50px', md: '80px' },
+                textAlign: 'right'
+              }}
+            >
+              Projects
+            </Typography>
+
+            {/* Featured Projects */}
+            {featuredProjects.length > 0 && (
+              <>
+                <Typography variant="h5" sx={{ color: theme.palette.text.primary, mb: 3, fontWeight: 500 }}>
+                  Featured Projects
                 </Typography>
-                <Typography variant="body1" sx={{ color: theme.palette.primary.main, fontWeight: 700, mb: 1 }}>
-                  {item.title}
-                </Typography>
-                <Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-                  {item.tags.map((tag, i) => (
-                    <Typography key={i} variant="caption" sx={{ color: theme.palette.text.secondary, background: theme.palette.background.paper, borderRadius: 1, px: 1, py: 0.2, opacity: 0.7 }}>
-                      {tag}
-                    </Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, mb: 4 }}>
+                  {featuredProjects.map((item, idx) => (
+                    <FeaturedProjectCard project={item} key={idx} />
                   ))}
                 </Box>
-                <Box sx={{ position: 'absolute', bottom: 8, right: 8, opacity: 0.5 }}>
-                  <OpenInNewIcon fontSize="small" />
-                </Box>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <Divider sx={{ my: 4 }} />
-        {/* Section Links (placeholder) */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
-          <Button variant="outlined" endIcon={<OpenInNewIcon />} sx={{ justifyContent: 'space-between', color: theme.palette.error.main, borderColor: theme.palette.error.main, fontWeight: 500 }}>
-            More Projects
-          </Button>
-          <Button variant="outlined" endIcon={<OpenInNewIcon />} sx={{ justifyContent: 'space-between', color: theme.palette.primary.main, borderColor: theme.palette.primary.main, fontWeight: 500 }}>
-            Research
-          </Button>
-          <Button variant="outlined" endIcon={<OpenInNewIcon />} sx={{ justifyContent: 'space-between', color: theme.palette.warning.main, borderColor: theme.palette.warning.main, fontWeight: 500 }}>
-            Resume
-          </Button>
-        </Box>
-        {/* Footer nav icons (placeholder) */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mb: 2 }}>
-          {[1, 2, 3, 4, 5, 6].map((i) => (
-            <Box key={i} sx={{ width: 32, height: 32, background: theme.palette.background.paper, borderRadius: '50%' }} />
-          ))}
+                <Divider sx={{ my: 6 }} />
+              </>
+            )}
+
+            {/* Projects By Category */}
+            {Object.entries(projectsByCategory).map(([category, projects]) => (
+              <Box key={category} sx={{ mb: 6 }}>
+                <Typography 
+                  variant="h5" 
+                  sx={{ 
+                    color: '#8C8C87', 
+                    mb: 3,
+                    fontWeight: 100,
+                  }}
+                >
+                  {category}
+                </Typography>
+                <Grid container spacing={3}>
+                  {projects.map((item, idx) => (
+                    <Grid item xs={12} sm={6} md={3} key={idx}>
+                      <CategoryProjectCard project={item} />
+                    </Grid>
+                  ))}
+                </Grid>
+              </Box>
+            ))}
+
+            {Object.keys(projectsByCategory).length === 0 && !featuredProjects.length && (
+              <Box sx={{ textAlign: 'center', py: 8 }}>
+                <Typography variant="h6" sx={{ color: theme.palette.text.secondary }}>
+                  No projects found.
+                </Typography>
+              </Box>
+            )}
+            
+            <Divider sx={{ my: 4 }} />
+            
+            {/* Section Links */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
+              <Button 
+                variant="outlined" 
+                endIcon={<OpenInNewIcon />} 
+                sx={{ 
+                  justifyContent: 'space-between', 
+                  color: theme.palette.error.main, 
+                  borderColor: theme.palette.error.main, 
+                  fontWeight: 500 
+                }}
+                onClick={() => navigate('/previous-work')}
+              >
+                Previous Work
+              </Button>
+              <Button 
+                variant="outlined" 
+                endIcon={<OpenInNewIcon />} 
+                sx={{ 
+                  justifyContent: 'space-between', 
+                  color: theme.palette.primary.main, 
+                  borderColor: theme.palette.primary.main, 
+                  fontWeight: 500 
+                }}
+                onClick={() => navigate('/research')}
+              >
+                Research
+              </Button>
+              <Button 
+                variant="outlined" 
+                endIcon={<OpenInNewIcon />} 
+                sx={{ 
+                  justifyContent: 'space-between', 
+                  color: theme.palette.warning.main, 
+                  borderColor: theme.palette.warning.main, 
+                  fontWeight: 500 
+                }}
+                onClick={() => navigate('/resume')}
+              >
+                Resume
+              </Button>
+            </Box>
         </Box>
       </Box>
     </Box>

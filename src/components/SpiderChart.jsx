@@ -58,15 +58,37 @@ function TrioSwitch({ active, onHover, onClick }) {
         alignItems: 'center',
         width: 420,
         height: 36,
-        bgcolor: 'rgba(255,255,255,0.12)',
-        borderRadius: (theme) => theme.shape.borderRadius,
+        background: 'rgba(255,255,255,0.18)',
+        border: '1.5px solid rgba(255,255,255,0.35)',
+        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
+        backdropFilter: 'blur(24px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+        borderRadius: (theme) => theme.shape.borderRadius * 1.5,
         px: 0.5,
         py: 0.5,
-        boxShadow: '0 2px 12px 0 rgba(0,0,0,0.10)',
-        border: '2px solid rgba(255,255,255,0.10)',
         overflow: 'hidden',
         mb: 0,
-        mt: 2
+        mt: 2,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100%',
+          height: '20px',
+          pointerEvents: 'none',
+          background: 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 100%)',
+          zIndex: 1,
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          borderRadius: 'inherit',
+          boxShadow: 'inset 0 1.5px 12px 0 rgba(255,255,255,0.18)',
+          pointerEvents: 'none',
+          zIndex: 1,
+        },
       }}
     >
       {/* Sliding colored rectangle */}
@@ -78,10 +100,13 @@ function TrioSwitch({ active, onHover, onClick }) {
           width: 130,
           height: 28,
           borderRadius: (theme) => theme.shape.borderRadius,
-          zIndex: 1,
-          transition: 'left 0.35s cubic-bezier(.7,.2,.2,1)',
-          background: `radial-gradient(circle at 60% 40%, ${factionData[active].color}33 60%, ${factionData[active].color}09 100%)`,
-          boxShadow: `0 0 24px 0 ${factionData[active].color}33`,
+          zIndex: 2,
+          transition: 'all 0.5s ease-in-out',
+          background: `${factionData[active].color}25`,
+          border: `1px solid ${factionData[active].color}40`,
+          boxShadow: `0 4px 16px 0 ${factionData[active].color}40, inset 0 1px 4px 0 rgba(255,255,255,0.2)`,
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
         }}
       />
       {factions.map((f, i) => (
@@ -91,7 +116,7 @@ function TrioSwitch({ active, onHover, onClick }) {
           onClick={() => onClick(f.key)}
           sx={{
             flex: 1,
-            zIndex: 2,
+            zIndex: 3,
             height: '100%',
             display: 'flex',
             alignItems: 'center',
@@ -101,11 +126,16 @@ function TrioSwitch({ active, onHover, onClick }) {
             fontFamily: '"Libre Franklin", Arial, sans-serif',
             color: active === f.key ? factionData[f.key].color : '#222',
             cursor: 'pointer',
-            transition: 'color 0.3s',
+            transition: 'all 0.3s ease',
             borderRadius: (theme) => theme.shape.borderRadius,
             userSelect: 'none',
             position: 'relative',
             letterSpacing: 0.2,
+            textShadow: active === f.key ? '0 1px 2px rgba(0,0,0,0.1)' : 'none',
+            '&:hover': {
+              color: factionData[f.key].color,
+              textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+            },
           }}
         >
           {f.label}

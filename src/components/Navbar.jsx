@@ -34,6 +34,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isDark = theme.palette.mode === 'dark';
 
   useEffect(() => {
     // Set tab index based on current path
@@ -63,10 +64,16 @@ export default function Navbar() {
           color="transparent"
           elevation={0}
           sx={{
-            background: 'rgba(20, 20, 20, 0.6)',
+            background: isDark 
+              ? 'rgba(18, 18, 18, 0.8)' 
+              : 'rgba(255, 255, 255, 0.8)',
             backdropFilter: 'blur(12px)',
-            boxShadow: '0 4px 30px rgba(0,0,0,0.1)',
-            borderBottom: '1px solid rgba(255,255,255,0.1)',
+            boxShadow: isDark 
+              ? '0 4px 30px rgba(0,0,0,0.3)' 
+              : '0 4px 30px rgba(0,0,0,0.1)',
+            borderBottom: isDark 
+              ? '1px solid rgba(255,255,255,0.1)' 
+              : '1px solid rgba(0,0,0,0.1)',
           }}
         >
           <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
@@ -81,7 +88,9 @@ export default function Navbar() {
                   width: 40,
                   height: 40,
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: isDark 
+                      ? 'rgba(255, 255, 255, 0.1)' 
+                      : 'rgba(0, 0, 0, 0.1)',
                   }
                 }}
               >
@@ -120,7 +129,9 @@ export default function Navbar() {
                 sx={{ 
                   ml: 2,
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: isDark 
+                      ? 'rgba(255, 255, 255, 0.1)' 
+                      : 'rgba(0, 0, 0, 0.1)',
                   }
                 }}
               >
@@ -136,9 +147,13 @@ export default function Navbar() {
           <Box
             sx={{
               width: '100%',
-              background: 'rgba(20, 20, 20, 0.6)',
+              background: isDark 
+                ? 'rgba(18, 18, 18, 0.8)' 
+                : 'rgba(255, 255, 255, 0.8)',
               backdropFilter: 'blur(12px)',
-              borderBottom: '1px solid rgba(255,255,255,0.1)',
+              borderBottom: isDark 
+                ? '1px solid rgba(255,255,255,0.1)' 
+                : '1px solid rgba(0,0,0,0.1)',
             }}
           >
             <List>
@@ -150,7 +165,9 @@ export default function Navbar() {
                     sx={{
                       py: 2,
                       '&.Mui-selected': {
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        backgroundColor: isDark 
+                          ? 'rgba(255, 255, 255, 0.1)' 
+                          : 'rgba(0, 0, 0, 0.1)',
                       },
                     }}
                   >
