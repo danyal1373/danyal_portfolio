@@ -5,7 +5,7 @@ import { Box, Typography, Card, CardContent } from '@mui/material';
 import AnimatedCircle from './components/AnimatedCircle';
 import GlassyProjectCard from './components/GlassyProjectCard';
 import { useTheme } from '@mui/material/styles';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import PageLoader from './components/PageLoader';
 import SkillCard from './components/SkillCard';
@@ -20,6 +20,7 @@ import CategoryIcon from '@mui/icons-material/Category';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import { PasswordProvider } from './contexts/PasswordContext';
+import { useGlassmorphism } from './hooks/useGlassmorphism';
 
 // Lazy load pages
 const ProjectsPageLazy = React.lazy(() => import('./ProjectsPage'));
@@ -58,10 +59,30 @@ function SwappingFactionText({ faction = 'business' }) {
 
 function HomePage() {
   const theme = useTheme();
+  const glassmorphism = useGlassmorphism();
+  const navigate = useNavigate();
   const [glowPos, setGlowPos] = useState(null);
   const [faction, setFaction] = useState('business');
   const [hoveredFaction, setHoveredFaction] = useState(null);
   const displayFaction = hoveredFaction || faction;
+
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`,
+      opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
+      pointerEvents: 'none',
+    },
+  };
+
+  // Project section click handlers
+  const handleProjectClick = (section) => {
+    navigate(`/projects#${section}`);
+  };
 
   return (
     <>
@@ -199,14 +220,10 @@ function HomePage() {
           </Typography>
           {/* Glossy, slightly darker background for the chart */}
           <Box sx={{
-            position: 'relative',
-            // Glassmorphism core styles:
-            background: 'rgba(255,255,255,0.18)',
-            border: '1.5px solid rgba(255,255,255,0.35)',
-            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
-            backdropFilter: 'blur(24px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-            borderRadius: (theme) => theme.shape.borderRadius * 1.5,
+            ...glassmorphism.base,
+            ...glassmorphism.withHighlights,
+            ...glassmorphism.hover,
+            ...noisyBackgroundStyle,
             p: { xs: 2, md: 4 },
             px: { xs: 2, md: 6 },
             display: 'flex',
@@ -216,26 +233,6 @@ function HomePage() {
             minHeight: 340,
             mx: 'auto',
             overflow: 'hidden',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              left: 0,
-              top: 0,
-              width: '100%',
-              height: '60px',
-              pointerEvents: 'none',
-              background: 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 100%)',
-              zIndex: 2,
-            },
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              inset: 0,
-              borderRadius: 'inherit',
-              boxShadow: 'inset 0 1.5px 12px 0 rgba(255,255,255,0.18)',
-              pointerEvents: 'none',
-              zIndex: 3,
-            },
           }}>
             {/* Chart on left, swapping text on right */}
             <Box sx={{ flex: { xs: 'unset', md: '1 1 33%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4 }}>
@@ -265,11 +262,21 @@ function HomePage() {
           <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, ml: 2, fontWeight: 400 }}>
             Projects
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2, justifyContent: 'center', alignItems: 'stretch' }}>
-            <GlassyProjectCard title="Product Development" color="primary" icon={<CategoryIcon />} />
-            <GlassyProjectCard title="Engineering Design and Prototyping" color="primary" icon={<DesignServicesIcon />} />
-            <GlassyProjectCard title="Marketing/Branding" color="error" icon={<CampaignIcon />} />
-            <GlassyProjectCard title="User Research" color="warning" icon={<PersonSearchIcon />} />
+          <Box 
+            sx={{ 
+              display: 'grid', 
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, 
+              gap: 3, 
+              justifyItems: 'center', 
+              alignItems: 'end',
+              width: '100%',
+              mx: 'auto',
+            }}
+          >
+            <GlassyProjectCard title="Product Development" color="primary" icon={<CategoryIcon />} onClick={() => handleProjectClick('product-development')} />
+            <GlassyProjectCard title="Engineering Design and Prototyping" color="primary" icon={<DesignServicesIcon />} onClick={() => handleProjectClick('engineering-design')} />
+            <GlassyProjectCard title="Marketing/Branding" color="error" icon={<CampaignIcon />} onClick={() => handleProjectClick('marketing-branding')} />
+            <GlassyProjectCard title="User Research" color="warning" icon={<PersonSearchIcon />} onClick={() => handleProjectClick('user-research')} />
           </Box>
         </Box>
       </Box>
@@ -278,7 +285,7 @@ function HomePage() {
         sx={{
           position: 'relative',
           py: { xs: 8, md: 10 },
-          background: theme.palette.background.default,
+          background: 'transparent',
           overflow: 'hidden',
         }}
       >
@@ -307,7 +314,7 @@ function HomePage() {
         sx={{
           position: 'relative',
           py: { xs: 8, md: 12 },
-          background: theme.palette.background.default,
+          background: 'transparent',
           overflow: 'hidden',
         }}
       >
@@ -317,17 +324,12 @@ function HomePage() {
           {/* Glassy card with about text - now interactive */}
           <Card
             sx={{
+              ...glassmorphism.base,
+              ...glassmorphism.withHighlights,
+              ...glassmorphism.hover,
+              ...noisyBackgroundStyle,
               flex: 2,
               minWidth: 320,
-              // Glassmorphism core styles:
-              background: 'rgba(255,255,255,0.18)',
-              border: '1.5px solid rgba(255,255,255,0.35)',
-              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
-              backdropFilter: 'blur(24px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-              borderRadius: (theme) => theme.shape.borderRadius * 1.5,
-              position: 'relative',
-              overflow: 'hidden',
               px: 3,
               pt: 6,
               pb: 3,
@@ -335,28 +337,6 @@ function HomePage() {
               flexDirection: 'column',
               justifyContent: 'flex-start',
               cursor: 'pointer',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-              '&::before': {
-                content: '""',
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '60px',
-                background: 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 100%)',
-                borderRadius: 'inherit',
-                pointerEvents: 'none',
-                zIndex: 1,
-              },
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                inset: 0,
-                borderRadius: 'inherit',
-                boxShadow: 'inset 0 1.5px 12px 0 rgba(255,255,255,0.18)',
-                pointerEvents: 'none',
-                zIndex: 1,
-              },
             }}
             onMouseMove={e => {
               const rect = e.currentTarget.getBoundingClientRect();

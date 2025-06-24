@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Card, Divider, Grid, Button, Chip } from '@mui/material';
 import AnimatedCircle from './components/AnimatedCircle';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -140,6 +140,8 @@ const FeaturedProjectCard = ({ project }) => {
 export default function ProjectsPage() {
   const theme = useTheme();
   const navigate = useNavigate();
+  const pageRef = useRef();
+  const glassmorphism = useGlassmorphism();
   
   const featuredProjects = getFeaturedProjects();
   const allProjects = getAllProjects();
@@ -153,8 +155,34 @@ export default function ProjectsPage() {
     return acc;
   }, {});
 
+  // Scroll to section if hash is present
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, []);
+
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`,
+      opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
+      pointerEvents: 'none',
+    },
+  };
+
   return (
-    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh' }}>
+    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh' }} ref={pageRef}>
       {/* --- FIXED BACKGROUND --- */}
       <Box sx={{
         position: 'fixed',
@@ -204,7 +232,7 @@ export default function ProjectsPage() {
 
             {/* Projects By Category */}
             {Object.entries(projectsByCategory).map(([category, projects]) => (
-              <Box key={category} sx={{ mb: 6 }}>
+              <Box key={category} sx={{ mb: 6 }} id={category.toLowerCase().replace(/\s+/g, '-')}>
                 <Typography 
                   variant="h5" 
                   sx={{ 
@@ -236,46 +264,90 @@ export default function ProjectsPage() {
             <Divider sx={{ my: 4 }} />
             
             {/* Section Links */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
-              <Button 
-                variant="outlined" 
-                endIcon={<OpenInNewIcon />} 
-                sx={{ 
-                  justifyContent: 'space-between', 
-                  color: theme.palette.error.main, 
-                  borderColor: theme.palette.error.main, 
-                  fontWeight: 500 
-                }}
-                onClick={() => navigate('/previous-work')}
-              >
-                Previous Work
-              </Button>
-              <Button 
-                variant="outlined" 
-                endIcon={<OpenInNewIcon />} 
-                sx={{ 
-                  justifyContent: 'space-between', 
-                  color: theme.palette.primary.main, 
-                  borderColor: theme.palette.primary.main, 
-                  fontWeight: 500 
-                }}
-                onClick={() => navigate('/research')}
-              >
-                Research
-              </Button>
-              <Button 
-                variant="outlined" 
-                endIcon={<OpenInNewIcon />} 
-                sx={{ 
-                  justifyContent: 'space-between', 
-                  color: theme.palette.warning.main, 
-                  borderColor: theme.palette.warning.main, 
-                  fontWeight: 500 
-                }}
-                onClick={() => navigate('/resume')}
-              >
-                Resume
-              </Button>
+            <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4, justifyContent: 'center', alignItems: 'stretch', width: '100%' }}>
+                <Card
+                  sx={{
+                    ...glassmorphism.base,
+                    ...glassmorphism.withHighlights,
+                    ...glassmorphism.hover,
+                    ...noisyBackgroundStyle,
+                    position: 'relative',
+                    minHeight: 72,
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    textAlign: 'left',
+                    p: { xs: 2.5, md: 4 },
+                    mx: 'auto',
+                    boxShadow: 'none',
+                  }}
+                  onClick={() => navigate('/previous-work')}
+                  elevation={0}
+                >
+                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: 400, textAlign: 'left' }}>
+                    More Built Projects
+                  </Typography>
+                  <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />
+                </Card>
+                <Card
+                  sx={{
+                    ...glassmorphism.base,
+                    ...glassmorphism.withHighlights,
+                    ...glassmorphism.hover,
+                    ...noisyBackgroundStyle,
+                    position: 'relative',
+                    minHeight: 72,
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    textAlign: 'left',
+                    p: { xs: 2.5, md: 4 },
+                    mx: 'auto',
+                    boxShadow: 'none',
+                  }}
+                  onClick={() => navigate('/research')}
+                  elevation={0}
+                >
+                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: 400, textAlign: 'left' }}>
+                    More Marketing Projects
+                  </Typography>
+                  <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />
+                </Card>
+                <Card
+                  sx={{
+                    ...glassmorphism.base,
+                    ...glassmorphism.withHighlights,
+                    ...glassmorphism.hover,
+                    ...noisyBackgroundStyle,
+                    position: 'relative',
+                    minHeight: 72,
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    textAlign: 'left',
+                    p: { xs: 2.5, md: 4 },
+                    mx: 'auto',
+                    boxShadow: 'none',
+                  }}
+                  onClick={() => navigate('/resume')}
+                  elevation={0}
+                >
+                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: 400, textAlign: 'left' }}>
+                    AI/ML Projects
+                  </Typography>
+                  <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />
+                </Card>
+              </Box>
             </Box>
         </Box>
       </Box>

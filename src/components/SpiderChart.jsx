@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
+import { useGlassmorphism } from '../hooks/useGlassmorphism';
 
 ChartJS.register(
   RadialLinearScale,
@@ -48,52 +49,47 @@ const factions = [
 ];
 
 function TrioSwitch({ active, onHover, onClick }) {
+  const glassmorphism = useGlassmorphism();
+  
   // Calculate left position for slider
   const idx = factions.findIndex(f => f.key === active);
+  
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`,
+      opacity: 0.05,
+      pointerEvents: 'none',
+    },
+  };
+
   return (
     <Box
       sx={{
+        ...glassmorphism.base,
+        ...glassmorphism.withHighlights,
+        ...glassmorphism.hover,
+        ...noisyBackgroundStyle,
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         width: 420,
         height: 36,
-        background: 'rgba(255,255,255,0.18)',
-        border: '1.5px solid rgba(255,255,255,0.35)',
-        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)',
-        backdropFilter: 'blur(24px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-        borderRadius: (theme) => theme.shape.borderRadius * 1.5,
         px: 0.5,
         py: 0.5,
         overflow: 'hidden',
         mb: 0,
         mt: 2,
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100%',
-          height: '20px',
-          pointerEvents: 'none',
-          background: 'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.08) 100%)',
-          zIndex: 1,
-        },
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          inset: 0,
-          borderRadius: 'inherit',
-          boxShadow: 'inset 0 1.5px 12px 0 rgba(255,255,255,0.18)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        },
       }}
     >
       {/* Sliding colored rectangle */}
       <Box
         sx={{
+          ...glassmorphism.colored(factionData[active].color),
           position: 'absolute',
           top: 2,
           left: 8 + idx * 138,
@@ -102,11 +98,6 @@ function TrioSwitch({ active, onHover, onClick }) {
           borderRadius: (theme) => theme.shape.borderRadius,
           zIndex: 2,
           transition: 'all 0.5s ease-in-out',
-          background: `${factionData[active].color}25`,
-          border: `1px solid ${factionData[active].color}40`,
-          boxShadow: `0 4px 16px 0 ${factionData[active].color}40, inset 0 1px 4px 0 rgba(255,255,255,0.2)`,
-          backdropFilter: 'blur(8px)',
-          WebkitBackdropFilter: 'blur(8px)',
         }}
       />
       {factions.map((f, i) => (
