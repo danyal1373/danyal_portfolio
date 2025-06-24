@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import { fetchSwarmData } from '../api/swarm';
+import { useGlassmorphism } from '../hooks/useGlassmorphism';
 
 // Fix for default marker icons in Leaflet with React
 delete L.Icon.Default.prototype._getIconUrl;
@@ -21,6 +22,20 @@ const SwarmMap = () => {
   const [progress, setProgress] = useState(0);
   const [totalCheckins, setTotalCheckins] = useState(0);
   const theme = useTheme();
+  const glassmorphism = useGlassmorphism();
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox=\\"0 0 512 512\\" xmlns=\\"http://www.w3.org/2000/svg\\"%3E%3Cfilter id=\\"noiseFilter\\"%3E%3CfeTurbulence type=\\"fractalNoise\\" baseFrequency=\\"0.8\\" numOctaves=\\"3\\" stitchTiles=\\"stitch\\"/%3E%3C/filter%3E%3Crect width=\\"100%\\" height=\\"100%\\" filter=\\"url(%23noiseFilter)\\"/%3E%3C/svg%3E')`,
+      opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
+      pointerEvents: 'none',
+      zIndex: 0,
+    },
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -88,57 +103,48 @@ const SwarmMap = () => {
 
   const renderStats = () => {
     if (!stats) return null;
-
     return (
       <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={12} sm={6} md={2}>
-          <Card sx={{ textAlign: 'center', bgcolor: theme.palette.background.paper }}>
-            <CardContent>
-              <Typography variant="h6">Total Check-ins</Typography>
-              <Typography variant="h4">{stats.totalCheckins}</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} md={2}>
-          <Card sx={{ textAlign: 'center', bgcolor: theme.palette.background.paper }}>
-            <CardContent>
-              <Typography variant="h6">Unique Places</Typography>
-              <Typography variant="h4">{stats.uniquePlaces}</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} md={2}>
-          <Card sx={{ textAlign: 'center', bgcolor: theme.palette.background.paper }}>
-            <CardContent>
-              <Typography variant="h6">Countries Visited</Typography>
-              <Typography variant="h4">{stats.uniqueCountries}</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} md={2}>
-          <Card sx={{ textAlign: 'center', bgcolor: theme.palette.background.paper }}>
-            <CardContent>
-              <Typography variant="h6">Distance Traveled</Typography>
-              <Typography variant="h4">{stats.cumulativeDistance.toLocaleString(undefined, { maximumFractionDigits: 0 })} km</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} md={2}>
-          <Card sx={{ textAlign: 'center', bgcolor: theme.palette.background.paper }}>
-            <CardContent>
-              <Typography variant="h6">Time Period</Typography>
-              <Typography variant="h4">{stats.periodYears}</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid item xs={12} sm={6} md={2}>
-          <Card sx={{ textAlign: 'center', bgcolor: theme.palette.background.paper }}>
-            <CardContent>
-              <Typography variant="h6">Mean Distance/Year</Typography>
-              <Typography variant="h4">{stats.meanDistancePerYear.toLocaleString(undefined, { maximumFractionDigits: 0 })} km</Typography>
-            </CardContent>
-          </Card>
-        </Grid>
+        {[{
+          label: 'Total Check-ins', value: stats.totalCheckins
+        }, {
+          label: 'Unique Places', value: stats.uniquePlaces
+        }, {
+          label: 'Countries Visited', value: stats.uniqueCountries
+        }, {
+          label: 'Distance Traveled', value: stats.cumulativeDistance.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' km'
+        }, {
+          label: 'Time Period', value: stats.periodYears
+        }, {
+          label: 'Mean Distance/Year', value: stats.meanDistancePerYear.toLocaleString(undefined, { maximumFractionDigits: 0 }) + ' km'
+        }].map((item, i) => (
+          <Grid item xs={12} sm={6} md={2} key={item.label}>
+            <Card sx={{
+              ...glassmorphism.base,
+              ...glassmorphism.withHighlights,
+              ...glassmorphism.hover,
+              ...noisyBackgroundStyle,
+              borderRadius: theme.shape.borderRadius,
+              boxShadow: 0,
+              width: '100%',
+              height: 140,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              p: 2,
+            }}>
+              <CardContent sx={{ p: 0, width: '100%' }}>
+                <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 1.5, textAlign: 'center' }}>
+                  {item.label}
+                </Typography>
+                <Typography variant="h4" sx={{ color: theme.palette.text.primary, textAlign: 'center' }}>
+                  {item.value}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
       </Grid>
     );
   };
@@ -153,19 +159,26 @@ const SwarmMap = () => {
           zoom={2}
           style={{ height: '100%', width: '100%' }}
         >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
+          {theme.palette.mode === 'dark' ? (
+            <TileLayer
+              url="https://tiles.stadiamaps.com/tiles/alidade_dark/{z}/{x}/{y}{r}.png"
+              attribution="&copy; <a href='https://stadiamaps.com/'>Stadia Maps</a>, &copy; <a href='https://openmaptiles.org/'>OpenMapTiles</a> &copy; <a href='http://openstreetmap.org'>OpenStreetMap</a> contributors"
+            />
+          ) : (
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            />
+          )}
           {checkins.map((checkin, index) => (
             <CircleMarker
               key={index}
               center={[checkin.lat, checkin.lng]}
-              radius={Math.min(10 + checkin.count * 2, 30)}
+              radius={1}
               pathOptions={{
                 color: theme.palette.primary.main,
                 fillColor: theme.palette.primary.main,
-                fillOpacity: 0.6
+                fillOpacity: 1
               }}
             >
               <Popup>

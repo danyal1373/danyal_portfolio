@@ -11,6 +11,7 @@ import akfLogo from './assets/akf.png';
 import bmnLogo from './assets/bmn.png';
 import starsLogo from './assets/stars.png';
 import LifetimeRoadmap from './components/LifetimeRoadmap';
+import AnimatedCircle from './components/AnimatedCircle';
 
 const aboutSections = [
   {
@@ -213,6 +214,20 @@ export default function AboutPage() {
   const glassmorphism = useGlassmorphism();
   return (
     <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
+      {/* --- FIXED BACKGROUND --- */}
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        overflow: 'hidden',
+        zIndex: 0,
+      }}>
+        <AnimatedCircle color="#D11B28" size={800} frequency={0.22} phase={0} style={{ top: '50%', left: '55%' }} />
+        <AnimatedCircle color="#ECB145" size={800} frequency={0.25} phase={1.2} style={{ top: '50%', left: '60%' }} />
+        <AnimatedCircle color="#21A6C0" size={800} frequency={0.21} phase={2.1} style={{ top: '50%', left: '50%' }} />
+      </Box>
       {/* Header Section */}
       <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', gap: 4, mb: 4 }}>
