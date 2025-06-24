@@ -285,33 +285,6 @@ export default function ProjectsPage() {
                     mx: 'auto',
                     boxShadow: 'none',
                   }}
-                  onClick={() => navigate('/previous-work')}
-                  elevation={0}
-                >
-                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: 400, textAlign: 'left' }}>
-                    More Built Projects
-                  </Typography>
-                  <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />
-                </Card>
-                <Card
-                  sx={{
-                    ...glassmorphism.base,
-                    ...glassmorphism.withHighlights,
-                    ...glassmorphism.hover,
-                    ...noisyBackgroundStyle,
-                    position: 'relative',
-                    minHeight: 72,
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    textAlign: 'left',
-                    p: { xs: 2.5, md: 4 },
-                    mx: 'auto',
-                    boxShadow: 'none',
-                  }}
                   onClick={() => navigate('/research')}
                   elevation={0}
                 >

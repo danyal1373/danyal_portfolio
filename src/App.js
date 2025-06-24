@@ -21,6 +21,7 @@ import CampaignIcon from '@mui/icons-material/Campaign';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import { PasswordProvider } from './contexts/PasswordContext';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
+import LifetimeRoadmap from './components/LifetimeRoadmap';
 
 // Lazy load pages
 const ProjectsPageLazy = React.lazy(() => import('./ProjectsPage'));
@@ -28,7 +29,6 @@ const AboutPageLazy = React.lazy(() => import('./AboutPage'));
 const PhotosPageLazy = React.lazy(() => import('./PhotosPage'));
 const ResearchPageLazy = React.lazy(() => import('./ResearchPage'));
 const ProjectOutlinePageLazy = React.lazy(() => import('./ProjectOutlinePage'));
-const PreviousWorkPageLazy = React.lazy(() => import('./PreviousWorkPage'));
 const AstrophotographyPageLazy = React.lazy(() => import('./AstrophotographyPage'));
 const SwarmPageLazy = React.lazy(() => import('./SwarmPage'));
 const ProjectDetailPageLazy = React.lazy(() => import('./components/ProjectDetailPage'));
@@ -309,6 +309,8 @@ function HomePage() {
           </Box>
         </Box>
       </Box>
+      {/* Lifetime Roadmap Section */}
+      <LifetimeRoadmap />
       {/* About Section */}
       <Box
         sx={{
@@ -413,7 +415,6 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/projects" element={<ProjectsPageLazy />} />
             <Route path="/projects/:projectId" element={<ProjectDetailPageLazy />} />
-            <Route path="/previous-work" element={<PreviousWorkPageLazy />} />
             <Route path="/about" element={<AboutPageLazy />} />
             <Route path="/photos" element={<PhotosPageLazy />} />
             <Route path="/photos/astrophotography" element={<AstrophotographyPageLazy />} />

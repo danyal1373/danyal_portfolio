@@ -1,25 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography } from '@mui/material';
-import { Radar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
-} from 'chart.js';
+import * as d3 from 'd3';
 import { useGlassmorphism } from '../hooks/useGlassmorphism';
-
-ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
-);
 
 const factionData = {
   business: {
@@ -136,6 +118,77 @@ function TrioSwitch({ active, onHover, onClick }) {
   );
 }
 
+function D3RadarChart({ labels, data, color, width = 340, height = 340 }) {
+  const ref = useRef();
+  useEffect(() => {
+    // Clear previous SVG
+    d3.select(ref.current).selectAll('*').remove();
+    const radius = Math.min(width, height) / 2 - 40;
+    const levels = 5;
+    const angleSlice = (2 * Math.PI) / labels.length;
+    const maxValue = 100;
+    const svg = d3.select(ref.current)
+      .attr('width', width)
+      .attr('height', height)
+      .append('g')
+      .attr('transform', `translate(${width / 2},${height / 2})`);
+    // Draw grid
+    for (let level = 1; level <= levels; level++) {
+      const r = (radius / levels) * level;
+      svg.append('polygon')
+        .attr('points', labels.map((_, i) => {
+          const angle = i * angleSlice - Math.PI / 2;
+          return [r * Math.cos(angle), r * Math.sin(angle)].join(',');
+        }).join(' '))
+        .attr('stroke', '#8884')
+        .attr('stroke-width', 1)
+        .attr('fill', 'none');
+    }
+    // Draw axes
+    labels.forEach((label, i) => {
+      const angle = i * angleSlice - Math.PI / 2;
+      svg.append('line')
+        .attr('x1', 0)
+        .attr('y1', 0)
+        .attr('x2', radius * Math.cos(angle))
+        .attr('y2', radius * Math.sin(angle))
+        .attr('stroke', '#8886')
+        .attr('stroke-width', 1);
+      // Label
+      svg.append('text')
+        .attr('x', (radius + 16) * Math.cos(angle))
+        .attr('y', (radius + 16) * Math.sin(angle))
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'middle')
+        .attr('font-size', 13)
+        .attr('fill', '#bbb')
+        .text(label);
+    });
+    // Draw data area
+    const points = data.map((d, i) => {
+      const angle = i * angleSlice - Math.PI / 2;
+      const r = (d / maxValue) * radius;
+      return [r * Math.cos(angle), r * Math.sin(angle)];
+    });
+    svg.append('polygon')
+      .attr('points', points.map(p => p.join(',')).join(' '))
+      .attr('fill', color + '33')
+      .attr('stroke', color)
+      .attr('stroke-width', 2);
+    // Draw data points
+    points.forEach(([x, y], i) => {
+      svg.append('circle')
+        .attr('cx', x)
+        .attr('cy', y)
+        .attr('r', 4)
+        .attr('fill', color)
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 2);
+    });
+  }, [labels, data, color, width, height]);
+  return <svg ref={ref} style={{ width, height }} />;
+}
+
 export default function SpiderChart({ textColor = '#222', faction, setFaction, setHoveredFaction, showOnlyChart }) {
   // If controlled, use props; else fallback to local state
   const [localFaction, localSetFaction] = useState('business');
@@ -148,136 +201,16 @@ export default function SpiderChart({ textColor = '#222', faction, setFaction, s
   const handleSetFaction = setFaction || localSetFaction;
   const handleSetHoveredFaction = setHoveredFaction || localSetHoveredFaction;
 
-  const createDataset = (factionKey, isActive) => {
-    const data = factionData[factionKey];
-    const color = data.color;
-    const opacity = isActive ? 1 : 0.2;
-    return {
-      label: factionKey.charAt(0).toUpperCase() + factionKey.slice(1),
-      data: data.data,
-      backgroundColor: (ctx) => {
-        const chart = ctx.chart;
-        const {ctx: c, chartArea} = chart;
-        if (!chartArea) return `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, ${isActive ? 0.2 : 0.05})`;
-        const grad = c.createRadialGradient(
-          (chartArea.left + chartArea.right) / 2,
-          (chartArea.top + chartArea.bottom) / 2,
-          0,
-          (chartArea.left + chartArea.right) / 2,
-          (chartArea.top + chartArea.bottom) / 2,
-          chartArea.width / 2
-        );
-        grad.addColorStop(0, `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.05)`);
-        grad.addColorStop(1, `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, ${isActive ? 0.2 : 0.05})`);
-        return grad;
-      },
-      borderColor: `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, ${opacity})`,
-      borderWidth: isActive ? 2 : 1,
-      pointBackgroundColor: `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, ${opacity})`,
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: color,
-      pointRadius: isActive ? 4 : 2,
-      pointHoverRadius: isActive ? 6 : 4,
-      fill: true
-    };
-  };
-
-  const chartData = {
-    labels: factionData.business.labels,
-    datasets: [
-      createDataset('business', displayFaction === 'business'),
-      createDataset('design', displayFaction === 'design'),
-      createDataset('engineering', displayFaction === 'engineering')
-    ]
-  };
-
-  const options = {
-    scales: {
-      r: {
-        angleLines: {
-          display: true,
-          color: 'rgba(0,0,0,0.08)'
-        },
-        suggestedMin: 0,
-        suggestedMax: 100,
-        ticks: {
-          backdropColor: 'transparent',
-          color: textColor,
-          stepSize: 20
-        },
-        grid: {
-          color: 'rgba(0,0,0,0.08)'
-        },
-        pointLabels: {
-          color: textColor,
-          font: {
-            size: 12
-          }
-        }
-      }
-    },
-    plugins: {
-      legend: {
-        display: false
-      },
-      tooltip: {
-        enabled: true,
-        mode: 'index',
-        intersect: false
-      }
-    },
-    animation: {
-      duration: 500,
-      easing: 'easeInOutQuart'
-    },
-    elements: {
-      line: {
-        tension: 0.4
-      }
-    },
-    onHover: (event, elements) => {
-      // No chart hover highlight, handled by switch
-    }
-  };
+  const { labels, data, color } = factionData[displayFaction];
 
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      alignItems: 'center', 
-      gap: 2,
-      mt: 4,
-      mb: 4,
-      width: '100%',
-    }}>
-      <Box sx={{ 
-        width: '100%', 
-        maxWidth: 500, 
-        height: 400,
-        position: 'relative',
-        transition: 'all 0.3s ease',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-        onMouseLeave={() => handleSetHoveredFaction(null)}
-      >
-        <Radar 
-          ref={chartRef}
-          data={chartData} 
-          options={options}
-        />
-        <Box sx={{ mt: 2 }}>
-          <TrioSwitch
-            active={displayFaction}
-            onHover={key => handleSetHoveredFaction(key)}
-            onMouseLeave={() => handleSetHoveredFaction(null)}
-            onClick={key => handleSetFaction(key)}
-          />
-        </Box>
-      </Box>
+    <Box sx={{ width: '100%', height: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <D3RadarChart labels={labels} data={data} color={color} width={340} height={340} />
+      <TrioSwitch
+        active={displayFaction}
+        onHover={key => handleSetHoveredFaction(key)}
+        onClick={key => handleSetFaction(key)}
+      />
     </Box>
   );
 } 

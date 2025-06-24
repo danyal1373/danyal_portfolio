@@ -18,7 +18,6 @@ function HideOnScroll({ children }) {
 
 const tabRoutes = [
   { label: 'Projects', path: '/projects' },
-  { label: 'Previous Work', path: '/previous-work' },
   { label: 'About', path: '/about' },
   { label: 'Photos', path: '/photos' },
   { label: 'Research', path: '/research' },
