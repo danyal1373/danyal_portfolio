@@ -86,8 +86,8 @@ function PhotosPage() {
                 color: theme.palette.text.primary, 
                 mb: 4, 
                 mt: 2, 
-                fontWeight: 100,
-                fontSize: { xs: '50px', md: '80px' },
+                fontWeight: theme.typography.h1.fontWeight,
+                fontSize: { xs: '2.5rem', md: '5rem' },
                 textAlign: 'right'
               }}
             >
@@ -110,7 +110,7 @@ function PhotosPage() {
 
         {/* Instagram Section */}
         <Box sx={{ mt: 8, mb: 4 }}>
-          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, fontWeight: 400 }}>
+          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, fontWeight: theme.typography.body1.fontWeight }}>
             Instagram Feed
           </Typography>
           <Card sx={{
@@ -134,7 +134,7 @@ function PhotosPage() {
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <InstagramIcon sx={{ fontSize: 32, color: theme.palette.text.secondary }} />
               <Box>
-                <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 500 }}>
+                <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight }}>
                   @danyal1373
                 </Typography>
                 <Typography variant="body2" sx={{ color: theme.palette.text.secondary }}>

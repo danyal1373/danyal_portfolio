@@ -172,7 +172,7 @@ const ProjectDetailPage = () => {
             {/* Project Info */}
             <Grid item xs={12} md={6}>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Typography variant="overline" sx={{ color: theme.palette.primary.main, fontWeight: 600 }}>
+                <Typography variant="overline" sx={{ color: theme.palette.primary.main, fontWeight: theme.typography.h2.fontWeight }}>
                   {project.category}
                 </Typography>
                 {project.passwordProtected && (
@@ -193,7 +193,7 @@ const ProjectDetailPage = () => {
               </Box>
               <Typography variant="h3" sx={{ 
                 color: theme.palette.text.primary, 
-                fontWeight: 700, 
+                fontWeight: theme.typography.h2.fontWeight, 
                 mb: 2,
                 fontSize: { xs: '2rem', md: '2.5rem' }
               }}>
@@ -201,7 +201,7 @@ const ProjectDetailPage = () => {
               </Typography>
               <Typography variant="h6" sx={{ 
                 color: theme.palette.text.secondary, 
-                fontWeight: 400, 
+                fontWeight: theme.typography.body1.fontWeight, 
                 mb: 3,
                 fontSize: { xs: '1.1rem', md: '1.25rem' }
               }}>

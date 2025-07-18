@@ -243,7 +243,7 @@ export default function GlassyProjectCard({ title, color = 'primary', icon }) {
                 variant="subtitle1" 
                 sx={{ 
                   color: theme.palette.text.secondary, 
-                  fontWeight: 500,
+                  fontWeight: theme.typography.h6.fontWeight,
                   textShadow: hover ? '0 2px 4px rgba(0,0,0,0.1)' : 'none',
                   transition: 'all 0.3s ease',
                 }}

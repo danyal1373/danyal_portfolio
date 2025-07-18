@@ -1,23 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import * as d3 from 'd3';
 import { useGlassmorphism } from '../hooks/useGlassmorphism';
 
 const factionData = {
   business: {
-    labels: ['Strategy', 'Leadership', 'Innovation', 'Communication', 'Problem Solving', 'Adaptability', 'Decision Making', 'Team Building'],
-    data: [85, 90, 75, 88, 82, 87, 80, 85],
+    labels: ['Branding', 'Negotiation', 'Data-Driven', 'Communication', 'Problem Solving', 'Accounting/Budgeting', 'Decision Making', 'Ad Design/Campaign'],
+    data: [90, 96, 88, 99, 99, 99, 88, 90],
     color: '#D11B28',
     gradient: 'rgba(209,27,40,0.25), rgba(209,27,40,0.05)'
   },
   design: {
-    labels: ['Creativity', 'User Research', 'Visual Design', 'Prototyping', 'Typography', 'Color Theory', 'UX Design', 'Design Systems'],
-    data: [90, 85, 95, 88, 92, 87, 90, 85],
+    labels: ['Attention to Detail', 'User Research', 'Visual Design', 'Prototyping', 'Typography', 'Color Theory', 'UX Design', 'Design Systems'],
+    data: [78, 85, 95, 99, 90, 77, 94, 99],
     color: '#ECB145',
     gradient: 'rgba(236,177,69,0.25), rgba(236,177,69,0.05)'
   },
   engineering: {
-    labels: ['Control Systems', 'Material', '3D Modeling', 'DevOps', 'Science & Engineering Labs', 'AR/VR', 'AI & ML', 'Debugging'],
+    labels: ['Control Systems', 'Material Selection', '3D Modeling', 'DevOps', 'Internet of Things', 'AR/VR', 'AI & ML', 'Debugging'],
     data: [82, 85, 96, 80, 99, 95, 94, 75],
     color: '#21A6C0',
     gradient: 'rgba(33,166,192,0.25), rgba(33,166,192,0.05)'
@@ -31,6 +31,7 @@ const factions = [
 ];
 
 function TrioSwitch({ active, onHover, onClick }) {
+  const theme = useTheme();
   const glassmorphism = useGlassmorphism();
   
   // Calculate left position for slider
@@ -77,7 +78,7 @@ function TrioSwitch({ active, onHover, onClick }) {
           left: 8 + idx * 138,
           width: 130,
           height: 28,
-          borderRadius: (theme) => theme.shape.borderRadius,
+          borderRadius: theme.shape.borderRadius,
           zIndex: 2,
           transition: 'all 0.5s ease-in-out',
         }}
@@ -94,13 +95,13 @@ function TrioSwitch({ active, onHover, onClick }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontWeight: 600,
-            fontSize: 14,
+            fontWeight: theme.typography.h2.fontWeight,
+            fontSize: theme.typography.body2.fontSize,
             fontFamily: '"Libre Franklin", Arial, sans-serif',
-            color: active === f.key ? factionData[f.key].color : '#222',
+            color: active === f.key ? factionData[f.key].color : theme.palette.text.primary,
             cursor: 'pointer',
             transition: 'all 0.3s ease',
-            borderRadius: (theme) => theme.shape.borderRadius,
+            borderRadius: theme.shape.borderRadius,
             userSelect: 'none',
             position: 'relative',
             letterSpacing: 0.2,
@@ -118,7 +119,7 @@ function TrioSwitch({ active, onHover, onClick }) {
   );
 }
 
-function D3RadarChart({ labels, data, color, width = 450, height = 400 }) {
+function D3RadarChart({ labels, data, color, width = 450, height = 400, theme }) {
   const ref = useRef();
   useEffect(() => {
     // Clear previous SVG
@@ -166,7 +167,7 @@ function D3RadarChart({ labels, data, color, width = 450, height = 400 }) {
           const angle = i * angleSlice - Math.PI / 2;
           return [r * Math.cos(angle), r * Math.sin(angle)].join(',');
         }).join(' '))
-        .attr('stroke', '#8884')
+        .attr('stroke', theme.palette.divider)
         .attr('stroke-width', 1)
         .attr('fill', 'none');
     }
@@ -179,7 +180,7 @@ function D3RadarChart({ labels, data, color, width = 450, height = 400 }) {
         .attr('y1', 0)
         .attr('x2', radius * Math.cos(angle))
         .attr('y2', radius * Math.sin(angle))
-        .attr('stroke', '#8886')
+        .attr('stroke', theme.palette.divider)
         .attr('stroke-width', 1);
       
       // Label
@@ -189,7 +190,7 @@ function D3RadarChart({ labels, data, color, width = 450, height = 400 }) {
         .attr('text-anchor', 'middle')
         .attr('dominant-baseline', 'middle')
         .attr('font-size', 12)
-        .attr('fill', '#bbb')
+        .attr('fill', theme.palette.text.secondary)
         .text(label);
     });
     
@@ -214,14 +215,15 @@ function D3RadarChart({ labels, data, color, width = 450, height = 400 }) {
         .attr('cy', y)
         .attr('r', 4)
         .attr('fill', color)
-        .attr('stroke', '#fff')
+        .attr('stroke', theme.palette.background.paper)
         .attr('stroke-width', 2);
     });
-  }, [labels, data, color, width, height]);
+  }, [labels, data, color, width, height, theme]);
   return <svg ref={ref} style={{ width, height }} />;
 }
 
-export default function SpiderChart({ textColor = '#222', faction, setFaction, setHoveredFaction, showOnlyChart }) {
+export default function SpiderChart({ faction, setFaction, setHoveredFaction, showOnlyChart }) {
+  const theme = useTheme();
   // If controlled, use props; else fallback to local state
   const [localFaction, localSetFaction] = useState('business');
   const [localHoveredFaction, localSetHoveredFaction] = useState(null);
@@ -245,7 +247,7 @@ export default function SpiderChart({ textColor = '#222', faction, setFaction, s
       justifyContent: 'center',
       pl: 12
     }}>
-      <D3RadarChart labels={labels} data={data} color={color} width={450} height={400} />
+      <D3RadarChart labels={labels} data={data} color={color} width={450} height={400} theme={theme} />
       <TrioSwitch
         active={displayFaction}
         onHover={key => handleSetHoveredFaction(key)}

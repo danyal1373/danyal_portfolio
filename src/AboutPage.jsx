@@ -173,19 +173,19 @@ function AboutCard({ logo, title, subtitle, description, date }) {
             }}
           />
         ) : (
-          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: 700 }}>
+          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.h2.fontWeight }}>
             {subtitle ? subtitle[0] : '?'}
           </Typography>
         )}
       </Box>
       <Box sx={{ flex: 1, minWidth: 0 }}>
-        <Typography variant="subtitle2" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 0.5 }}>
+        <Typography variant="subtitle2" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 0.5 }}>
           {title}
         </Typography>
-        <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 500, mb: 0.5, fontSize: 18, lineHeight: 1.2, whiteSpace: 'pre-line' }}>
+        <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 0.5, fontSize: theme.typography.h6.fontSize, lineHeight: theme.typography.h6.lineHeight, whiteSpace: 'pre-line' }}>
           {subtitle}
         </Typography>
-        <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontWeight: 400, fontSize: 13, whiteSpace: 'pre-line' }}>
+        <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body2.fontWeight, fontSize: theme.typography.body2.fontSize, whiteSpace: 'pre-line' }}>
           {description}
         </Typography>
       </Box>
@@ -196,8 +196,8 @@ function AboutCard({ logo, title, subtitle, description, date }) {
           ml: 2,
           bgcolor: theme.palette.divider,
           color: theme.palette.text.secondary,
-          fontWeight: 500,
-          fontSize: 13,
+          fontWeight: theme.typography.h6.fontWeight,
+          fontSize: theme.typography.body2.fontSize,
           borderRadius: 2,
           height: 28,
           minWidth: 90,
@@ -232,14 +232,14 @@ export default function AboutPage() {
       <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
         <Typography 
           variant="h1"
-          sx={{ 
-            color: theme.palette.text.primary, 
-            mb: 4, 
-            mt: 2, 
-            fontWeight: 100,
-            fontSize: { xs: '50px', md: '80px' },
-            textAlign: 'right'
-          }}
+                      sx={{ 
+              color: theme.palette.text.primary, 
+              mb: 4, 
+              mt: 2, 
+              fontWeight: theme.typography.h1.fontWeight,
+              fontSize: { xs: '2.5rem', md: '5rem' },
+              textAlign: 'right'
+            }}
         >
           About
         </Typography>
@@ -262,7 +262,7 @@ export default function AboutPage() {
       <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
         {aboutSections.map(section => (
           <Box key={section.title} sx={{ mb: 4 }}>
-            <Typography variant="h6" sx={{ mb: 2, color: theme.palette.text.primary, fontWeight: 500 }}>{section.title}</Typography>
+            <Typography variant="h6" sx={{ mb: 2, color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight }}>{section.title}</Typography>
             {section.items.map((item, idx) => (
               <AboutCard key={idx} {...item} />
             ))}
@@ -270,7 +270,7 @@ export default function AboutPage() {
         ))}
         {/* Skills Section */}
         <Box sx={{ mt: 6 }}>
-          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, fontWeight: 400 }}>
+          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, fontWeight: theme.typography.body1.fontWeight }}>
             Skills
           </Typography>
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -297,7 +297,7 @@ export default function AboutPage() {
                   borderRadius: theme.shape.borderRadius,
                   border: `1px solid ${theme.palette.divider}`,
                   fontSize: theme.typography.body2.fontSize,
-                  fontWeight: 400,
+                  fontWeight: theme.typography.body1.fontWeight,
                   display: 'inline-block',
                   mb: 1,
                 }}

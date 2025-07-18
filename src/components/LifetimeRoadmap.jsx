@@ -4,18 +4,18 @@ import { useGlassmorphism } from '../hooks/useGlassmorphism';
 import * as d3 from 'd3';
 
 const periods = [
-  { label: 'High School', start: { year: 2008, quarter: 1 }, end: { year: 2012, quarter: 2 }, color: '#21A6C0' },
-  { label: 'Astrophotography', start: { year: 2009, quarter: 1 }, end: { year: 2025, quarter: 2 }, color: '#21A6C0' },
-  { label: 'Astronomy Olympiad Study', start: { year: 2009, quarter: 1 }, end: { year: 2011, quarter: 3 }, color: '#21A6C0' },
-  { label: 'Astronomy Olympiad Summer Program', start: { year: 2011, quarter: 2 }, end: { year: 2011, quarter: 3 }, color: '#21A6C0' },
-  { label: 'Mechanical Engineering', start: { year: 2012, quarter: 2 }, end: { year: 2016, quarter: 2 }, color: '#ECB145' },
-  { label: 'Startup Work', start: { year: 2015, quarter: 3 }, end: { year: 2018, quarter: 1 }, color: '#4CAF50' },
-  { label: 'MBA Marketing', start: { year: 2018, quarter: 1 }, end: { year: 2020, quarter: 2 }, color: '#D11B28' },
-  { label: 'MTN Irancell Internship', start: { year: 2018, quarter: 4 }, end: { year: 2019, quarter: 2 }, color: '#4CAF50' },
-  { label: 'YAStudio', start: { year: 2020, quarter: 3 }, end: { year: 2021, quarter: 4 }, color: '#4CAF50' },
-  { label: 'Dream Farm Studios', start: { year: 2021, quarter: 4 }, end: { year: 2022, quarter: 3 }, color: '#4CAF50' },
-  { label: 'MIIPS Program', start: { year: 2022, quarter: 3 }, end: { year: 2023, quarter: 4 }, color: '#fff' },
-  { label: 'CCC Intelligent Solutions', start: { year: 2023, quarter: 2 }, end: { year: 2025, quarter: 3 }, color: '#4CAF50' },
+  { label: 'High School', start: { year: 2008, quarter: 1 }, end: { year: 2012, quarter: 2 }, color: '#CDE4E9' },
+  { label: 'Astrophotography', start: { year: 2009, quarter: 1 }, end: { year: 2025, quarter: 2 }, color: '#CDE4E9' },
+  { label: 'Astronomy Olympiad Study', start: { year: 2009, quarter: 1 }, end: { year: 2011, quarter: 3 }, color: '#CDE4E9' },
+  { label: 'Astronomy Olympiad Summer Program', start: { year: 2011, quarter: 2 }, end: { year: 2011, quarter: 3 }, color: '#CDE4E9' },
+  { label: 'Mechanical Engineering', start: { year: 2012, quarter: 2 }, end: { year: 2016, quarter: 2 }, color: '#ECCBCD' },
+  { label: 'Startup Work', start: { year: 2015, quarter: 3 }, end: { year: 2018, quarter: 1 }, color: '#ECCBCD' },
+  { label: 'MBA Marketing', start: { year: 2018, quarter: 1 }, end: { year: 2020, quarter: 2 }, color: '#ECCBCD' },
+  { label: 'MTN Irancell Internship', start: { year: 2018, quarter: 4 }, end: { year: 2019, quarter: 2 }, color: '#ECCBCD' },
+  { label: 'YAStudio', start: { year: 2020, quarter: 3 }, end: { year: 2021, quarter: 4 }, color: '#F0E6D4' },
+  { label: 'Dream Farm Studios', start: { year: 2021, quarter: 4 }, end: { year: 2022, quarter: 3 }, color: '#F0E6D4' },
+  { label: 'MIIPS Program', start: { year: 2022, quarter: 3 }, end: { year: 2023, quarter: 4 }, color: '#F0E6D4' },
+  { label: 'CCC Intelligent Solutions', start: { year: 2023, quarter: 2 }, end: { year: 2025, quarter: 3 }, color: '#F0E6D4' },
 ];
 
 // Helper function to convert year and quarter to decimal time
@@ -67,10 +67,10 @@ export default function LifetimeRoadmap() {
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, label: '', timeRange: '' });
 
   useEffect(() => {
-    const margin = { top: 30, right: 40, bottom: 40, left: 0 };
+    const margin = { top: 20, right: 40, bottom: 30, left: 200 }; // Reduced margins
     const width = 900;
-    const barHeight = 18;
-    const height = (barHeight + 1) * periods.length;
+    const barHeight = 16; // Slightly larger bar height
+    const height = (barHeight + 2) * periods.length; // More spacing between bars
     
     // Calculate min and max time in decimal format
     const allTimes = periods.flatMap(p => [
@@ -113,7 +113,7 @@ export default function LifetimeRoadmap() {
     const y = d3.scaleBand()
       .domain(periods.map((_, i) => i))
       .range([0, height])
-      .padding(0.45);
+      .padding(0.4); // More padding for better spacing
     
     // X axis with year ticks only
     const xAxis = d3.axisBottom(x)
@@ -155,21 +155,18 @@ export default function LifetimeRoadmap() {
         setTooltip(t => ({ ...t, visible: false }));
       });
     
-    // Bar labels (centered)
+    // Bar labels (left column) - using consistent typography with the rest of the app
     g.selectAll('bar-label')
       .data(periods)
       .enter()
       .append('text')
-      .attr('x', d => {
-        const startX = x(toDecimalTime(d.start.year, d.start.quarter));
-        const endX = x(toDecimalTime(d.end.year, d.end.quarter));
-        return startX + (endX - startX) / 2;
-      })
+      .attr('x', -200) // Position labels to the left of the chart area
       .attr('y', (_, i) => y(i) + y.bandwidth() / 2 + 5)
-      .attr('text-anchor', 'middle')
-      .attr('font-size', 15)
-      .attr('font-weight', 600)
-      .attr('fill', theme.palette.mode === 'dark' ? '#222' : '#333')
+      .attr('text-anchor', 'start')
+      .attr('font-family', theme.typography.fontFamily)
+      .attr('font-size', theme.typography.h6.fontSize)
+      .attr('font-weight', theme.typography.h6.fontWeight)
+      .attr('fill', theme.palette.text.primary)
       .text(d => d.label);
   }, [theme]);
 
@@ -184,8 +181,6 @@ export default function LifetimeRoadmap() {
           p: { xs: 2, md: 4 },
           borderRadius: theme.shape.borderRadius * 2,
           boxShadow: 'none',
-          minHeight: 400,
-          height: 480,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'stretch',
@@ -194,8 +189,8 @@ export default function LifetimeRoadmap() {
         <Typography variant="h5" sx={{ mb: 3, color: theme.palette.text.primary }}>
           Lifetime Roadmap
         </Typography>
-        <Box sx={{ flex: 1, minHeight: 320, position: 'relative', overflow: 'auto' }}>
-          <svg ref={chartRef} style={{ width: '100%', height: (24 + 18) * periods.length + 80 }} />
+        <Box sx={{ flex: 1, position: 'relative' }}>
+          <svg ref={chartRef} style={{ width: '100%', height: (16 + 2) * periods.length + 50 }} />
           {tooltip.visible && (
             <Box
               sx={{
@@ -217,7 +212,7 @@ export default function LifetimeRoadmap() {
             >
               <strong>{tooltip.label}</strong>
               <br />
-              <span style={{ fontSize: 13, color: theme.palette.text.secondary }}>{tooltip.timeRange}</span>
+              <span style={{ fontSize: theme.typography.body2.fontSize, color: theme.palette.text.secondary }}>{tooltip.timeRange}</span>
             </Box>
           )}
         </Box>

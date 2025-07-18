@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Typography, Grid, Dialog, IconButton } from '@mui/material';
+import { Box, Typography, Grid, Dialog, IconButton, useTheme } from '@mui/material';
 import PhotoCard from './components/PhotoCard';
 import CloseIcon from '@mui/icons-material/Close';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -33,6 +33,7 @@ const photos = [
 ];
 
 export default function AstrophotographyPage() {
+  const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState(0);
 
@@ -45,9 +46,9 @@ export default function AstrophotographyPage() {
   const handleNext = () => setCurrent((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
 
   return (
-    <Box sx={{ background: theme => theme.palette.background.default, minHeight: '100vh', py: 4 }}>
+    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
       <Box sx={{ maxWidth: 1100, mx: 'auto', mb: 4 }}>
-        <Typography variant="h4" sx={{ color: 'text.primary', mb: 3, fontWeight: 500 }}>
+        <Typography variant="h4" sx={{ color: 'text.primary', mb: 3, fontWeight: theme.typography.h6.fontWeight }}>
           Astrophotography
         </Typography>
         <Grid container spacing={2}>
@@ -79,7 +80,7 @@ export default function AstrophotographyPage() {
             </IconButton>
           </Box>
           <Box sx={{ mt: 2, width: '100%', maxWidth: 600 }}>
-            <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 600 }}>
+            <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: theme.typography.h2.fontWeight }}>
               {photos[current].title}
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>

@@ -52,7 +52,7 @@ const CategoryProjectCard = ({ project }) => {
                 {project.passwordProtected && (
                     <LockIcon
                         sx={{
-                            fontSize: 18,
+                            fontSize: theme.typography.h6.fontSize,
                             color: '#D94A4A',
                             opacity: isProjectUnlocked(project.id) ? 0.6 : 1,
                         }}
@@ -72,11 +72,11 @@ const CategoryProjectCard = ({ project }) => {
                     ))}
                 </Box>
                 
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
+                <Typography variant="h5" sx={{ fontWeight: theme.typography.h2.fontWeight, mb: 1 }}>
                     {project.title}
                 </Typography>
 
-                <Typography variant="body2" sx={{ color: 'error.main', fontWeight: 500, mb: 1.5 }}>
+                <Typography variant="body2" sx={{ color: 'error.main', fontWeight: theme.typography.h6.fontWeight, mb: 1.5 }}>
                     {project.client} &mdash; {project.role}
                 </Typography>
 

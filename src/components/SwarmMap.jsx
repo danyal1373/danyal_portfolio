@@ -135,7 +135,7 @@ const SwarmMap = () => {
               p: 2,
             }}>
               <CardContent sx={{ p: 0, width: '100%' }}>
-                <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 1.5, textAlign: 'center' }}>
+                <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 1.5, textAlign: 'center' }}>
                   {item.label}
                 </Typography>
                 <Typography variant="h4" sx={{ color: theme.palette.text.primary, textAlign: 'center' }}>

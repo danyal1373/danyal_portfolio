@@ -103,10 +103,10 @@ const FeaturedProjectCard = ({ project }) => {
         zIndex: 1,
       }}>
         <Box sx={{ textAlign: 'left', flexShrink: 1, minWidth: 0 }}>
-          <Typography variant="h4" sx={{ color: 'text.primary', fontWeight: 700, fontSize: { xs: '1.75rem', md: '2.5rem' } }}>
+          <Typography variant="h4" sx={{ color: 'text.primary', fontWeight: theme.typography.h2.fontWeight, fontSize: { xs: '1.75rem', md: '2.5rem' } }}>
             {project.title}
           </Typography>
-          <Typography variant="body1" sx={{ color: 'error.main', mt: 1, fontWeight: 500 }}>
+          <Typography variant="body1" sx={{ color: 'error.main', mt: 1, fontWeight: theme.typography.h6.fontWeight }}>
             {project.category}
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary', mt: 1, display: { xs: 'none', md: 'block' } }}>
@@ -207,8 +207,8 @@ export default function ProjectsPage() {
                 color: theme.palette.text.primary, 
                 mb: 4, 
                 mt: 2, 
-                fontWeight: 100,
-                fontSize: { xs: '50px', md: '80px' },
+                fontWeight: theme.typography.h1.fontWeight,
+                fontSize: { xs: '2.5rem', md: '5rem' },
                 textAlign: 'right'
               }}
             >
@@ -218,7 +218,7 @@ export default function ProjectsPage() {
             {/* Featured Projects */}
             {featuredProjects.length > 0 && (
               <>
-                <Typography variant="h5" sx={{ color: theme.palette.text.primary, mb: 3, fontWeight: 500 }}>
+                <Typography variant="h5" sx={{ color: theme.palette.text.primary, mb: 3, fontWeight: theme.typography.h6.fontWeight }}>
                   Featured Projects
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4, mb: 4 }}>
@@ -238,7 +238,7 @@ export default function ProjectsPage() {
                   sx={{ 
                     color: '#8C8C87', 
                     mb: 3,
-                    fontWeight: 100,
+                    fontWeight: theme.typography.h1.fontWeight,
                   }}
                 >
                   {category}
@@ -288,7 +288,7 @@ export default function ProjectsPage() {
                   onClick={() => navigate('/research')}
                   elevation={0}
                 >
-                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: 400, textAlign: 'left' }}>
+                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: theme.typography.body1.fontWeight, textAlign: 'left' }}>
                     More Marketing Projects
                   </Typography>
                   <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />
@@ -315,7 +315,7 @@ export default function ProjectsPage() {
                   onClick={() => navigate('/resume')}
                   elevation={0}
                 >
-                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: 400, textAlign: 'left' }}>
+                  <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: theme.typography.body1.fontWeight, textAlign: 'left' }}>
                     AI/ML Projects
                   </Typography>
                   <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />

@@ -237,7 +237,7 @@ function HomePage() {
           }}>
             {/* Chart on left, swapping text on right */}
             <Box sx={{ flex: { xs: 'unset', md: '1 1 45%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, pr: { md: 2 } }}>
-              <SpiderChart textColor={theme.palette.text.primary} showOnlyChart faction={displayFaction} setFaction={setFaction} setHoveredFaction={setHoveredFaction} />
+              <SpiderChart showOnlyChart faction={displayFaction} setFaction={setFaction} setHoveredFaction={setHoveredFaction} />
             </Box>
             <Box sx={{ flex: { xs: 'unset', md: '1 1 55%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, p: { xs: 2, md: 4 } }}>
               <SwappingFactionText faction={displayFaction} />

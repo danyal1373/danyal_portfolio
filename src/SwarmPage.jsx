@@ -23,7 +23,7 @@ function SwarmPage() {
         <AnimatedCircle color="#21A6C0" size={800} frequency={0.21} phase={2.1} style={{ top: '50%', left: '50%' }} />
       </Box>
       <Box sx={{ maxWidth: 1100, mx: 'auto', mb: 4 }}>
-        <Typography variant="h4" sx={{ color: theme.palette.text.primary, mb: 2, fontWeight: 500 }}>
+        <Typography variant="h4" sx={{ color: theme.palette.text.primary, mb: 2, fontWeight: theme.typography.h6.fontWeight }}>
           My Travel Map
         </Typography>
         <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 4 }}>

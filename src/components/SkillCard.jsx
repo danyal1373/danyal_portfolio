@@ -1,8 +1,9 @@
 import React from 'react';
-import { Card, CardActionArea, Avatar, Typography } from '@mui/material';
+import { Card, CardActionArea, Avatar, Typography, useTheme } from '@mui/material';
 import { useGlassmorphism } from '../hooks/useGlassmorphism';
 
 export default function SkillCard({ icon, name, color }) {
+  const theme = useTheme();
   const glassmorphism = useGlassmorphism();
 
   const noisyBackgroundStyle = {
@@ -62,7 +63,7 @@ export default function SkillCard({ icon, name, color }) {
           variant="subtitle2" 
           sx={{ 
             color: 'text.primary', 
-            fontWeight: 500,
+            fontWeight: theme.typography.h6.fontWeight,
             textShadow: '0 1px 2px rgba(0,0,0,0.1)',
           }}
         >

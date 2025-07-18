@@ -135,8 +135,8 @@ export default function ResumePage() {
             color: theme.palette.text.primary, 
             mb: 4, 
             mt: 2, 
-            fontWeight: 100,
-            fontSize: { xs: '50px', md: '80px' },
+            fontWeight: theme.typography.h1.fontWeight,
+            fontSize: { xs: '2.5rem', md: '5rem' },
             textAlign: 'right'
           }}
         >
@@ -162,7 +162,7 @@ export default function ResumePage() {
           cursor: 'pointer'
         }}>
           <Box>
-            <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 500, mb: 1 }}>
+            <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 1 }}>
               Download Full Resume
             </Typography>
             <Typography variant="body2" sx={{ color: theme.palette.text.secondary }}>
@@ -174,7 +174,7 @@ export default function ResumePage() {
 
         {/* Skills Section */}
         <Box sx={{ mb: 6 }}>
-          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 3 }}>
+          <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 3 }}>
             Skills
           </Typography>
           <Grid container spacing={3}>
@@ -189,7 +189,7 @@ export default function ResumePage() {
                   borderRadius: theme.shape.borderRadius, 
                   boxShadow: 0 
                 }}>
-                  <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 500, mb: 2 }}>
+                  <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 2 }}>
                     {category}
                   </Typography>
                   <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
@@ -218,7 +218,7 @@ export default function ResumePage() {
         {/* Experience, Education, and Honors Sections */}
         {resumeSections.map((section, sectionIndex) => (
           <Box key={section.title} sx={{ mb: 6 }}>
-            <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 3 }}>
+            <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 3 }}>
               {section.title}
             </Typography>
             <Grid container spacing={2}>
@@ -236,13 +236,13 @@ export default function ResumePage() {
                   }}>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
                       <Box sx={{ flex: 1 }}>
-                        <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 0.5 }}>
+                        <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 0.5 }}>
                           {item.role}
                         </Typography>
-                        <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 500, mb: 0.5 }}>
+                        <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 0.5 }}>
                           {item.company}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontSize: 13 }}>
+                        <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontSize: theme.typography.body2.fontSize }}>
                           {item.description}
                         </Typography>
                       </Box>
@@ -252,7 +252,7 @@ export default function ResumePage() {
                         sx={{ 
                           bgcolor: theme.palette.divider, 
                           color: theme.palette.text.secondary, 
-                          fontWeight: 500,
+                          fontWeight: theme.typography.h6.fontWeight,
                           ml: 2,
                           flexShrink: 0
                         }} 

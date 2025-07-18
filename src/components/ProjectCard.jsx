@@ -13,7 +13,7 @@ export default function ProjectCard({ title, tags, subtitle }) {
         <Typography variant="subtitle2" sx={{ color: theme.palette.text.secondary, mb: 1 }}>
           {subtitle}
         </Typography>
-        <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 500, mb: 1 }}>
+        <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 1 }}>
           {title}
         </Typography>
         <Typography variant="body2" sx={{ color: theme.palette.text.secondary }}>

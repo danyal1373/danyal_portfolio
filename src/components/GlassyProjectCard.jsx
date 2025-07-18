@@ -102,7 +102,7 @@ const GlassyProjectCard = ({ title, color = 'primary', icon, onClick }) => {
         </AnimatePresence>
         {/* Title pinned to bottom, using theme typography */}
         <Box sx={{ width: '100%', mt: 'auto', mb: 2, zIndex: 4 }}>
-          <Typography variant="h6" sx={{ color: 'text.secondary', fontWeight: 500 }}>
+          <Typography variant="h6" sx={{ color: 'text.secondary', fontWeight: theme.typography.h6.fontWeight }}>
             {title}
           </Typography>
         </Box>

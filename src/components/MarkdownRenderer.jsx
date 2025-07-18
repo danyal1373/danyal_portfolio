@@ -9,7 +9,7 @@ const MarkdownRenderer = ({ content, sx = {} }) => {
   const markdownStyles = {
     '& h1': {
       fontSize: '2.5rem',
-      fontWeight: 700,
+      fontWeight: theme.typography.h2.fontWeight,
       color: theme.palette.text.primary,
       marginBottom: theme.spacing(3),
       marginTop: theme.spacing(4),
@@ -18,7 +18,7 @@ const MarkdownRenderer = ({ content, sx = {} }) => {
     },
     '& h2': {
       fontSize: '2rem',
-      fontWeight: 600,
+      fontWeight: theme.typography.h2.fontWeight,
       color: theme.palette.text.primary,
       marginBottom: theme.spacing(2),
       marginTop: theme.spacing(4),
@@ -27,14 +27,14 @@ const MarkdownRenderer = ({ content, sx = {} }) => {
     },
     '& h3': {
       fontSize: '1.5rem',
-      fontWeight: 600,
+      fontWeight: theme.typography.h2.fontWeight,
       color: theme.palette.text.primary,
       marginBottom: theme.spacing(2),
       marginTop: theme.spacing(3),
     },
     '& h4': {
       fontSize: '1.25rem',
-      fontWeight: 600,
+      fontWeight: theme.typography.h2.fontWeight,
       color: theme.palette.text.primary,
       marginBottom: theme.spacing(1),
       marginTop: theme.spacing(2),
@@ -56,7 +56,7 @@ const MarkdownRenderer = ({ content, sx = {} }) => {
       marginBottom: theme.spacing(0.5),
     },
     '& strong': {
-      fontWeight: 600,
+      fontWeight: theme.typography.h2.fontWeight,
       color: theme.palette.text.primary,
     },
     '& em': {
@@ -112,7 +112,7 @@ const MarkdownRenderer = ({ content, sx = {} }) => {
       backgroundColor: theme.palette.mode === 'dark' 
         ? 'rgba(255,255,255,0.1)' 
         : 'rgba(0,0,0,0.05)',
-      fontWeight: 600,
+      fontWeight: theme.typography.h2.fontWeight,
     },
     '& hr': {
       border: 'none',

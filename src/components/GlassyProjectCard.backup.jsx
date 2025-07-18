@@ -61,7 +61,7 @@ export default function GlassyProjectCard({ title, color = 'primary', icon }) {
         <Icon sx={{ fontSize: 56, color: resolvedColor, opacity: 0.7 }} />
       </Box>
       <CardContent>
-        <Typography variant="subtitle1" sx={{ color: theme.palette.text.secondary, fontWeight: 400 }}>
+        <Typography variant="subtitle1" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight }}>
           {title}
         </Typography>
       </CardContent>

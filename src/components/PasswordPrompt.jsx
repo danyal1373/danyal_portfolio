@@ -115,7 +115,7 @@ const PasswordPrompt = ({
           </Box>
           <Typography variant="h5" sx={{ 
             color: theme.palette.text.primary, 
-            fontWeight: 600,
+            fontWeight: theme.typography.h2.fontWeight,
             mb: 1
           }}>
             Protected Content
@@ -191,7 +191,7 @@ const PasswordPrompt = ({
             sx={{
               py: 1.5,
               fontSize: '1.1rem',
-              fontWeight: 600,
+              fontWeight: theme.typography.h2.fontWeight,
               background: `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.primary.dark} 90%)`,
               boxShadow: '0 4px 20px rgba(25, 118, 210, 0.3)',
               '&:hover': {

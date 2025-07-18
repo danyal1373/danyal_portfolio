@@ -66,8 +66,8 @@ export default function ResearchPage() {
             color: theme.palette.text.primary, 
             mb: 4, 
             mt: 2, 
-            fontWeight: 100,
-            fontSize: { xs: '50px', md: '80px' },
+            fontWeight: theme.typography.h1.fontWeight,
+            fontSize: { xs: '2.5rem', md: '5rem' },
             textAlign: 'right'
           }}
         >
@@ -76,7 +76,7 @@ export default function ResearchPage() {
         <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 4 }}>
           Horem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus
         </Typography>
-        <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 3 }}>
+        <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 3 }}>
           Publications
         </Typography>
         {publications.map((pub, idx) => (
@@ -93,16 +93,16 @@ export default function ResearchPage() {
             flexDirection: 'column', 
             position: 'relative' 
           }}>
-            <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontWeight: 400 }}>
+            <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight }}>
               {pub.role}
             </Typography>
-            <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 500, mb: 0.5 }}>
+            <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 0.5 }}>
               {pub.company}
             </Typography>
-            <Link href={pub.project.url} underline="hover" sx={{ color: theme.palette.error.main, fontWeight: 400, fontSize: 14 }}>
+            <Link href={pub.project.url} underline="hover" sx={{ color: theme.palette.error.main, fontWeight: theme.typography.body1.fontWeight, fontSize: theme.typography.body2.fontSize }}>
               {pub.project.name}
             </Link>
-            <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontSize: 13, mt: 0.5 }}>
+            <Typography variant="body2" sx={{ color: theme.palette.text.secondary, fontSize: theme.typography.body2.fontSize, mt: 0.5 }}>
               {pub.description}
             </Typography>
             <Chip 
@@ -114,7 +114,7 @@ export default function ResearchPage() {
                 bottom: 16, 
                 bgcolor: theme.palette.divider, 
                 color: theme.palette.text.secondary, 
-                fontWeight: 500 
+                fontWeight: theme.typography.h6.fontWeight 
               }} 
             />
           </Card>
@@ -126,7 +126,7 @@ export default function ResearchPage() {
           ...noisyBackgroundStyle,
           mt: 4, 
           borderRadius: 2, boxShadow: 0, p: 2, display: 'flex', alignItems: 'center', minHeight: 64 }}>
-          <Typography variant="h6" sx={{ color: 'text.secondary', flex: 1, fontWeight: 400 }}>
+          <Typography variant="h6" sx={{ color: 'text.secondary', flex: 1, fontWeight: theme.typography.body1.fontWeight }}>
             Google Scholar
           </Typography>
           <ArrowOutwardIcon sx={{ fontSize: 48, color: 'error.main' }} />
