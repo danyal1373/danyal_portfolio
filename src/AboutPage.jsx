@@ -230,11 +230,21 @@ export default function AboutPage() {
       </Box>
       {/* Header Section */}
       <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
+        <Typography 
+          variant="h1"
+          sx={{ 
+            color: theme.palette.text.primary, 
+            mb: 4, 
+            mt: 2, 
+            fontWeight: 100,
+            fontSize: { xs: '50px', md: '80px' },
+            textAlign: 'right'
+          }}
+        >
+          About
+        </Typography>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', gap: 4, mb: 4 }}>
           <Box sx={{ flex: 2 }}>
-            <Typography variant="h4" sx={{ mb: 2, color: theme.palette.text.primary, fontWeight: 500 }}>
-              About
-            </Typography>
             <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2 }}>
               {aboutText}
             </Typography>

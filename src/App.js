@@ -28,6 +28,7 @@ const ProjectsPageLazy = React.lazy(() => import('./ProjectsPage'));
 const AboutPageLazy = React.lazy(() => import('./AboutPage'));
 const PhotosPageLazy = React.lazy(() => import('./PhotosPage'));
 const ResearchPageLazy = React.lazy(() => import('./ResearchPage'));
+const ResumePageLazy = React.lazy(() => import('./ResumePage'));
 const ProjectOutlinePageLazy = React.lazy(() => import('./ProjectOutlinePage'));
 const AstrophotographyPageLazy = React.lazy(() => import('./AstrophotographyPage'));
 const SwarmPageLazy = React.lazy(() => import('./SwarmPage'));
@@ -178,7 +179,7 @@ function HomePage() {
                 fontWeight: 300,
                 maxWidth: 'fit-content'
               }}>
-                Passionate about bridging the gaps by help
+                Passionate about bridging the gaps using
               </Typography>
               <Typography variant="body1" sx={{ 
                 color: theme.palette.text.secondary, 
@@ -235,10 +236,10 @@ function HomePage() {
             overflow: 'hidden',
           }}>
             {/* Chart on left, swapping text on right */}
-            <Box sx={{ flex: { xs: 'unset', md: '1 1 33%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4 }}>
+            <Box sx={{ flex: { xs: 'unset', md: '1 1 45%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, pr: { md: 2 } }}>
               <SpiderChart textColor={theme.palette.text.primary} showOnlyChart faction={displayFaction} setFaction={setFaction} setHoveredFaction={setHoveredFaction} />
             </Box>
-            <Box sx={{ flex: { xs: 'unset', md: '2 1 67%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, p: { xs: 2, md: 4 } }}>
+            <Box sx={{ flex: { xs: 'unset', md: '1 1 55%' }, minWidth: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 4, p: { xs: 2, md: 4 } }}>
               <SwappingFactionText faction={displayFaction} />
             </Box>
           </Box>
@@ -419,7 +420,7 @@ export default function App() {
             <Route path="/photos" element={<PhotosPageLazy />} />
             <Route path="/photos/astrophotography" element={<AstrophotographyPageLazy />} />
             <Route path="/research" element={<ResearchPageLazy />} />
-            <Route path="/resume" element={<PlaceholderPage title="Resume" />} />
+            <Route path="/resume" element={<ResumePageLazy />} />
             <Route path="/project-outline" element={<ProjectOutlinePageLazy />} />
             <Route path="/swarm" element={
               <Suspense fallback={<PageLoader />}>

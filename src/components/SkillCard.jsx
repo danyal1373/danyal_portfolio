@@ -32,12 +32,12 @@ export default function SkillCard({ icon, name, color }) {
         },
       }}
     >
-      <CardActionArea 
+              <CardActionArea 
         sx={{ 
           p: 2, 
           display: 'flex', 
           flexDirection: 'column', 
-          alignItems: 'center',
+          alignItems: 'flex-start',
           position: 'relative',
           zIndex: 2,
         }}

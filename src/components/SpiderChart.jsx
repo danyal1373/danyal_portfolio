@@ -17,8 +17,8 @@ const factionData = {
     gradient: 'rgba(236,177,69,0.25), rgba(236,177,69,0.05)'
   },
   engineering: {
-    labels: ['Frontend', 'Backend', 'Database', 'DevOps', 'Testing', 'Architecture', 'Security', 'Performance'],
-    data: [88, 85, 82, 80, 85, 87, 83, 86],
+    labels: ['Control Systems', 'Material', '3D Modeling', 'DevOps', 'Science & Engineering Labs', 'AR/VR', 'AI & ML', 'Debugging'],
+    data: [82, 85, 96, 80, 99, 95, 94, 75],
     color: '#21A6C0',
     gradient: 'rgba(33,166,192,0.25), rgba(33,166,192,0.05)'
   }
@@ -118,24 +118,50 @@ function TrioSwitch({ active, onHover, onClick }) {
   );
 }
 
-function D3RadarChart({ labels, data, color, width = 340, height = 340 }) {
+function D3RadarChart({ labels, data, color, width = 450, height = 400 }) {
   const ref = useRef();
   useEffect(() => {
     // Clear previous SVG
     d3.select(ref.current).selectAll('*').remove();
-    const radius = Math.min(width, height) / 2 - 40;
+    const radius = Math.min(width, height) / 2 - 80;
     const levels = 5;
     const angleSlice = (2 * Math.PI) / labels.length;
     const maxValue = 100;
     const svg = d3.select(ref.current)
       .attr('width', width)
-      .attr('height', height)
-      .append('g')
+      .attr('height', height);
+    
+    // Create gradient definitions
+    const defs = svg.append('defs');
+    const gradientId = `radar-gradient-${color.replace('#', '')}`;
+    const gradient = defs.append('radialGradient')
+      .attr('id', gradientId)
+      .attr('cx', '50%')
+      .attr('cy', '50%')
+      .attr('r', '50%');
+    
+    gradient.append('stop')
+      .attr('offset', '0%')
+      .attr('stop-color', color)
+      .attr('stop-opacity', 0.1);
+    
+    gradient.append('stop')
+      .attr('offset', '30%')
+      .attr('stop-color', color)
+      .attr('stop-opacity', 0.3);
+    
+    gradient.append('stop')
+      .attr('offset', '100%')
+      .attr('stop-color', color)
+      .attr('stop-opacity', 0.6);
+    
+    const g = svg.append('g')
       .attr('transform', `translate(${width / 2},${height / 2})`);
+    
     // Draw grid
     for (let level = 1; level <= levels; level++) {
       const r = (radius / levels) * level;
-      svg.append('polygon')
+      g.append('polygon')
         .attr('points', labels.map((_, i) => {
           const angle = i * angleSlice - Math.PI / 2;
           return [r * Math.cos(angle), r * Math.sin(angle)].join(',');
@@ -144,40 +170,46 @@ function D3RadarChart({ labels, data, color, width = 340, height = 340 }) {
         .attr('stroke-width', 1)
         .attr('fill', 'none');
     }
+    
     // Draw axes
     labels.forEach((label, i) => {
       const angle = i * angleSlice - Math.PI / 2;
-      svg.append('line')
+      g.append('line')
         .attr('x1', 0)
         .attr('y1', 0)
         .attr('x2', radius * Math.cos(angle))
         .attr('y2', radius * Math.sin(angle))
         .attr('stroke', '#8886')
         .attr('stroke-width', 1);
+      
       // Label
-      svg.append('text')
-        .attr('x', (radius + 16) * Math.cos(angle))
-        .attr('y', (radius + 16) * Math.sin(angle))
+      g.append('text')
+        .attr('x', (radius + 50) * Math.cos(angle))
+        .attr('y', (radius + 50) * Math.sin(angle))
         .attr('text-anchor', 'middle')
         .attr('dominant-baseline', 'middle')
-        .attr('font-size', 13)
+        .attr('font-size', 12)
         .attr('fill', '#bbb')
         .text(label);
     });
-    // Draw data area
+    
+    // Draw data area with gradient
     const points = data.map((d, i) => {
       const angle = i * angleSlice - Math.PI / 2;
       const r = (d / maxValue) * radius;
       return [r * Math.cos(angle), r * Math.sin(angle)];
     });
-    svg.append('polygon')
+    
+    g.append('polygon')
       .attr('points', points.map(p => p.join(',')).join(' '))
-      .attr('fill', color + '33')
+      .attr('fill', `url(#${gradientId})`)
       .attr('stroke', color)
-      .attr('stroke-width', 2);
+      .attr('stroke-width', 2)
+      .attr('stroke-opacity', 0.8);
+    
     // Draw data points
     points.forEach(([x, y], i) => {
-      svg.append('circle')
+      g.append('circle')
         .attr('cx', x)
         .attr('cy', y)
         .attr('r', 4)
@@ -204,8 +236,16 @@ export default function SpiderChart({ textColor = '#222', faction, setFaction, s
   const { labels, data, color } = factionData[displayFaction];
 
   return (
-    <Box sx={{ width: '100%', height: 380, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-      <D3RadarChart labels={labels} data={data} color={color} width={340} height={340} />
+    <Box sx={{ 
+      width: '100%', 
+      height: 440, 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'flex-end', 
+      justifyContent: 'center',
+      pl: 12
+    }}>
+      <D3RadarChart labels={labels} data={data} color={color} width={450} height={400} />
       <TrioSwitch
         active={displayFaction}
         onHover={key => handleSetHoveredFaction(key)}

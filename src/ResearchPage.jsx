@@ -60,13 +60,23 @@ export default function ResearchPage() {
         <AnimatedCircle color="#21A6C0" size={800} frequency={0.21} phase={2.1} style={{ top: '50%', left: '50%' }} />
       </Box>
       <Box sx={{ maxWidth: 1100, mx: 'auto', mb: 4 }}>
-        <Typography variant="h3" sx={{ color: theme.palette.text.primary, fontWeight: 400, textAlign: 'right', mb: 2 }}>
+        <Typography 
+          variant="h1"
+          sx={{ 
+            color: theme.palette.text.primary, 
+            mb: 4, 
+            mt: 2, 
+            fontWeight: 100,
+            fontSize: { xs: '50px', md: '80px' },
+            textAlign: 'right'
+          }}
+        >
           Research
         </Typography>
-        <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2, textAlign: 'left' }}>
+        <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 4 }}>
           Horem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus
         </Typography>
-        <Typography variant="h6" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 2 }}>
+        <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: 400, mb: 3 }}>
           Publications
         </Typography>
         {publications.map((pub, idx) => (

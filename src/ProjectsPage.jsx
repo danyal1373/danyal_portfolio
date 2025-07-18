@@ -45,9 +45,9 @@ const FeaturedProjectCard = ({ project }) => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         cursor: 'pointer',
-        textAlign: 'center',
+        textAlign: 'left',
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
       onClick={handleProjectClick}

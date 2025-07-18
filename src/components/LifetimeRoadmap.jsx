@@ -4,12 +4,35 @@ import { useGlassmorphism } from '../hooks/useGlassmorphism';
 import * as d3 from 'd3';
 
 const periods = [
-  { label: 'High School', start: 2008, end: 2011, color: '#21A6C0' },
-  { label: 'Mechanical Engineering', start: 2012, end: 2022, color: '#ECB145' },
-  { label: 'MBA Marketing', start: 2023, end: 2024, color: '#D11B28' },
-  { label: 'MIIPS Program', start: 2023, end: 2024, color: '#fff' },
-  { label: 'Professional Experience', start: 2023, end: 2024, color: '#4CAF50' },
+  { label: 'High School', start: { year: 2008, quarter: 1 }, end: { year: 2012, quarter: 2 }, color: '#21A6C0' },
+  { label: 'Astrophotography', start: { year: 2009, quarter: 1 }, end: { year: 2025, quarter: 2 }, color: '#21A6C0' },
+  { label: 'Astronomy Olympiad Study', start: { year: 2009, quarter: 1 }, end: { year: 2011, quarter: 3 }, color: '#21A6C0' },
+  { label: 'Astronomy Olympiad Summer Program', start: { year: 2011, quarter: 2 }, end: { year: 2011, quarter: 3 }, color: '#21A6C0' },
+  { label: 'Mechanical Engineering', start: { year: 2012, quarter: 2 }, end: { year: 2016, quarter: 2 }, color: '#ECB145' },
+  { label: 'Startup Work', start: { year: 2015, quarter: 3 }, end: { year: 2018, quarter: 1 }, color: '#4CAF50' },
+  { label: 'MBA Marketing', start: { year: 2018, quarter: 1 }, end: { year: 2020, quarter: 2 }, color: '#D11B28' },
+  { label: 'MTN Irancell Internship', start: { year: 2018, quarter: 4 }, end: { year: 2019, quarter: 2 }, color: '#4CAF50' },
+  { label: 'YAStudio', start: { year: 2020, quarter: 3 }, end: { year: 2021, quarter: 4 }, color: '#4CAF50' },
+  { label: 'Dream Farm Studios', start: { year: 2021, quarter: 4 }, end: { year: 2022, quarter: 3 }, color: '#4CAF50' },
+  { label: 'MIIPS Program', start: { year: 2022, quarter: 3 }, end: { year: 2023, quarter: 4 }, color: '#fff' },
+  { label: 'CCC Intelligent Solutions', start: { year: 2023, quarter: 2 }, end: { year: 2025, quarter: 3 }, color: '#4CAF50' },
 ];
+
+// Helper function to convert year and quarter to decimal time
+function toDecimalTime(year, quarter) {
+  return year + (quarter - 1) / 4;
+}
+
+// Helper function to format time for display
+function formatTime(year, quarter) {
+  return `${year} Q${quarter}`;
+}
+
+// Helper function to get quarter label
+function getQuarterLabel(quarter) {
+  const labels = ['', 'Q1', 'Q2', 'Q3', 'Q4'];
+  return labels[quarter] || '';
+}
 
 function lightenColor(hex, amount = 0.25) {
   // Always convert to HSL using d3.hsl for all color types
@@ -41,21 +64,29 @@ export default function LifetimeRoadmap() {
     },
   };
   const chartRef = useRef();
-  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, label: '', years: '' });
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, label: '', timeRange: '' });
 
   useEffect(() => {
     const margin = { top: 30, right: 40, bottom: 40, left: 0 };
     const width = 900;
-    const barHeight = 24;
-    const height = (barHeight + 18) * periods.length;
-    const minYear = 2008;
-    const maxYear = 2024;
+    const barHeight = 18;
+    const height = (barHeight + 1) * periods.length;
+    
+    // Calculate min and max time in decimal format
+    const allTimes = periods.flatMap(p => [
+      toDecimalTime(p.start.year, p.start.quarter),
+      toDecimalTime(p.end.year, p.end.quarter)
+    ]);
+    const minTime = Math.floor(Math.min(...allTimes));
+    const maxTime = Math.ceil(Math.max(...allTimes));
+    
     d3.select(chartRef.current).selectAll('*').remove();
     const svg = d3.select(chartRef.current)
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom);
     const g = svg.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
+    
     // Gradients
     const defs = svg.append('defs');
     periods.forEach((d, i) => {
@@ -72,30 +103,38 @@ export default function LifetimeRoadmap() {
         .attr('stop-color', lightenColor(d.color, 0.22))
         .attr('stop-opacity', 0.95);
     });
+    
     // X scale
     const x = d3.scaleLinear()
-      .domain([minYear, maxYear])
+      .domain([minTime, maxTime])
       .range([0, width]);
+    
     // Y scale
     const y = d3.scaleBand()
       .domain(periods.map((_, i) => i))
       .range([0, height])
       .padding(0.45);
-    // X axis
+    
+    // X axis with year ticks only
+    const xAxis = d3.axisBottom(x)
+      .tickFormat(d => Math.floor(d).toString())
+      .ticks(maxTime - minTime); // One tick per year
+    
     g.append('g')
       .attr('transform', `translate(0,${height})`)
-      .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(maxYear - minYear))
+      .call(xAxis)
       .selectAll('text')
       .attr('font-size', 13)
       .attr('fill', theme.palette.text.secondary);
+    
     // Bars
     g.selectAll('rect')
       .data(periods)
       .enter()
       .append('rect')
-      .attr('x', d => x(d.start))
+      .attr('x', d => x(toDecimalTime(d.start.year, d.start.quarter)))
       .attr('y', (_, i) => y(i) + (y.bandwidth() - barHeight) / 2)
-      .attr('width', d => x(d.end) - x(d.start))
+      .attr('width', d => x(toDecimalTime(d.end.year, d.end.quarter)) - x(toDecimalTime(d.start.year, d.start.quarter)))
       .attr('height', barHeight)
       .attr('rx', barHeight / 2)
       .attr('fill', (d, i) => `url(#bar-gradient-${i})`)
@@ -109,18 +148,23 @@ export default function LifetimeRoadmap() {
           x: mx + 10,
           y: my - 10,
           label: d.label,
-          years: `${d.start} - ${d.end}`,
+          timeRange: `${formatTime(d.start.year, d.start.quarter)} - ${formatTime(d.end.year, d.end.quarter)}`,
         });
       })
       .on('mouseleave', function () {
         setTooltip(t => ({ ...t, visible: false }));
       });
+    
     // Bar labels (centered)
     g.selectAll('bar-label')
       .data(periods)
       .enter()
       .append('text')
-      .attr('x', d => x(d.start) + (x(d.end) - x(d.start)) / 2)
+      .attr('x', d => {
+        const startX = x(toDecimalTime(d.start.year, d.start.quarter));
+        const endX = x(toDecimalTime(d.end.year, d.end.quarter));
+        return startX + (endX - startX) / 2;
+      })
       .attr('y', (_, i) => y(i) + y.bandwidth() / 2 + 5)
       .attr('text-anchor', 'middle')
       .attr('font-size', 15)
@@ -173,7 +217,7 @@ export default function LifetimeRoadmap() {
             >
               <strong>{tooltip.label}</strong>
               <br />
-              <span style={{ fontSize: 13, color: theme.palette.text.secondary }}>{tooltip.years}</span>
+              <span style={{ fontSize: 13, color: theme.palette.text.secondary }}>{tooltip.timeRange}</span>
             </Box>
           )}
         </Box>
