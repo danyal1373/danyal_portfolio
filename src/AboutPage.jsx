@@ -19,24 +19,24 @@ const aboutSections = [
     items: [
       {
         logo: "ccc",
-        title: "Product Design Strategist Intern",
+        title: "Product Design Strategist",
         subtitle: "CCC Intelligent Solutions",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
+        description: "Full-time\nChicago, IL, USA",
         date: "May 2023 - Now",
       },
       {
         logo: "dfs",
-        title: "Product Design Strategist Intern",
+        title: "Product Marketing Manager",
         subtitle: "DreamFarm Studios",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        description: "Full-time\nTehran, Iran",
+        date: "Dec 2021 - Aug 2022",
       },
       {
         logo: "mtn",
         title: "Product Design Strategist Intern",
         subtitle: "MTN Irancell",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        description: "Internship\nTehran, Iran",
+        date: "Dec 2018 - March 2019",
       },
     ],
   },
@@ -45,24 +45,24 @@ const aboutSections = [
     items: [
       {
         logo: "cmu",
-        title: "Integrated Innovation for Products and Services",
+        title: "Integrated Innovation for Products and Services (MIIPS)",
         subtitle: "Carnegie Mellon University",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        description: "Master's Degree\nCapstone Project - Ignik Outdoors",
+        date: "2022 - 2023",
       },
       {
         logo: "aut",
         title: "Master in Business Administration (MBA) - Marketing",
         subtitle: "Amirkabir University (Tehran Polytechnique)",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        description: "Master of Science\nFocus on Branding and Advertising",
+        date: "2018 - 2020",
       },
       {
         logo: "sharif",
         title: "Mechanical Engineering",
         subtitle: "Sharif University of Technology",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        description: "Bachelor of Science\nThesis - Magnetic Micro Robot with Visual Control System",
+        date: "2012 - 2017",
       },
     ],
   },
@@ -71,34 +71,34 @@ const aboutSections = [
     items: [
       {
         logo: "akf",
-        title: "Product Design Strategist Intern",
-        subtitle: "AKF",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        title: "Award Winner",
+        subtitle: "Aga Khan Foundation",
+        description: "Won Aga Khan Foundation’s Scholarship Award for Pursuing\n Studies in Carnegie Mellon University",
+        date: "2021",
       },
       {
         logo: "bmn",
         title: "Second Place",
         subtitle: "Bonyad Melli Nokhbegan",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        description: "Awarded Silver Medal in the\n 7th National Olympiad of Astronomy and Astrophysics",
+        date: "2011",
       },
       {
         logo: "stars",
         title: "Second Place",
         subtitle: "Starts Competition",
-        description: "Carnegie Mellon University's Light Outdoors - Capstone Project\nHow might we make people want to explore, move and live outside longer?",
-        date: "May 2023 - Now",
+        description: "Second place in the STARS competition at CMU's Tepper School of Business\n for proposing an energy solution aimed at facilitating moon colonization",
+        date: "2022",
       },
     ],
   },
 ];
 
 const skills = [
-  'Figma', 'Sketch', 'Adobe XD', 'Photoshop', 'Illustrator', 'React', 'Vue', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'User Research', 'Wireframing', 'Prototyping', 'Branding', 'Design Systems', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Agile', 'Scrum', 'Jira', 'Confluence', 'Notion',
+  'Figma', 'Miro', 'Notion', 'Photoshop', 'Illustrator', 'React', 'Vue', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'User Research', 'Wireframing', 'Prototyping', 'Branding', 'Design Systems', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Agile', 'Scrum', 'Adobe AfterEffects', 'SolidWorks', 'G CODE', 'Siemens NX', 'Lightroom', 'Visual Storytelling','Astrophotography','Power BI','R','Python','MATLAB','NET LOGO','Internet of Things','Data Analysis','Data Visualization', 'Julia (In progress)', 'AI/ML (PyTorch, TensorFlow, Scikit-learn, etc.)', 'SQL', 'NoSQL', 'GitHub', 'Docker', 'K8s', 'Architecture Visualization','Network','CloudFlare','Linux','Digital Marketing Strategy','Product Photography', 'Rendering','Competitive Analysis','Negotiation','Design Thinking','Rapid Prototyping','Manufacturing Processes', 'Material Selection','Interface Design'
 ];
 
-const aboutText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.`;
+const aboutText = `I'm a Product Innovator with concentration in Mechanical Engineering with graduate studies in Marketing; I'm an alumni of Carnegie Mellon University in human-centered innovation; for more than a decade, I've taken photographs of the night sky, and I've attended photography exhibitions at Lisboa Jubilee Art, Zanjan, etc. My passion for exploring the scientific world never settles down. My Metaphysics for innovation is to be the bridge between Scientist and Technologists to bring what's next to the market. Currently, I'm working at CCC Intelligent Solutions to expand my knowledge and skillset by applying what I've learned into practice and am open to the new experiences in edge deep tech space (Interplanetary Travel, Battery Systems, Quantum Computing)`;
 
 const logoMap = {
   cmu: cmuLogo,
@@ -250,12 +250,18 @@ export default function AboutPage() {
             </Typography>
           </Box>
           <Box sx={{ flex: 0, display: 'flex-end', justifyContent: 'center' }}>
-            <Box sx={{ 
-              width: 140, 
-              height: 180, 
-              bgcolor: theme.palette.divider, 
-              borderRadius: theme.shape.borderRadius 
-            }} />
+            <Box
+              component="img"
+              src={require('./assets/danyal-head.jpeg')}
+              alt="Danyal Ghanbari"
+              sx={{ 
+                width: 140, 
+                height: 180, 
+                objectFit: 'cover',
+                borderRadius: theme.shape.borderRadius,
+                boxShadow: '0 4px 30px rgba(0,0,0,0.10)',
+              }}
+            />
           </Box>
         </Box>
       </Box>
