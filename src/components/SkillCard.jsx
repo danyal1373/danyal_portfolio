@@ -57,7 +57,7 @@ export default function SkillCard({ icon, name, color }) {
             }
           }}
         >
-          {icon}
+          {React.cloneElement(icon, { sx: { opacity: 0.7 } })}
         </Avatar>
         <Typography 
           variant="subtitle2" 

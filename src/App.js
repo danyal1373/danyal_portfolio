@@ -19,6 +19,13 @@ import WebAssetIcon from '@mui/icons-material/WebAsset';
 import CategoryIcon from '@mui/icons-material/Category';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import MovieEditIcon from '@mui/icons-material/MovieEdit';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import BusinessIcon from '@mui/icons-material/Business';
+import EngineeringIcon from '@mui/icons-material/Engineering';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import GroupIcon from '@mui/icons-material/Group';
 import { PasswordProvider } from './contexts/PasswordContext';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import LifetimeRoadmap from './components/LifetimeRoadmap';
@@ -274,10 +281,10 @@ function HomePage() {
               mx: 'auto',
             }}
           >
-            <GlassyProjectCard title="Product Development" color="primary" icon={<CategoryIcon />} onClick={() => handleProjectClick('product-development')} />
-            <GlassyProjectCard title="Engineering Design and Prototyping" color="primary" icon={<DesignServicesIcon />} onClick={() => handleProjectClick('engineering-design')} />
-            <GlassyProjectCard title="Marketing/Branding" color="error" icon={<CampaignIcon />} onClick={() => handleProjectClick('marketing-branding')} />
-            <GlassyProjectCard title="User Research" color="warning" icon={<PersonSearchIcon />} onClick={() => handleProjectClick('user-research')} />
+            <GlassyProjectCard title="Product Development" color="#8C8C87" icon={<CategoryIcon />} onClick={() => handleProjectClick('product-development')} />
+            <GlassyProjectCard title="Engineering Design and Prototyping" color="#8C8C87" icon={<DesignServicesIcon />} onClick={() => handleProjectClick('engineering-design')} />
+            <GlassyProjectCard title="Marketing/Branding" color="#8C8C87" icon={<CampaignIcon />} onClick={() => handleProjectClick('marketing-branding')} />
+            <GlassyProjectCard title="User Research" color="#8C8C87" icon={<PersonSearchIcon />} onClick={() => handleProjectClick('user-research')} />
           </Box>
         </Box>
       </Box>
@@ -295,23 +302,25 @@ function HomePage() {
             Skills
           </Typography>
           <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, 1fr)', sm: 'repeat(3, 1fr)', md: 'repeat(6, 1fr)' }, gap: 3 }}>
-            <SkillCard icon={<CodeIcon />} name="JavaScript" color="#f7df1e" />
-            <SkillCard icon={<CodeIcon />} name="TypeScript" color="#3178c6" />
-            <SkillCard icon={<WebAssetIcon />} name="React" color="#61dafb" />
-            <SkillCard icon={<WebAssetIcon />} name="Vue" color="#42b883" />
-            <SkillCard icon={<BrushIcon />} name="Figma" color="#a259ff" />
-            <SkillCard icon={<BrushIcon />} name="Adobe XD" color="#ff61f6" />
-            <SkillCard icon={<DesignServicesIcon />} name="Sketch" color="#f7b500" />
-            <SkillCard icon={<AdbIcon />} name="Android Studio" color="#3ddc84" />
-            <SkillCard icon={<StorageIcon />} name="Firebase" color="#ffca28" />
-            <SkillCard icon={<WebAssetIcon />} name="HTML" color="#e34c26" />
-            <SkillCard icon={<WebAssetIcon />} name="CSS" color="#2965f1" />
-            <SkillCard icon={<WebAssetIcon />} name="Notion" color="#000" />
+            <SkillCard icon={<BrushIcon />} name="User Interface Design" color="#8C8C87" />
+            <SkillCard icon={<PsychologyIcon />} name="User Experience Research" color="#8C8C87" />
+            <SkillCard icon={<CodeIcon />} name="Software Development" color="#8C8C87" />
+            <SkillCard icon={<EngineeringIcon />} name="Hardware Development" color="#8C8C87" />
+            <SkillCard icon={<GroupIcon />} name="Negotiation/Soft Skills" color="#8C8C87" />
+            <SkillCard icon={<BusinessIcon />} name="Product Design/Management" color="#8C8C87" />
+            <SkillCard icon={<CampaignIcon />} name="Campaign Design/Management" color="#8C8C87" />
+            <SkillCard icon={<TrendingUpIcon />} name="Agile/Scrum Master" color="#8C8C87" />
+            <SkillCard icon={<AnalyticsIcon />} name="System Simulation/Analysis" color="#8C8C87" />
+            <SkillCard icon={<AnalyticsIcon />} name="Econometrics/Data Analysis" color="#8C8C87" />
+            <SkillCard icon={<TrendingUpIcon />} name="Strategy Development" color="#8C8C87" />
+            <SkillCard icon={<GroupIcon />} name="Communication /Leadership" color="#8C8C87" />
           </Box>
         </Box>
       </Box>
       {/* Lifetime Roadmap Section */}
-      <LifetimeRoadmap />
+      <Box sx={{ pb: { xs: 8, md: 12 } }}>
+        <LifetimeRoadmap />
+      </Box>
       {/* About Section */}
       <Box
         sx={{

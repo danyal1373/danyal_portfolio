@@ -50,9 +50,9 @@ const GlassyProjectCard = ({ title, color = 'primary', icon, onClick }) => {
   const clonedIcon = React.cloneElement(icon, {
     sx: {
       fontSize: 56,
-      color: theme.palette[color]?.main || theme.palette.primary.main,
+      color: color.startsWith('#') ? color : (theme.palette[color]?.main || theme.palette.primary.main),
+      opacity: 0.7,
       transition: 'all 0.3s ease',
-      opacity: hovered ? 1 : 0,
       transform: hovered ? 'scale(1)' : 'scale(0.7)',
       filter: hovered ? 'drop-shadow(0 4px 16px rgba(0,0,0,0.10))' : 'none',
       position: 'absolute',
