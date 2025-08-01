@@ -94,7 +94,7 @@ function PhotosPage() {
               Photos
             </Typography>
         <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2 }}>
-          Horem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
+          Along my professional journey, I had the pleasure of being able to explore the world and capture the beauty of the nature, mostly at night, and using some extensive data techniques, unveil the heavens above with patience and perseverance. Besides that passion of mine in nature and astrophotography, which I was lucky to win awards for, I've done some product photography for my clients and some of my own projects.
         </Typography>
         <Box sx={{
           display: 'grid',

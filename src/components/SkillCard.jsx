@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActionArea, Avatar, Typography, useTheme } from '@mui/material';
+import { Card, CardActionArea, Avatar, Typography, Box, useTheme } from '@mui/material';
 import { useGlassmorphism } from '../hooks/useGlassmorphism';
 
 export default function SkillCard({ icon, name, color }) {
@@ -43,22 +43,28 @@ export default function SkillCard({ icon, name, color }) {
           zIndex: 2,
         }}
       >
-        <Avatar 
+        <Box 
           sx={{ 
-            bgcolor: color || 'primary.main', 
             width: 48, 
             height: 48, 
             mb: 1,
-            boxShadow: `0 4px 12px ${color}40`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             transition: 'all 0.3s ease',
             '&:hover': {
               transform: 'scale(1.1)',
-              boxShadow: `0 6px 20px ${color}60`,
             }
           }}
         >
-          {React.cloneElement(icon, { sx: { opacity: 0.7 } })}
-        </Avatar>
+          {React.cloneElement(icon, { 
+            sx: { 
+              opacity: 0.7,
+              fontSize: 32,
+              color: color || theme.palette.primary.main
+            } 
+          })}
+        </Box>
         <Typography 
           variant="subtitle2" 
           sx={{ 

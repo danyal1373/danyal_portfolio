@@ -6,24 +6,24 @@ import AnimatedCircle from './components/AnimatedCircle';
 
 const publications = [
   {
-    role: 'Product Design Strategist Intern',
-    company: 'CCC Intelligent Solutions',
+    role: 'Advances in Building Energy Research',
+    company: 'Experimental investigation of buoyancy-driven natural ventilation in a building with an atrium using particle image velocimetry (PIV) method.',
     project: {
-      name: "Carnegie Mellon University's Ignik Outdoors - Capstone Project",
-      url: '#',
+      name: "https://doi.org/10.1080/17512549.2023.2263459",
+      url: 'https://doi.org/10.1080/17512549.2023.2263459',
     },
-    description: 'How might we make people want to explore, move and live outside longer?',
-    date: 'May 2023 - Now',
+    description: 'Mitra Bagheri, Danyal Ghanbari Barfeh, Maryam Karami, Shahram Delfani, Mohamadreza Hafezi',
+    date: 'Sep 2023',
   },
   {
-    role: 'Product Design Strategist Intern',
-    company: 'CCC Intelligent Solutions',
+    role: 'Visions for Sustainability',
+    company: 'Building design based on zero energy approach',
     project: {
-      name: "Carnegie Mellon University's Ignik Outdoors - Capstone Project",
-      url: '#',
+      name: "https://doi.org/10.13135/2384-8677/8109",
+      url: 'https://doi.org/10.13135/2384-8677/8109',
     },
-    description: 'How might we make people want to explore, move and live outside longer?',
-    date: 'May 2023 - Now',
+    description: 'Mitra Bagheri, Danyal Ghanbari Barfeh, Mahdis Hamisi',
+    date: 'July 2023',
   },
 ];
 
@@ -74,7 +74,7 @@ export default function ResearchPage() {
           Research
         </Typography>
         <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 4 }}>
-          Horem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus
+          As a researcher, I'm interested in challenging technical problems at the intersections of engineering, design, and reality, exploring the natures behavior using smart systems, Vision systems, AI, and ML to understand and elaborate on complex systems behavior to be able to improve the built systems performance with a concern for sustainability.
         </Typography>
         <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 3 }}>
           Publications
@@ -119,18 +119,31 @@ export default function ResearchPage() {
             />
           </Card>
         ))}
-        <Card sx={{ 
-          ...glassmorphism.base,
-          ...glassmorphism.withHighlights,
-          ...glassmorphism.hover,
-          ...noisyBackgroundStyle,
-          mt: 4, 
-          borderRadius: 2, boxShadow: 0, p: 2, display: 'flex', alignItems: 'center', minHeight: 64 }}>
-          <Typography variant="h6" sx={{ color: 'text.secondary', flex: 1, fontWeight: theme.typography.body1.fontWeight }}>
-            Google Scholar
-          </Typography>
-          <ArrowOutwardIcon sx={{ fontSize: 48, color: 'error.main' }} />
-        </Card>
+        <Link 
+          href="https://scholar.google.com/citations?user=3mu_XjsAAAAJ&hl=en&inst=3203679203499159833" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          sx={{ textDecoration: 'none' }}
+        >
+          <Card sx={{ 
+            ...glassmorphism.base,
+            ...glassmorphism.withHighlights,
+            ...glassmorphism.hover,
+            ...noisyBackgroundStyle,
+            mt: 4, 
+            borderRadius: 2, boxShadow: 0, p: 2, display: 'flex', alignItems: 'center', minHeight: 64,
+            cursor: 'pointer',
+            '&:hover': {
+              ...glassmorphism.hover['&:hover'],
+              transform: 'translateY(-2px)',
+            }
+          }}>
+            <Typography variant="h6" sx={{ color: 'text.secondary', flex: 1, fontWeight: theme.typography.body1.fontWeight }}>
+              Google Scholar
+            </Typography>
+            <ArrowOutwardIcon sx={{ fontSize: 48, color: 'error.main' }} />
+          </Card>
+        </Link>
       </Box>
     </Box>
   );

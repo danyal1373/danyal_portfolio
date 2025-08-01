@@ -70,7 +70,7 @@ export default function LifetimeRoadmap() {
     const margin = { top: 20, right: 40, bottom: 30, left: 200 }; // Reduced margins
     const width = 900;
     const barHeight = 16; // Slightly larger bar height
-    const height = (barHeight + 2) * periods.length; // More spacing between bars
+    const height = (barHeight + 6) * periods.length; // More spacing between bars
     
     // Calculate min and max time in decimal format
     const allTimes = periods.flatMap(p => [
@@ -113,7 +113,7 @@ export default function LifetimeRoadmap() {
     const y = d3.scaleBand()
       .domain(periods.map((_, i) => i))
       .range([0, height])
-      .padding(0.4); // More padding for better spacing
+      .padding(0.6); // More padding for better spacing
     
     // X axis with year ticks only
     const xAxis = d3.axisBottom(x)
@@ -124,7 +124,8 @@ export default function LifetimeRoadmap() {
       .attr('transform', `translate(0,${height})`)
       .call(xAxis)
       .selectAll('text')
-      .attr('font-size', 13)
+      .attr('font-size', theme.typography.caption.fontSize)
+      .attr('font-weight', 300)
       .attr('fill', theme.palette.text.secondary);
     
     // Bars
@@ -136,26 +137,64 @@ export default function LifetimeRoadmap() {
       .attr('y', (_, i) => y(i) + (y.bandwidth() - barHeight) / 2)
       .attr('width', d => x(toDecimalTime(d.end.year, d.end.quarter)) - x(toDecimalTime(d.start.year, d.start.quarter)))
       .attr('height', barHeight)
-      .attr('rx', barHeight / 2)
+      .attr('rx', 4) // Using theme.shape.borderRadius * 2 (which is 4) to match the card
       .attr('fill', (d, i) => `url(#bar-gradient-${i})`)
       .attr('opacity', 0.95)
       .attr('stroke', theme.palette.mode === 'dark' ? '#222' : '#fff')
       .attr('stroke-width', 2)
-      .on('mousemove', function (event, d) {
+      .style('transition', 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)')
+      .on('mouseenter', function (event, d, index) {
+        // Highlight hovered bar
+        d3.select(this)
+          .attr('opacity', 1)
+          .attr('stroke-width', 3)
+          .attr('stroke', theme.palette.primary.main);
+        
+        // Dim other bars
+        g.selectAll('rect').filter(function() { return this !== event.currentTarget; })
+          .attr('opacity', 0.3);
+        
+        // Highlight corresponding label
+        g.selectAll('text').filter(function() { 
+          return d3.select(this).datum() === d; 
+        })
+          .attr('font-weight', 600)
+          .attr('fill', theme.palette.primary.main);
+        
+        // Dim other labels
+        g.selectAll('text').filter(function() { 
+          return d3.select(this).datum() !== d; 
+        })
+          .attr('font-weight', 300)
+          .attr('fill', theme.palette.text.secondary);
+        
+        // Show tooltip
         const [mx, my] = d3.pointer(event, svg.node());
         setTooltip({
           visible: true,
-          x: mx + 10,
-          y: my - 10,
+          x: mx + 15,
+          y: my - 15,
           label: d.label,
           timeRange: `${formatTime(d.start.year, d.start.quarter)} - ${formatTime(d.end.year, d.end.quarter)}`,
         });
       })
       .on('mouseleave', function () {
+        // Reset all bars to normal state
+        g.selectAll('rect')
+          .attr('opacity', 0.95)
+          .attr('stroke-width', 2)
+          .attr('stroke', theme.palette.mode === 'dark' ? '#222' : '#fff');
+        
+        // Reset all labels to normal state
+        g.selectAll('text')
+          .attr('font-weight', 300)
+          .attr('fill', theme.palette.text.primary);
+        
+        // Hide tooltip
         setTooltip(t => ({ ...t, visible: false }));
       });
     
-    // Bar labels (left column) - using consistent typography with the rest of the app
+    // Bar labels (left column) - using smaller and thinner typography
     g.selectAll('bar-label')
       .data(periods)
       .enter()
@@ -164,9 +203,10 @@ export default function LifetimeRoadmap() {
       .attr('y', (_, i) => y(i) + y.bandwidth() / 2 + 5)
       .attr('text-anchor', 'start')
       .attr('font-family', theme.typography.fontFamily)
-      .attr('font-size', theme.typography.h6.fontSize)
-      .attr('font-weight', theme.typography.h6.fontWeight)
+      .attr('font-size', theme.typography.body2.fontSize)
+      .attr('font-weight', 300)
       .attr('fill', theme.palette.text.primary)
+      .style('transition', 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)')
       .text(d => d.label);
   }, [theme]);
 
@@ -189,8 +229,8 @@ export default function LifetimeRoadmap() {
         <Typography variant="h5" sx={{ mb: 3, color: theme.palette.text.primary }}>
           Lifetime Roadmap
         </Typography>
-        <Box sx={{ flex: 1, position: 'relative' }}>
-          <svg ref={chartRef} style={{ width: '100%', height: (16 + 2) * periods.length + 50 }} />
+        <Box sx={{ flex: 1, position: 'relative', overflow: 'visible' }}>
+          <svg ref={chartRef} style={{ width: '100%', height: (16 + 6) * periods.length + 50, overflow: 'visible' }} />
           {tooltip.visible && (
             <Box
               sx={{

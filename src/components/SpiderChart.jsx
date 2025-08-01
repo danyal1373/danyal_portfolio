@@ -18,7 +18,7 @@ const factionData = {
   },
   engineering: {
     labels: ['Control Systems', 'Material Selection', '3D Modeling', 'DevOps', 'Internet of Things', 'AR/VR', 'AI & ML', 'Debugging'],
-    data: [82, 85, 96, 80, 99, 95, 94, 75],
+    data: [96, 85, 96, 80, 99, 95, 94, 75],
     color: '#21A6C0',
     gradient: 'rgba(33,166,192,0.25), rgba(33,166,192,0.05)'
   }
