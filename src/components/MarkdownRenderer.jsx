@@ -129,7 +129,12 @@ const MarkdownRenderer = ({ content, sx = {} }) => {
   };
 
   return (
-    <Box sx={{ ...markdownStyles, ...sx }}>
+    <Box sx={{ 
+      ...markdownStyles, 
+      ...sx,
+      position: 'relative',
+      zIndex: 1,
+    }}>
       <ReactMarkdown 
         remarkPlugins={[remarkGfm]}
         components={{

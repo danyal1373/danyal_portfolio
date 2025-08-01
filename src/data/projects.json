@@ -18,10 +18,10 @@
   {
     "id": "smart-agentic-system",
     "title": "Smart Agentic Reporting System",
-    "subtitle": "Connected Living Experience",
-    "description": "Comprehensive IoT ecosystem for modern homes",
+    "subtitle": "Faster Insights, Smarter Decisions",
+    "description": "An agentic system that can analyze data and provide insights to the users",
     "image": "/images/projects/smart-home-thumb.jpg",
-    "tags": ["IoT", "UX Design", "Mobile App"],
+    "tags": ["AI", "UX Design", "Agentic Frameworks", "Software Development"],
     "category": "Engineering Design",
     "featured": true,
     "date": "2025",
@@ -77,7 +77,7 @@
     "role": "Engineer",
     "duration": "12 months",
     "contentFile": "healthcare-dashboard.md",
-    "passwordProtected": true
+    "passwordProtected": false
   },
   {
     "id": "aist-steel-branding",
@@ -193,18 +193,50 @@
   },
   {
     "id": "smart-city-infrastructure",
-    "title": "Smart City Infrastructure",
-    "subtitle": "Urban Technology Integration",
-    "description": "IoT infrastructure for smart city development",
+    "title": "Smart Morphing Fabric",
+    "subtitle": "E-Textile",
+    "description": "Node Computing for Smart Textiles",
     "image": "/images/projects/smart-city-thumb.jpg",
-    "tags": ["IoT", "Infrastructure", "Smart City"],
+    "tags": ["IoT", "E-Textile", "Smart Clothing"],
     "category": "Engineering Design",
     "featured": false,
-    "date": "2020",
-    "client": "CityTech",
-    "role": "Systems Designer",
-    "duration": "18 months",
+    "date": "2023",
+    "client": "CMU",
+    "role": "Design Engineer",
+    "duration": "12 months",
     "contentFile": "smart-city-infrastructure.md",
-    "passwordProtected": true
+    "passwordProtected": false
+  },
+  {
+    "id": "highmark-Branding",
+    "title": "Highmark Center for Student Activities Branding",
+    "subtitle": "Brand Design",
+    "description": "Branding for a newly funded center at CMU",
+    "image": "/images/projects/financial-literacy-thumb.jpg",
+    "tags": ["Branding", "Visual Identity", "Marketing Planing"],
+    "category": "Marketing/Branding",
+    "featured": false,
+    "date": "2023",
+    "client": "CMU Highmark Center",
+    "role": "Branding Advisor",
+    "duration": "3 months",
+    "contentFile": "financial-literacy-app.md",
+    "passwordProtected": false
+  },
+  {
+    "id": "wda-product",
+    "title": "Workflow Digital Analyzer",
+    "subtitle": "**CONFIDENTIAL**",
+    "description": "Software Product",
+    "image": "/images/projects/financial-literacy-thumb.jpg",
+    "tags": ["UI/UX", "Product Management", "Software Development"],
+    "category": "Product Development",
+    "featured": false,
+    "date": "2024",
+    "client": "CCC Intelligent Solutions",
+    "role": "Design Strategist",
+    "duration": "6 months",
+    "contentFile": "financial-literacy-app.md",
+    "passwordProtected": false
   }
 ] 

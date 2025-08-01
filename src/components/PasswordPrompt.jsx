@@ -27,6 +27,19 @@ const PasswordPrompt = ({
   const glassmorphism = useGlassmorphism();
   const { unlockPortfolio } = usePassword();
   
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`,
+      opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
+      pointerEvents: 'none',
+    },
+  };
+  
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
@@ -73,8 +86,12 @@ const PasswordPrompt = ({
         sx: {
           ...glassmorphism.base,
           ...glassmorphism.withHighlights,
+          ...glassmorphism.hover,
+          ...noisyBackgroundStyle,
           borderRadius: theme.shape.borderRadius * 2,
           overflow: 'hidden',
+          position: 'relative',
+          zIndex: 1300,
         }
       }}
     >
@@ -104,14 +121,14 @@ const PasswordPrompt = ({
               justifyContent: 'center',
               width: 80,
               height: 80,
-              borderRadius: '50%',
-              backgroundColor: theme.palette.primary.main,
-              color: 'white',
               mb: 2,
-              boxShadow: '0 8px 32px rgba(25, 118, 210, 0.3)',
             }}
           >
-            <LockIcon sx={{ fontSize: 40 }} />
+            <LockIcon sx={{ 
+              fontSize: 48,
+              opacity: 0.7,
+              color: theme.palette.text.secondary
+            }} />
           </Box>
           <Typography variant="h5" sx={{ 
             color: theme.palette.text.primary, 

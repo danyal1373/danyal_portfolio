@@ -35,6 +35,19 @@ const ProjectDetailPage = () => {
   const glassmorphism = useGlassmorphism();
   const { isProjectUnlocked, lockPortfolio } = usePassword();
   
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`,
+      opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
+      pointerEvents: 'none',
+    },
+  };
+  
   const [project, setProject] = useState(null);
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
@@ -95,8 +108,7 @@ const ProjectDetailPage = () => {
         position: 'relative', 
         overflow: 'hidden' 
       }}>
-        <AnimatedCircle color="primary" size={420} frequency={0.22} phase={0} style={{ top: '8%', left: '60%' }} />
-        <AnimatedCircle color="error" size={420} frequency={0.25} phase={1.2} style={{ top: '18%', left: '75%' }} />
+       
         <Box sx={{ maxWidth: 1100, mx: 'auto', position: 'relative', zIndex: 1 }}>
           <Skeleton variant="text" width={300} height={60} sx={{ mb: 3 }} />
           <Skeleton variant="rectangular" width="100%" height={400} sx={{ mb: 3 }} />
@@ -112,19 +124,25 @@ const ProjectDetailPage = () => {
   }
 
   return (
-    <Box sx={{ 
-      background: theme.palette.background.default, 
-      minHeight: '100vh', 
-      py: 4, 
-      position: 'relative', 
-      overflow: 'hidden' 
-    }}>
-      {/* Background circles */}
-      <AnimatedCircle color="primary" size={420} frequency={0.22} phase={0} style={{ top: '8%', left: '60%' }} />
-      <AnimatedCircle color="error" size={420} frequency={0.25} phase={1.2} style={{ top: '18%', left: '75%' }} />
-      <AnimatedCircle color="warning" size={420} frequency={0.21} phase={2.1} style={{ top: '28%', left: '50%' }} />
+    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh' }}>
+      {/* --- FIXED BACKGROUND --- */}
+      <Box sx={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        overflow: 'hidden',
+        zIndex: 0,
+      }}>
+        <AnimatedCircle color="#D11B28" size={800} frequency={0.22} phase={0} style={{ top: '50%', left: '55%' }} />
+        <AnimatedCircle color="#ECB145" size={800} frequency={0.25} phase={1.2} style={{ top: '50%', left: '60%' }} />
+        <AnimatedCircle color="#21A6C0" size={800} frequency={0.21} phase={2.1} style={{ top: '50%', left: '50%' }} />
+      </Box>
       
-      <Box sx={{ maxWidth: 1100, mx: 'auto', position: 'relative', zIndex: 1 }}>
+      {/* --- SCROLLABLE CONTENT --- */}
+      <Box sx={{ position: 'relative', zIndex: 1, py: 4 }}>
+        <Box sx={{ maxWidth: 1100, mx: 'auto' }}>
         {/* Back button */}
         <Button
           startIcon={<ArrowBackIcon />}
@@ -145,8 +163,11 @@ const ProjectDetailPage = () => {
           sx={{
             ...glassmorphism.base,
             ...glassmorphism.withHighlights,
+            ...glassmorphism.hover,
+            ...noisyBackgroundStyle,
             mb: 4,
             p: 4,
+            borderRadius: theme.shape.borderRadius * 2,
           }}
         >
           <Grid container spacing={4}>
@@ -320,7 +341,10 @@ const ProjectDetailPage = () => {
             sx={{
               ...glassmorphism.base,
               ...glassmorphism.withHighlights,
+              ...glassmorphism.hover,
+              ...noisyBackgroundStyle,
               p: 4,
+              borderRadius: theme.shape.borderRadius * 2,
             }}
           >
             <MarkdownRenderer content={content} />
@@ -330,7 +354,10 @@ const ProjectDetailPage = () => {
             sx={{
               ...glassmorphism.base,
               ...glassmorphism.withHighlights,
+              ...glassmorphism.hover,
+              ...noisyBackgroundStyle,
               p: 4,
+              borderRadius: theme.shape.borderRadius * 2,
             }}
           >
             <Box sx={{ textAlign: 'center', py: 8 }}>
@@ -357,6 +384,7 @@ const ProjectDetailPage = () => {
             </Box>
           </Card>
         )}
+        </Box>
       </Box>
 
       {/* Password Prompt Dialog */}
