@@ -28,7 +28,7 @@
     "client": "CCC Intelligent Solutions",
     "role": "UX/UI Designer",
     "duration": "12 months",
-    "contentFile": "smart-home-ecosystem.md",
+    "contentFile": "smart-agentic-system.md",
     "passwordProtected": true
   },
   {
@@ -44,7 +44,7 @@
     "client": "CCC Intelligent Solutions",
     "role": "UX/UI Designer",
     "duration": "12 months",
-    "contentFile": "smart-home-ecosystem.md",
+    "contentFile": "smart-repair-methods.md",
     "passwordProtected": true
   },
   {
@@ -60,7 +60,7 @@
     "client": "CMU",
     "role": "UX Researcher",
     "duration": "6 months",
-    "contentFile": "eco-transport-app.md",
+    "contentFile": "smart-watch-exercise.md",
     "passwordProtected": false
   },
   {
@@ -76,7 +76,7 @@
     "client": "Sharif University of Technology",
     "role": "Engineer",
     "duration": "12 months",
-    "contentFile": "healthcare-dashboard.md",
+    "contentFile": "magnetic-microrobot.md",
     "passwordProtected": false
   },
   {
@@ -92,7 +92,7 @@
     "client": "AIST STEEL",
     "role": "Brand Designer",
     "duration": "4 months",
-    "contentFile": "brand-identity-system.md",
+    "contentFile": "aist-steel-branding.md",
     "passwordProtected": false
   },
   {
@@ -108,7 +108,7 @@
     "client": "CCC Intelligent Solutions",
     "role": "Systems Engineer",
     "duration": "4 months",
-    "contentFile": "ar-navigation.md",
+    "contentFile": "ar-vr-development.md",
     "passwordProtected": true
   },
   {
@@ -124,7 +124,7 @@
     "client": "Personal Project",
     "role": "Engineer/Builder",
     "duration": "12 months",
-    "contentFile": "sustainable-packaging.md",
+    "contentFile": "morphing-wall.md",
     "passwordProtected": false
   },
   {
@@ -140,7 +140,7 @@
     "client": "IMDC Competition",
     "role": "Hardware Designer",
     "duration": "16 months",
-    "contentFile": "fitness-tracker.md",
+    "contentFile": "e-bike-prototype.md",
     "passwordProtected": false
   },
   {
@@ -156,7 +156,7 @@
     "client": "CCC Intelligent Solutions",
     "role": "Systems Designer",
     "duration": "11 months",
-    "contentFile": "urban-farming-platform.md",
+    "contentFile": "digital-governance-platform.md",
     "passwordProtected": true
   },
   {
@@ -172,7 +172,7 @@
     "client": "Ansys",
     "role": "AI Engineer",
     "duration": "3 months",
-    "contentFile": "virtual-event-platform.md",
+    "contentFile": "ai-ansys-model.md",
     "passwordProtected": false
   },
   {
@@ -188,23 +188,7 @@
     "client": "Pittsburgh Marathon & Community Bank",
     "role": "Branding Advisor",
     "duration": "3 months",
-    "contentFile": "financial-literacy-app.md",
-    "passwordProtected": false
-  },
-  {
-    "id": "smart-city-infrastructure",
-    "title": "Smart Morphing Fabric",
-    "subtitle": "E-Textile",
-    "description": "Node Computing for Smart Textiles",
-    "image": "/images/projects/smart-city-thumb.jpg",
-    "tags": ["IoT", "E-Textile", "Smart Clothing"],
-    "category": "Engineering Design",
-    "featured": false,
-    "date": "2023",
-    "client": "CMU",
-    "role": "Design Engineer",
-    "duration": "12 months",
-    "contentFile": "smart-city-infrastructure.md",
+    "contentFile": "community-pittsburgh-branding.md",
     "passwordProtected": false
   },
   {
@@ -220,7 +204,7 @@
     "client": "CMU Highmark Center",
     "role": "Branding Advisor",
     "duration": "3 months",
-    "contentFile": "financial-literacy-app.md",
+    "contentFile": "highmark-branding.md",
     "passwordProtected": false
   },
   {
@@ -236,7 +220,7 @@
     "client": "CCC Intelligent Solutions",
     "role": "Design Strategist",
     "duration": "6 months",
-    "contentFile": "financial-literacy-app.md",
+    "contentFile": "wda-product.md",
     "passwordProtected": false
   }
 ] 

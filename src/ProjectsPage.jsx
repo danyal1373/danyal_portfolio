@@ -285,11 +285,11 @@ export default function ProjectsPage() {
                     mx: 'auto',
                     boxShadow: 'none',
                   }}
-                  onClick={() => navigate('/research')}
+                  onClick={() => navigate('/about')}
                   elevation={0}
                 >
                   <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: theme.typography.body1.fontWeight, textAlign: 'left' }}>
-                    More Marketing Projects
+                    About Me
                   </Typography>
                   <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />
                 </Card>
@@ -312,11 +312,11 @@ export default function ProjectsPage() {
                     mx: 'auto',
                     boxShadow: 'none',
                   }}
-                  onClick={() => navigate('/resume')}
+                  onClick={() => navigate('/research')}
                   elevation={0}
                 >
                   <Typography variant="h5" sx={{ color: 'text.secondary', fontWeight: theme.typography.body1.fontWeight, textAlign: 'left' }}>
-                    AI/ML Projects
+                    My Publications
                   </Typography>
                   <OpenInNewIcon sx={{ color: theme.palette.error.main, fontSize: 40, ml: 2 }} />
                 </Card>

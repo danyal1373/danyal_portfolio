@@ -15,16 +15,50 @@ export const loadProjectContent = async (contentFile) => {
   }
 
   try {
-    const response = await fetch(`/src/data/content/${contentFile}`);
-    if (!response.ok) {
-      throw new Error(`Failed to load content: ${response.statusText}`);
+    // Try multiple paths for different build environments
+    let content = null;
+    
+    // Try public path first (for production builds)
+    try {
+      const publicResponse = await fetch(`/content/${contentFile}`);
+      if (publicResponse.ok) {
+        content = await publicResponse.text();
+      }
+    } catch (e) {
+      // Ignore and try next path
     }
-    const content = await response.text();
-    contentCache.set(contentFile, content);
-    return content;
+    
+    // Try src path (for development)
+    if (!content) {
+      try {
+        const srcResponse = await fetch(`/src/data/content/${contentFile}`);
+        if (srcResponse.ok) {
+          content = await srcResponse.text();
+        }
+      } catch (e) {
+        // Ignore and try next path
+      }
+    }
+    
+    // Try direct import as fallback
+    if (!content) {
+      try {
+        const module = await import(`../data/content/${contentFile}`);
+        content = module.default;
+      } catch (e) {
+        // Ignore and try next path
+      }
+    }
+    
+    if (content) {
+      contentCache.set(contentFile, content);
+      return content;
+    } else {
+      throw new Error(`Content file ${contentFile} not found`);
+    }
   } catch (error) {
     console.error('Error loading project content:', error);
-    return `# Content Not Available\n\nThis project's detailed content is currently being prepared.`;
+    return `# Content Not Available\n\nThis project's detailed content is currently being prepared.\n\n**Error Details:** ${error.message}`;
   }
 };
 

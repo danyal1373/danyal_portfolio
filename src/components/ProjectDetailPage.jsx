@@ -51,6 +51,7 @@ const ProjectDetailPage = () => {
   const [project, setProject] = useState(null);
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
+  const [contentError, setContentError] = useState(null);
   const [showPasswordPrompt, setShowPasswordPrompt] = useState(false);
 
   useEffect(() => {
@@ -73,8 +74,15 @@ const ProjectDetailPage = () => {
         }
         
         if (projectData.contentFile) {
-          const markdownContent = await loadProjectContent(projectData.contentFile);
-          setContent(markdownContent);
+          try {
+            const markdownContent = await loadProjectContent(projectData.contentFile);
+            setContent(markdownContent);
+            setContentError(null);
+          } catch (error) {
+            console.error('Error loading content:', error);
+            setContentError(error.message);
+            setContent(`# Content Loading Error\n\nUnable to load the project content.\n\n**Error:** ${error.message}\n\nPlease try refreshing the page or contact support if the issue persists.`);
+          }
         }
       } catch (error) {
         console.error('Error loading project:', error);
@@ -347,7 +355,25 @@ const ProjectDetailPage = () => {
               borderRadius: theme.shape.borderRadius * 2,
             }}
           >
-            <MarkdownRenderer content={content} />
+            {contentError ? (
+              <Box sx={{ textAlign: 'center', py: 4 }}>
+                <Typography variant="h6" sx={{ color: theme.palette.error.main, mb: 2 }}>
+                  Content Loading Error
+                </Typography>
+                <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2 }}>
+                  {contentError}
+                </Typography>
+                <Button 
+                  variant="outlined" 
+                  onClick={() => window.location.reload()}
+                  sx={{ mt: 2 }}
+                >
+                  Retry
+                </Button>
+              </Box>
+            ) : (
+              <MarkdownRenderer content={content} />
+            )}
           </Card>
         ) : (
           <Card

@@ -135,49 +135,94 @@ const MarkdownRenderer = ({ content, sx = {} }) => {
       position: 'relative',
       zIndex: 1,
     }}>
-      <ReactMarkdown 
-        remarkPlugins={[remarkGfm]}
-        components={{
-          // Custom component for h1 to add extra styling
-          h1: ({ children }) => (
-            <Typography variant="h1" component="h1">
-              {children}
-            </Typography>
-          ),
-          // Custom component for h2
-          h2: ({ children }) => (
-            <Typography variant="h2" component="h2">
-              {children}
-            </Typography>
-          ),
-          // Custom component for h3
-          h3: ({ children }) => (
-            <Typography variant="h3" component="h3">
-              {children}
-            </Typography>
-          ),
-          // Custom component for h4
-          h4: ({ children }) => (
-            <Typography variant="h4" component="h4">
-              {children}
-            </Typography>
-          ),
-          // Custom component for paragraphs
-          p: ({ children }) => (
-            <Typography variant="body1" component="p">
-              {children}
-            </Typography>
-          ),
-          // Custom component for lists
-          li: ({ children }) => (
-            <Typography variant="body1" component="li">
-              {children}
-            </Typography>
-          ),
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+      {content ? (
+        <ReactMarkdown 
+          remarkPlugins={[remarkGfm]}
+          components={{
+            // Custom component for h1 to add extra styling
+            h1: ({ children }) => (
+              <Typography variant="h1" component="h1">
+                {children}
+              </Typography>
+            ),
+            // Custom component for h2
+            h2: ({ children }) => (
+              <Typography variant="h2" component="h2">
+                {children}
+              </Typography>
+            ),
+            // Custom component for h3
+            h3: ({ children }) => (
+              <Typography variant="h3" component="h3">
+                {children}
+              </Typography>
+            ),
+            // Custom component for h4
+            h4: ({ children }) => (
+              <Typography variant="h4" component="h4">
+                {children}
+              </Typography>
+            ),
+            // Custom component for paragraphs
+            p: ({ children }) => (
+              <Typography variant="body1" component="p">
+                {children}
+              </Typography>
+            ),
+            // Custom component for lists
+            li: ({ children }) => (
+              <Typography variant="body1" component="li">
+                {children}
+              </Typography>
+            ),
+            // Custom component for code blocks
+            code: ({ node, inline, className, children, ...props }) => {
+              const match = /language-(\w+)/.exec(className || '');
+              return !inline ? (
+                <Box
+                  component="pre"
+                  sx={{
+                    backgroundColor: theme.palette.mode === 'dark' 
+                      ? 'rgba(0,0,0,0.3)' 
+                      : 'rgba(0,0,0,0.05)',
+                    padding: theme.spacing(2),
+                    borderRadius: theme.shape.borderRadius,
+                    overflow: 'auto',
+                    marginBottom: theme.spacing(2),
+                    fontFamily: 'monospace',
+                    fontSize: '0.9rem',
+                  }}
+                  {...props}
+                >
+                  {children}
+                </Box>
+              ) : (
+                <Box
+                  component="code"
+                  sx={{
+                    backgroundColor: theme.palette.mode === 'dark' 
+                      ? 'rgba(255,255,255,0.1)' 
+                      : 'rgba(0,0,0,0.1)',
+                    padding: theme.spacing(0.5, 1),
+                    borderRadius: theme.shape.borderRadius,
+                    fontFamily: 'monospace',
+                    fontSize: '0.9rem',
+                  }}
+                  {...props}
+                >
+                  {children}
+                </Box>
+              );
+            },
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      ) : (
+        <Typography variant="body1" sx={{ color: theme.palette.text.secondary }}>
+          Content is loading...
+        </Typography>
+      )}
     </Box>
   );
 };
