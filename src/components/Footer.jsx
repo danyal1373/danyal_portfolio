@@ -6,10 +6,12 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 import XIcon from '@mui/icons-material/X';
 import { useGlassmorphism } from '../hooks/useGlassmorphism';
+import { useNavigate } from 'react-router-dom';
 
 export default function Footer() {
   const theme = useTheme();
   const glassmorphism = useGlassmorphism();
+  const navigate = useNavigate();
   
   const socialApps = [
     { icon: GitHubIcon, label: 'GitHub', href: 'https://github.com/danyal1373' },
@@ -20,12 +22,12 @@ export default function Footer() {
   ];
 
   const navigationLinks = [
-    { text: 'projects', href: '/projects' },
-    { text: 'about', href: '/about' },
-    { text: 'photos', href: '/photos' },
-    { text: 'mission', href: '/mission' },
-    { text: 'research', href: '/research' },
-    { text: 'CV', href: '/resume' },
+    { text: 'Projects', href: '/projects' },
+    { text: 'About', href: '/about' },
+    { text: 'Research', href: '/research' },
+    { text: 'Photos', href: '/photos' },
+    // { text: 'Swarm Map', href: '/swarm' },
+    { text: 'Resume', href: '/resume' },
   ];
 
   return (
@@ -71,12 +73,17 @@ export default function Footer() {
               {navigationLinks.map((link, index) => (
                 <Link
                   key={index}
-                  href={link.href}
+                  component="button"
+                  onClick={() => navigate(link.href)}
                   sx={{ 
                     color: theme.palette.text.secondary,
                     textDecoration: 'none',
                     fontSize: theme.typography.body2.fontSize,
                     fontWeight: theme.typography.body2.fontWeight,
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
                     '&:hover': { 
                       color: theme.palette.primary.main,
                       textDecoration: 'underline',

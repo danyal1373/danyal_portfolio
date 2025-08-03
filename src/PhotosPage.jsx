@@ -152,7 +152,6 @@ function PhotosPage() {
           </Card>
 
           {/* Instagram Feed Grid */}
-          <InstagramFeed />
         </Box>
       </Box>
     </Box>

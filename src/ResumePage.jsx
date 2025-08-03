@@ -13,22 +13,22 @@ const resumeSections = [
         role: "R&D Engineer",
         company: "CCC Intelligent Solutions",
         period: "May 2023 - Present",
-        description: "Leading product development initiatives and research projects in automotive technology.",
-        tags: ["Product Development", "Research", "Automotive"]
+        description: "Leading product development initiatives and research projects in insurance technology.",
+        tags: ["Product Development", "Product Design", "Product Management"]
       },
       {
-        role: "Product Design Strategist Intern",
+        role: "Marketing Specialist",
         company: "DreamFarm Studios",
-        period: "Jan 2023 - Apr 2023",
+        period: "Dec 2021 - Aug 2022",
         description: "Worked on user-centered design projects and product strategy development.",
-        tags: ["Product Design", "Strategy", "User Research"]
+        tags: ["Campaign Design", "Strategy", "Marketing"]
       },
       {
-        role: "Product Design Strategist Intern",
+        role: "Digital Marketing Intern",
         company: "MTN Irancell",
-        period: "Jun 2022 - Dec 2022",
-        description: "Contributed to digital product design and user experience optimization.",
-        tags: ["UX Design", "Digital Products", "Telecommunications"]
+        period: "Dec 2018 - Mar 2019",
+        description: "Contributed to Ad Campaign Design and management.",
+        tags: ["Ad Campaign Design", "Marketing", "Telecommunications"]
       }
     ]
   },
@@ -40,21 +40,21 @@ const resumeSections = [
         company: "Carnegie Mellon University",
         period: "2022 - 2024",
         description: "Focused on human-centered innovation and product development methodologies.",
-        tags: ["Innovation", "Product Development", "Human-Centered Design"]
+        tags: ["Innovation", "Product Management", "Human-Centered Design"]
       },
       {
         role: "Master of Business Administration (MBA) - Marketing",
         company: "Amirkabir University (Tehran Polytechnique)",
         period: "2018 - 2020",
-        description: "Specialized in marketing strategy and business management.",
+        description: "Specialized in marketing and branding.",
         tags: ["Marketing", "Business Strategy", "Management"]
       },
       {
         role: "Bachelor of Mechanical Engineering",
         company: "Sharif University of Technology",
-        period: "2014 - 2018",
-        description: "Foundation in engineering principles and technical problem-solving.",
-        tags: ["Mechanical Engineering", "Problem Solving", "Technical Design"]
+        period: "2012 - 2017",
+        description: "Foundation in engineering principles with a focus on Control Systems.",
+        tags: ["Mechanical Engineering", "Control Systems", "Technical Design"]
       }
     ]
   },
@@ -62,36 +62,38 @@ const resumeSections = [
     title: "Honors & Awards",
     items: [
       {
-        role: "Award Winner",
-        company: "AKF Innovation Competition",
+        role: "Second Place",
+        company: "Starts Competition",
         period: "2023",
-        description: "Recognized for innovative product design and development approach.",
+        description: "Secured second place in Tepper School's design competition for Moon Colonization Energy Solution.",
+        tags: ["STARS", "Design", "Competition"]
+      },
+      {
+        role: "Award Winner",
+        company: "AKF Scholarship Award",
+        period: "2021",
+        description: "Granted Scholarship for studying at CMU in MIIPS program.",
         tags: ["Innovation", "Design", "Recognition"]
       },
       {
-        role: "Second Place",
+        role: "Silver Medal",
         company: "Bonyad Melli Nokhbegan",
-        period: "2022",
-        description: "Achieved second place in national innovation competition.",
-        tags: ["Competition", "Innovation", "National Recognition"]
+        period: "2011",
+        description: "Achieved second place in national olympiad of astronomy and astrophysiscs.",
+        tags: ["Olympiad", "Astronomy and Astrophysics", "National Recognition"]
       },
-      {
-        role: "Second Place",
-        company: "Starts Competition",
-        period: "2021",
-        description: "Secured second place in international design competition.",
-        tags: ["International", "Design", "Competition"]
-      }
+      
     ]
   }
 ];
 
 const skills = {
-  "Design Tools": ["Figma", "Sketch", "Adobe XD", "Photoshop", "Illustrator"],
-  "Programming": ["React", "Vue", "HTML", "CSS", "JavaScript", "TypeScript"],
+  "Creative/Design Tools": ["Figma", "Solidworks", "After Effects", "Premier Pro", "Photoshop", "Illustrator"],
+  "Programming": ["Python", "C++", "C", "Docker", "React", "Vue", "HTML", "CSS", "JavaScript", "TypeScript"],
+  "System Design": ["NetLogo", "Ansys", "Abaqus", "Comsol", "Magnet Design", "Econometrics", "Macro Modeling", "BWM Analysis"],
   "Design Skills": ["User Research", "Wireframing", "Prototyping", "Branding", "Design Systems"],
-  "Soft Skills": ["Leadership", "Teamwork", "Communication", "Problem Solving"],
-  "Project Management": ["Agile", "Scrum", "Jira", "Confluence", "Notion"]
+  "Soft Skills": ["Leadership", "Teamwork", "Communication", "Problem Solving", "Time Negotiation", "Dynamic Capabilities", "Creativity"],
+  "Project Management": ["Agile", "Scrum", "Notion", "Trello", "Monday.com", "Team Collaboration","Accounting", "Financial Analysis"]
 };
 
 export default function ResumePage() {
@@ -147,20 +149,33 @@ export default function ResumePage() {
         </Typography>
 
         {/* Download Resume Card */}
-        <Card sx={{ 
-          ...glassmorphism.base,
-          ...glassmorphism.withHighlights,
-          ...glassmorphism.hover,
-          ...noisyBackgroundStyle,
-          mb: 6, 
-          borderRadius: theme.shape.borderRadius, 
-          boxShadow: 0, 
-          p: 3, 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between',
-          cursor: 'pointer'
-        }}>
+        <Card 
+          component="a"
+          href="/Resume_FTJ- V4.pdf"
+          download="Danyal_Ghanbari_Resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ 
+            ...glassmorphism.base,
+            ...glassmorphism.withHighlights,
+            ...glassmorphism.hover,
+            ...noisyBackgroundStyle,
+            mb: 6, 
+            borderRadius: theme.shape.borderRadius, 
+            boxShadow: 0, 
+            p: 3, 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'space-between',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            '&:hover': {
+              ...glassmorphism.hover['&:hover'],
+              transform: 'translateY(-2px)',
+            },
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        >
           <Box>
             <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 1 }}>
               Download Full Resume
