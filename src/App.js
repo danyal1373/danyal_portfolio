@@ -1,4 +1,5 @@
 import React, { useState, Suspense } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Box, Typography, Card, CardContent } from '@mui/material';
@@ -29,11 +30,13 @@ import GroupIcon from '@mui/icons-material/Group';
 import { PasswordProvider } from './contexts/PasswordContext';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import LifetimeRoadmap from './components/LifetimeRoadmap';
+import SEO from './components/SEO';
 
 // Lazy load pages
 const ProjectsPageLazy = React.lazy(() => import('./ProjectsPage'));
 const AboutPageLazy = React.lazy(() => import('./AboutPage'));
 const PhotosPageLazy = React.lazy(() => import('./PhotosPage'));
+const PhotoCategoryPageLazy = React.lazy(() => import('./components/PhotoCategoryPage'));
 const ResearchPageLazy = React.lazy(() => import('./ResearchPage'));
 const ResumePageLazy = React.lazy(() => import('./ResumePage'));
 const ProjectOutlinePageLazy = React.lazy(() => import('./ProjectOutlinePage'));
@@ -94,6 +97,12 @@ function HomePage() {
 
   return (
     <>
+      <SEO 
+        title="Danyal Ghanbari - Product Designer & Innovator"
+        description="Award-winning innovator with expertise in mechanical engineering, MBA, and integrated innovation. Product designer passionate about technology, human-centered design, and astrophotography."
+        keywords="Danyal Ghanbari, Product Designer, Innovation, Mechanical Engineering, MBA, Carnegie Mellon, Astrophotography, Technology, Human-Centered Design"
+        url="/"
+      />
       <Box
         sx={{
           minHeight: '60vh',
@@ -417,29 +426,31 @@ export default function App() {
   const location = useLocation();
 
   return (
-    <PasswordProvider>
-      <Navbar />
-      <AnimatePresence mode="wait">
-        <Suspense fallback={<PageLoader />}>
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPageLazy />} />
-            <Route path="/projects/:projectId" element={<ProjectDetailPageLazy />} />
-            <Route path="/about" element={<AboutPageLazy />} />
-            <Route path="/photos" element={<PhotosPageLazy />} />
-            <Route path="/photos/astrophotography" element={<AstrophotographyPageLazy />} />
-            <Route path="/research" element={<ResearchPageLazy />} />
-            <Route path="/resume" element={<ResumePageLazy />} />
-            <Route path="/project-outline" element={<ProjectOutlinePageLazy />} />
-            <Route path="/swarm" element={
-              <Suspense fallback={<PageLoader />}>
-                <SwarmPageLazy />
-              </Suspense>
-            } />
-          </Routes>
-        </Suspense>
-      </AnimatePresence>
-      <Footer />
-    </PasswordProvider>
+    <HelmetProvider>
+      <PasswordProvider>
+        <Navbar />
+        <AnimatePresence mode="wait">
+          <Suspense fallback={<PageLoader />}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/projects" element={<ProjectsPageLazy />} />
+              <Route path="/projects/:projectId" element={<ProjectDetailPageLazy />} />
+              <Route path="/about" element={<AboutPageLazy />} />
+              <Route path="/photos" element={<PhotosPageLazy />} />
+              <Route path="/photos/:category" element={<PhotoCategoryPageLazy />} />
+              <Route path="/research" element={<ResearchPageLazy />} />
+              <Route path="/resume" element={<ResumePageLazy />} />
+              <Route path="/project-outline" element={<ProjectOutlinePageLazy />} />
+              <Route path="/swarm" element={
+                <Suspense fallback={<PageLoader />}>
+                  <SwarmPageLazy />
+                </Suspense>
+              } />
+            </Routes>
+          </Suspense>
+        </AnimatePresence>
+        <Footer />
+      </PasswordProvider>
+    </HelmetProvider>
   );
 }

@@ -1,0 +1,73 @@
+{
+  "title": "Industrial Photography",
+  "description": "Industrial and architectural photography showcasing engineering and design",
+  "category": "industrial",
+  "images": [
+    {
+      "id": "industrial-img-2322",
+      "src": "/images/IMG_2322.JPG",
+      "alt": "Industrial photography IMG_2322",
+      "title": "Industrial Scene",
+      "description": "Industrial photography showcasing engineering and design",
+      "date": "2023-04-10",
+      "location": "Industrial Site, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/8, 1/60s, ISO 400"
+    },
+    {
+      "id": "bridge-architecture",
+      "src": "/images/photos/industrial/bridge-architecture.jpg",
+      "alt": "Modern bridge architecture",
+      "title": "Bridge Architecture",
+      "description": "Modern engineering and architectural design",
+      "date": "2023-03-22",
+      "location": "Tehran, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/11, 1/125s, ISO 100"
+    },
+    {
+      "id": "power-plant",
+      "src": "/images/photos/industrial/power-plant.jpg",
+      "alt": "Power plant industrial complex",
+      "title": "Power Plant",
+      "description": "Energy infrastructure and industrial facilities",
+      "date": "2023-05-18",
+      "location": "Power Plant, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/8, 1/250s, ISO 200"
+    },
+    {
+      "id": "construction-site",
+      "src": "/images/photos/industrial/construction-site.jpg",
+      "alt": "Construction site with heavy machinery",
+      "title": "Construction Site",
+      "description": "Modern construction and development projects",
+      "date": "2023-06-05",
+      "location": "Tehran, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/8, 1/125s, ISO 200"
+    },
+    {
+      "id": "warehouse-interior",
+      "src": "/images/photos/industrial/warehouse-interior.jpg",
+      "alt": "Warehouse interior with organized storage",
+      "title": "Warehouse Interior",
+      "description": "Logistics and storage facility photography",
+      "date": "2023-07-12",
+      "location": "Logistics Center, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/5.6, 1/60s, ISO 800"
+    },
+    {
+      "id": "refinery-complex",
+      "src": "/images/photos/industrial/refinery-complex.jpg",
+      "alt": "Oil refinery complex at sunset",
+      "title": "Refinery Complex",
+      "description": "Petrochemical facilities and industrial infrastructure",
+      "date": "2023-08-20",
+      "location": "Refinery Complex, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/8, 1/125s, ISO 100"
+    }
+  ]
+} 

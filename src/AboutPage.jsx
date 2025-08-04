@@ -12,6 +12,7 @@ import bmnLogo from './assets/bmn.png';
 import starsLogo from './assets/stars.png';
 import LifetimeRoadmap from './components/LifetimeRoadmap';
 import AnimatedCircle from './components/AnimatedCircle';
+import SEO from './components/SEO';
 
 const aboutSections = [
   {
@@ -213,7 +214,14 @@ export default function AboutPage() {
   const theme = useTheme();
   const glassmorphism = useGlassmorphism();
   return (
-    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
+    <>
+      <SEO 
+        title="About - Danyal Ghanbari"
+        description="Learn about Danyal Ghanbari, an award-winning innovator with expertise in mechanical engineering, MBA from Carnegie Mellon University, and experience in product design and technology."
+        keywords="Danyal Ghanbari, about, mechanical engineering, MBA, Carnegie Mellon, product design, innovation, awards"
+        url="/about"
+      />
+      <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
       {/* --- FIXED BACKGROUND --- */}
       <Box sx={{
         position: 'fixed',
@@ -317,5 +325,6 @@ export default function AboutPage() {
         <LifetimeRoadmap />
       </Box>
     </Box>
+    </>
   );
 } 

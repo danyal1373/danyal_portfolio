@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Card, Box, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { useGlassmorphism } from '../hooks/useGlassmorphism';
 
-export default function PhotoCategoryCard({ title, image }) {
+export default function PhotoCategoryCard({ title, image, category }) {
   const [hover, setHover] = useState(false);
+  const navigate = useNavigate();
   const glassmorphism = useGlassmorphism();
   const noisyBackgroundStyle = {
     position: 'relative',
@@ -36,6 +38,7 @@ export default function PhotoCategoryCard({ title, image }) {
       }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      onClick={() => navigate(`/photos/${category}`)}
     >
       {/* Background image */}
       <Box

@@ -6,6 +6,7 @@ import InstagramFeed from './components/InstagramFeed';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import AnimatedCircle from './components/AnimatedCircle';
+import SEO from './components/SEO';
 
 const StyledCard = styled(Card)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -34,15 +35,18 @@ const StyledLink = styled(Link)(({ theme }) => ({
 const categories = [
   {
     title: 'Astrophotography',
-    image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80',
+    category: 'astrophotography',
+    image: '/images/integration_ABE.jpg',
   },
   {
     title: 'Landscape',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
+    category: 'landscape',
+    image: '/images/Lorestan Landscape.jpg',
   },
   {
     title: 'Industrial Photography',
-    image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80',
+    category: 'industrial',
+    image: '/images/IMG_2322.JPG',
   },
 ];
 
@@ -64,8 +68,15 @@ function PhotosPage() {
   };
 
   return (
-    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
-      {/* --- FIXED BACKGROUND --- */}
+    <>
+      <SEO 
+        title="Photography Portfolio - Danyal Ghanbari"
+        description="Explore my photography portfolio featuring astrophotography, landscape photography, and industrial photography. Award-winning night sky photography and professional product photography."
+        keywords="photography, astrophotography, landscape photography, industrial photography, night sky photography, product photography, Danyal Ghanbari"
+        url="/photos"
+      />
+      <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
+        {/* --- FIXED BACKGROUND --- */}
       <Box sx={{
         position: 'fixed',
         top: 0,
@@ -104,7 +115,7 @@ function PhotosPage() {
           mb: 6,
         }}>
           {categories.map(cat => (
-            <PhotoCategoryCard key={cat.title} title={cat.title} image={cat.image} />
+            <PhotoCategoryCard key={cat.title} title={cat.title} image={cat.image} category={cat.category} />
           ))}
         </Box>
 
@@ -155,6 +166,7 @@ function PhotosPage() {
         </Box>
       </Box>
     </Box>
+    </>
   );
 }
 

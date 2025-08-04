@@ -4,6 +4,7 @@ import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import DownloadIcon from '@mui/icons-material/Download';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import AnimatedCircle from './components/AnimatedCircle';
+import SEO from './components/SEO';
 
 const resumeSections = [
   {
@@ -114,7 +115,14 @@ export default function ResumePage() {
   };
 
   return (
-    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
+    <>
+      <SEO 
+        title="Resume - Danyal Ghanbari"
+        description="Download Danyal Ghanbari's resume. Award-winning innovator with expertise in mechanical engineering, MBA, and integrated innovation from Carnegie Mellon University."
+        keywords="resume, CV, Danyal Ghanbari, mechanical engineering, MBA, Carnegie Mellon, product design, innovation"
+        url="/resume"
+      />
+      <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
       {/* --- FIXED BACKGROUND --- */}
       <Box sx={{
         position: 'fixed',
@@ -299,5 +307,6 @@ export default function ResumePage() {
         ))}
       </Box>
     </Box>
+    </>
   );
 } 

@@ -9,6 +9,7 @@ import { getAllProjects, getFeaturedProjects, getAllCategories } from './utils/p
 import { usePassword } from './contexts/PasswordContext';
 import CategoryProjectCard from './components/CategoryProjectCard';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
+import SEO from './components/SEO';
 
 const FeaturedProjectCard = ({ project }) => {
   const theme = useTheme();
@@ -182,7 +183,14 @@ export default function ProjectsPage() {
   };
 
   return (
-    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh' }} ref={pageRef}>
+    <>
+      <SEO 
+        title="Projects Portfolio - Danyal Ghanbari"
+        description="Explore my innovative projects in product design, engineering, marketing, and user research. Featured projects showcasing cutting-edge technology and human-centered design."
+        keywords="projects, portfolio, product design, engineering, innovation, technology, user research, marketing, Danyal Ghanbari"
+        url="/projects"
+      />
+      <Box sx={{ background: theme.palette.background.default, minHeight: '100vh' }} ref={pageRef}>
       {/* --- FIXED BACKGROUND --- */}
       <Box sx={{
         position: 'fixed',
@@ -325,5 +333,6 @@ export default function ProjectsPage() {
         </Box>
       </Box>
     </Box>
+    </>
   );
 } 

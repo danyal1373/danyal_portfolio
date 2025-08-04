@@ -1,0 +1,73 @@
+{
+  "title": "Landscape",
+  "description": "Natural landscapes and scenic vistas captured during travels and adventures",
+  "category": "landscape",
+  "images": [
+    {
+      "id": "lorestan-landscape",
+      "src": "/images/Lorestan Landscape.jpg",
+      "alt": "Lorestan Landscape",
+      "title": "Lorestan Landscape",
+      "description": "Beautiful landscape of Lorestan province",
+      "date": "2023-06-20",
+      "location": "Lorestan, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/8, 1/60s, ISO 100"
+    },
+    {
+      "id": "desert-dunes",
+      "src": "/images/photos/landscape/desert-dunes.jpg",
+      "alt": "Sand dunes in desert landscape",
+      "title": "Desert Dunes",
+      "description": "Rolling sand dunes under dramatic lighting",
+      "date": "2023-05-15",
+      "location": "Lut Desert, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/11, 1/125s, ISO 100"
+    },
+    {
+      "id": "forest-mist",
+      "src": "/images/photos/landscape/forest-mist.jpg",
+      "alt": "Misty forest landscape",
+      "title": "Misty Forest",
+      "description": "Early morning mist through ancient trees",
+      "date": "2023-10-08",
+      "location": "Caspian Forest, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/5.6, 1/30s, ISO 200"
+    },
+    {
+      "id": "coastal-cliffs",
+      "src": "/images/photos/landscape/coastal-cliffs.jpg",
+      "alt": "Dramatic coastal cliffs",
+      "title": "Coastal Cliffs",
+      "description": "Rugged coastline with crashing waves",
+      "date": "2023-07-12",
+      "location": "Persian Gulf Coast",
+      "camera": "Canon EOS R6",
+      "settings": "f/8, 1/250s, ISO 100"
+    },
+    {
+      "id": "valley-fog",
+      "src": "/images/photos/landscape/valley-fog.jpg",
+      "alt": "Fog-filled valley at dawn",
+      "title": "Valley Fog",
+      "description": "Morning fog rolling through mountain valleys",
+      "date": "2023-09-25",
+      "location": "Zagros Mountains, Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/8, 1/60s, ISO 200"
+    },
+    {
+      "id": "waterfall-flow",
+      "src": "/images/photos/landscape/waterfall-flow.jpg",
+      "alt": "Flowing waterfall in forest",
+      "title": "Waterfall Flow",
+      "description": "Long exposure of cascading water",
+      "date": "2023-08-30",
+      "location": "Northern Iran",
+      "camera": "Canon EOS R6",
+      "settings": "f/16, 2s, ISO 100"
+    }
+  ]
+} 

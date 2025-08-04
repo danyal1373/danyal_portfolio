@@ -3,6 +3,7 @@ import { Box, Typography, Card, Chip, Link, useTheme } from '@mui/material';
 import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import AnimatedCircle from './components/AnimatedCircle';
+import SEO from './components/SEO';
 
 const publications = [
   {
@@ -44,7 +45,14 @@ export default function ResearchPage() {
     },
   };
   return (
-    <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
+    <>
+      <SEO 
+        title="Research & Publications - Danyal Ghanbari"
+        description="Explore my research work in engineering, design, and smart systems. Publications focusing on AI, ML, vision systems, and sustainable technology solutions."
+        keywords="research, publications, engineering, AI, ML, smart systems, vision systems, sustainability, Danyal Ghanbari"
+        url="/research"
+      />
+      <Box sx={{ background: theme.palette.background.default, minHeight: '100vh', py: 4 }}>
       {/* --- FIXED BACKGROUND --- */}
       <Box sx={{
         position: 'fixed',
@@ -146,5 +154,6 @@ export default function ResearchPage() {
         </Link>
       </Box>
     </Box>
+    </>
   );
 } 
