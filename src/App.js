@@ -14,13 +14,9 @@ import SpiderChart from './components/SpiderChart';
 import CodeIcon from '@mui/icons-material/Code';
 import BrushIcon from '@mui/icons-material/Brush';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
-import AdbIcon from '@mui/icons-material/Adb';
-import StorageIcon from '@mui/icons-material/Storage';
-import WebAssetIcon from '@mui/icons-material/WebAsset';
 import CategoryIcon from '@mui/icons-material/Category';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
-import MovieEditIcon from '@mui/icons-material/MovieEdit';
 import PsychologyIcon from '@mui/icons-material/Psychology';
 import BusinessIcon from '@mui/icons-material/Business';
 import EngineeringIcon from '@mui/icons-material/Engineering';
@@ -40,7 +36,6 @@ const PhotoCategoryPageLazy = React.lazy(() => import('./components/PhotoCategor
 const ResearchPageLazy = React.lazy(() => import('./ResearchPage'));
 const ResumePageLazy = React.lazy(() => import('./ResumePage'));
 const ProjectOutlinePageLazy = React.lazy(() => import('./ProjectOutlinePage'));
-const AstrophotographyPageLazy = React.lazy(() => import('./AstrophotographyPage'));
 const SwarmPageLazy = React.lazy(() => import('./SwarmPage'));
 const ProjectDetailPageLazy = React.lazy(() => import('./components/ProjectDetailPage'));
 

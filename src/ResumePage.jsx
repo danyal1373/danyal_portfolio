@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Typography, Card, Chip, Link, useTheme, Grid } from '@mui/material';
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { Box, Typography, Card, Chip, useTheme, Grid } from '@mui/material';
 import DownloadIcon from '@mui/icons-material/Download';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import AnimatedCircle from './components/AnimatedCircle';

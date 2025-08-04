@@ -2,27 +2,10 @@ import React from 'react';
 import { styled } from '@mui/material/styles';
 import { Box, Typography, Card, Link, useTheme } from '@mui/material';
 import PhotoCategoryCard from './components/PhotoCategoryCard';
-import InstagramFeed from './components/InstagramFeed';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import AnimatedCircle from './components/AnimatedCircle';
 import SEO from './components/SEO';
-
-const StyledCard = styled(Card)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  borderRadius: theme.shape.borderRadius,
-  boxShadow: 0,
-  border: `1px solid ${theme.palette.divider}`,
-  padding: theme.spacing(3),
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  transition: 'transform 0.2s ease-in-out',
-  marginBottom: theme.spacing(4),
-  '&:hover': {
-    transform: 'translateY(-2px)',
-  },
-}));
 
 const StyledLink = styled(Link)(({ theme }) => ({
   color: theme.palette.primary.main,

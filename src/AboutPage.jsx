@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Card, Avatar, Chip, Grid, useTheme } from '@mui/material';
+import { Box, Typography, Card, Chip, useTheme } from '@mui/material';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import cmuLogo from './assets/cmu.png';
 import autLogo from './assets/aut.png';

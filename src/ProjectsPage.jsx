@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Box, Typography, Card, Divider, Grid, Button, Chip } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+import { Box, Typography, Card, Divider, Grid, Chip } from '@mui/material';
 import AnimatedCircle from './components/AnimatedCircle';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import LockIcon from '@mui/icons-material/Lock';
