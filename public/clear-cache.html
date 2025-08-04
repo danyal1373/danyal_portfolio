@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cache Clear - Danyal Ghanbari</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+        .info {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cache Clear Helper</h1>
+    <p class="success">✅ Your favicon has been updated to use DGB_Logo.svg</p>
+    
+    <div class="info">
+        <h3>If you're still seeing the old React icon:</h3>
+        <ol>
+            <li><strong>Hard Refresh:</strong> Press Ctrl+F5 (Windows) or Cmd+Shift+R (Mac)</li>
+            <li><strong>Clear Browser Cache:</strong> Go to browser settings and clear cache</li>
+            <li><strong>Incognito Mode:</strong> Try opening the site in incognito/private mode</li>
+            <li><strong>Wait:</strong> Sometimes it takes a few minutes for changes to propagate</li>
+        </ol>
+    </div>
+    
+    <p><a href="/">← Back to main site</a></p>
+    
+    <script>
+        // Force reload of favicon
+        const link = document.createElement('link');
+        link.rel = 'icon';
+        link.href = '/DGB_Logo.svg?' + new Date().getTime();
+        link.type = 'image/svg+xml';
+        document.head.appendChild(link);
+    </script>
+</body>
+</html> 
