@@ -41,8 +41,9 @@ export default function SEO({
       <link rel="canonical" href={fullUrl} />
       
       {/* Favicon */}
-      <link rel="icon" href="/DGB_Logo.svg" type="image/svg+xml" />
-      <link rel="apple-touch-icon" href="/DGB_Logo.svg" />
+      <link rel="icon" href="/DGB_Logo.svg?v=2" type="image/svg+xml" />
+      <link rel="shortcut icon" href="/DGB_Logo.svg?v=2" type="image/svg+xml" />
+      <link rel="apple-touch-icon" href="/DGB_Logo.svg?v=2" />
       
       {/* Structured Data */}
       <script type="application/ld+json">
