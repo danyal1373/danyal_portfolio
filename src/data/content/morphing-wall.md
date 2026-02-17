@@ -35,10 +35,10 @@ The Interactive Morphing Wall project represents an innovative approach to smart
 aspectRatio: 14 / 9
 seconds: 5
 item: /images/projects/morph/morph-1.jpg | Morphing Wall
-item: /images/projects/morph/morph-3.jpg | Human Scale
-item: /images/projects/morph/morph-2.jpg | Sensory Syetem
+item: /images/projects/morph/morph-3.JPG | Human Scale
+item: /images/projects/morph/morph-2.JPG | Sensory Syetem
 item: /images/projects/morph/morph-5.jpg | Production
-item: /images/projects/morph/diagram-morph-8.jpg | Back-end
+item: /images/projects/morph/diagram-morph-8.JPG | Back-end
 ```
 
 
