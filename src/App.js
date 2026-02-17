@@ -395,7 +395,16 @@ function HomePage() {
             </CardContent>
           </Card>
           {/* Photo */}
-          <Box sx={{ flex: 1.2, minWidth: 240, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Box
+            sx={{
+              flex: 1.2,
+              minWidth: 240,
+              display: 'flex',
+              alignItems: { xs: 'center', md: 'stretch' },
+              justifyContent: 'center',
+              alignSelf: { xs: 'auto', md: 'stretch' },
+            }}
+          >
             <Box
               component="img"
               src="/images/profile.jpg"
@@ -403,11 +412,10 @@ function HomePage() {
               sx={{
                 width: '100%',
                 maxWidth: 320,
-                height: 340,
+                height: { xs: 340, md: '100%' },
                 objectFit: 'cover',
                 borderRadius: (theme) => theme.shape.borderRadius,
                 boxShadow: '0 4px 30px rgba(0,0,0,0.10)',
-                filter: 'grayscale(100%)',
               }}
             />
           </Box>

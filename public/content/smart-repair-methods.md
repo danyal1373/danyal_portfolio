@@ -69,7 +69,7 @@ Design a tool that improve shop's journey of car repair.
 ```card2
 size: 2/3
 title: Core Opportunity
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 
 # Bring on AI-Native
@@ -81,7 +81,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```card2
 size: 1/3
 title: Financial Potential
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Money Opportunity
 
@@ -90,7 +90,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```
 ```card2
 size: 1/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # From Collision to Road
 
@@ -100,7 +100,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 
 ```card2
 size: 2/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Our Promise
 

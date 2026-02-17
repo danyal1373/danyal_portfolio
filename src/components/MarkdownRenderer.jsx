@@ -8,6 +8,9 @@ import WhyWhatHow from './WhyWhatHow';
 import NdaNotice from './NdaNotice';
 import GlassSection from './GlassSection';
 import ExternalLinkCard from './ExternalLinkCard';
+import ImageCollageThree from './ImageCollageThree';
+import ImageCarouselTwo from './ImageCarouselTwo';
+import ImageGalleryCarousel from './ImageGalleryCarousel';
 
 const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
   const theme = useTheme();
@@ -278,6 +281,39 @@ const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
                   const propsObj = parseKeyValue(raw);
                   return <ExternalLinkCard {...propsObj} />;
                 }
+                if (lang === 'album3') {
+                  const propsObj = parseKeyValue(raw);
+                  return <ImageCollageThree {...propsObj} />;
+                }
+                if (lang === 'carousel2') {
+                  const propsObj = parseKeyValue(raw);
+                  return <ImageCarouselTwo {...propsObj} />;
+                }
+                if (lang === 'gallery') {
+                  const lines = raw.split('\n');
+                  const propsObj = {};
+                  const items = [];
+                  lines.forEach((line) => {
+                    const kv = line.match(/^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$/);
+                    if (!kv) return;
+                    const key = kv[1];
+                    const val = kv[2].trim();
+                    if (key.toLowerCase() === 'item') {
+                      const parts = val.split('|');
+                      items.push({
+                        src: (parts[0] || '').trim(),
+                        name: (parts[1] || '').trim(),
+                      });
+                    } else {
+                      let parsed = val;
+                      if (parsed === 'true') parsed = true;
+                      else if (parsed === 'false') parsed = false;
+                      else if (!isNaN(Number(parsed))) parsed = Number(parsed);
+                      propsObj[key] = parsed;
+                    }
+                  });
+                  return <ImageGalleryCarousel {...propsObj} items={items} />;
+                }
                 if (lang === 'plain') {
                   return (
                     <Box sx={{ ...markdownStyles }}>
@@ -364,7 +400,7 @@ const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
 
             const parts = splitByH2OutsideFences(content);
 
-            const shortcodeLangs = new Set(['video', 'card2', 'wwh', 'nda', 'plain', 'extlink']);
+            const shortcodeLangs = new Set(['video', 'card2', 'wwh', 'nda', 'plain', 'extlink', 'album3', 'carousel2', 'gallery']);
 
             const splitIntoBlocks = (text) => {
               const lines = text.split('\n');
@@ -533,6 +569,67 @@ const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
                             return (
                               <Box key={i} sx={{ gridColumn: '1 / -1' }}>
                                 <ExternalLinkCard {...propsObj} />
+                              </Box>
+                            );
+                          }
+                          if (b.lang === 'album3') {
+                            const propsObj = {};
+                            b.body.split('\n').forEach((line) => {
+                              const m = line.match(/^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$/);
+                              if (m) {
+                                const key = m[1];
+                                propsObj[key] = m[2];
+                              }
+                            });
+                            return (
+                              <Box key={i} sx={{ gridColumn: '1 / -1' }}>
+                                <ImageCollageThree {...propsObj} />
+                              </Box>
+                            );
+                          }
+                          if (b.lang === 'carousel2') {
+                            const propsObj = {};
+                            b.body.split('\n').forEach((line) => {
+                              const m = line.match(/^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$/);
+                              if (m) {
+                                const key = m[1];
+                                let val = m[2];
+                                if (val === 'true') val = true;
+                                else if (val === 'false') val = false;
+                                else if (!isNaN(Number(val))) val = Number(val);
+                                propsObj[key] = val;
+                              }
+                            });
+                            return (
+                              <Box key={i} sx={{ gridColumn: '1 / -1' }}>
+                                <ImageCarouselTwo {...propsObj} />
+                              </Box>
+                            );
+                          }
+                          if (b.lang === 'gallery') {
+                            const propsObj = {};
+                            const items = [];
+                            b.body.split('\n').forEach((line) => {
+                              const m = line.match(/^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$/);
+                              if (!m) return;
+                              const key = m[1];
+                              let val = m[2].trim();
+                              if (key.toLowerCase() === 'item') {
+                                const parts3 = val.split('|');
+                                items.push({
+                                  src: (parts3[0] || '').trim(),
+                                  name: (parts3[1] || '').trim(),
+                                });
+                              } else {
+                                if (val === 'true') val = true;
+                                else if (val === 'false') val = false;
+                                else if (!isNaN(Number(val))) val = Number(val);
+                                propsObj[key] = val;
+                              }
+                            });
+                            return (
+                              <Box key={i} sx={{ gridColumn: '1 / -1' }}>
+                                <ImageGalleryCarousel {...propsObj} items={items} />
                               </Box>
                             );
                           }

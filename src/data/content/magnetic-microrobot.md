@@ -1,5 +1,5 @@
 
-![Pakrun Hero](/images/projects/mmr-process-2.jpg)
+![Pakrun Hero](/images/projects/mmr-process-2.png)
 
 
 ```wwh
@@ -26,13 +26,13 @@ caption: Repair Methods Demo
 ```
 
 
-![Micro-robot Process](/images/projects/mmr-process.jpg)
+![Micro-robot Process](/images/projects/mmr-process.png)
 ![Micro-robot Result](/images/projects/mmr-result.png)
 
 ```card2
 size: 2/3
 title: The Novelty
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Market Scope
 
@@ -43,7 +43,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```card2
 size: 1/3
 title: AI-Driven
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Camera Controled
 
@@ -52,7 +52,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```
 ```card2
 size: 1/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Top Project
 
@@ -62,7 +62,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 
 ```card2
 size: 2/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Our Driver
 
@@ -71,8 +71,8 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```
 
 ```extlink
-title: CCC Intelligent Solutions
-url: https://www.cccis.com
+title: Advisors Google Scholar
+url: https://scholar.google.com/citations?user=VEbApmMAAAAJ&hl=en&inst=3203679203499159833
 openInNew: true
 ```
 

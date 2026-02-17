@@ -1,6 +1,43 @@
-# Interactive Morphing Wall - Smart Wall
+# Symbiotic Encounter
 
-![Interactive Morphing Wall](/images/projects/morphing-wall.jpg)
+![Interactive Morphing Wall](/images/projects/diagram-morph.png)
+
+```video
+src: https://stream.mux.com/5015ZQXy8Ryvbn5MpgDJEetR9Ygt00iQVC8yQObBBBUOE.m3u8
+poster: /images/projects/morph/morph-3.jpg
+controls: true
+autoplay: true
+loop: true
+muted: true
+aspectRatio: 16 / 9
+caption: Morphing Wall
+```
+
+
+```gallery
+aspectRatio: 16 / 9
+seconds: 5
+item: /images/projects/morph/diagram-morph-2.jpeg | Project Time-line
+item: /images/projects/morph/diagram-morph-3.jpeg | System Diagram
+item: /images/projects/morph/diagram-morph-4.jpeg | Electric Circuit
+item: /images/projects/morph/diagram-morph-5.jpeg | Power Supply
+item: /images/projects/morph/diagram-morph-6.png | Layers Diagram
+item: /images/projects/morph/diagram-morph-7.jpeg | Circuit
+item: /images/projects/morph/diagram-morph-8.jpg | Frame Back-end
+item: /images/projects/morph/diagram-morph-9.jpg | Free-body Diagram
+```
+
+
+```gallery
+aspectRatio: 14 / 9
+seconds: 5
+item: /images/projects/morph/morph-1.jpg | 
+item: /images/projects/morph/morph-3.jpg | 
+item: /images/projects/morph/morph-2.jpg | 
+item: /images/projects/morph/morph-5.jpg | 
+item: /images/projects/morph/diagram-morph-8.jpg |
+```
+
 
 ## Project Overview
 

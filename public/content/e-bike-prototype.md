@@ -1,5 +1,5 @@
 
-![Pakrun Hero](/images/projects/Pakrun-hero.jpg)
+![Pakrun Hero](/images/projects/Pakrun-hero.png)
 
 
 ```wwh
@@ -20,7 +20,7 @@ During the manufacturing phase, I joined a small fabrication team responsible fo
 
 ```video
 src: https://stream.mux.com/U3KUB02p5n8YEhQed3xSlnqB2rjTIu00R2qQsYFO4007zM.m3u8
-poster: /images/projects/repair-methods-wp.png
+poster: /images/projects/pakrun-sketch-3.png
 controls: true
 autoplay: false
 loop: false
@@ -30,13 +30,13 @@ caption: Repair Methods Demo
 ```
 
 
-![Pakrun Burnet](/images/projects/pakrun-burnt.jpg)
-![Pakrun Team](/images/projects/pakrun-team-2.jpg)
+![Pakrun Burnet](/images/projects/pakrun-burnt.png)
+![Pakrun Team](/images/projects/pakrun-team-2.png)
 
 ```card2
 size: 2/3
 title: Core Opportunity
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Market Scope
 
@@ -47,7 +47,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```card2
 size: 1/3
 title: Fly Pakrun
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # The X Factor
 
@@ -56,7 +56,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```
 ```card2
 size: 1/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # From Ashes to the Race-line
 
@@ -66,7 +66,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 
 ```card2
 size: 2/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Our Team
 
@@ -85,18 +85,31 @@ We analyzed competition constraints, benchmarked peer electric motorcycles, and 
 
 The challenge was framed as designing a race-capable electric motorcycle that balanced power, structural integrity, and manufacturability within limited resources and time. Clear subsystem ownership was established, and performance calculations informed motor selection, braking capacity, and suspension geometry.
 
+```carousel2
+image1: /images/projects/pakrun-sketch-1.png
+alt1: Sketchs 1
+image2: /images/projects/pakrun-sketch-2.png
+alt2: Sketchs 2
+aspectRatio: 21 / 9
+seconds: 6
+```
 ### Develop
 
 Suspension and braking systems were engineered to support high-speed stability and safe deceleration under race conditions. Powertrain components were selected based on torque and acceleration modeling. The chassis was fabricated and assembled in-house, followed by battery integration, electrical wiring, and composite body construction using fiberglass and carbon fiber techniques. After the fire incident, rapid redesign and reconstruction efforts were executed to restore structural and functional integrity.
-![Workers at work](/images/projects/workers-at-work.jpg)
-![Pakrun Re-Built](/images/projects/pakrun-solo.jpg)
-![Me Smiling, rolling, pushing](/images/projects/dandan.jpg)
+```album3
+image1: /images/projects/dandan.png
+alt1: Workers at work
+image2: /images/projects/pakrun-solo-2.png
+alt2: Pakrun Re-Built
+image3: /images/projects/workers-at-work.png
+alt3: Me smiling, rolling, pushing
+```
 ### Deliver
 The motorcycle passed design evaluation and won first place in the competition’s design phase. In performance testing, it achieved first place in the 100-meter acceleration event, exceeding 140 km/h, demonstrating successful integration of mechanical, electrical, and structural systems under competitive constraints.
 
 ```extlink
-title: CCC Intelligent Solutions
-url: https://www.cccis.com
+title: Iran Machine Design Competition
+url: https://en.wikipedia.org/wiki/Iranian_Machine_Design_Competition
 openInNew: true
 ```
 

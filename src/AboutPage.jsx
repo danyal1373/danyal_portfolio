@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Card, Chip, useTheme } from '@mui/material';
+import { Box, Typography, Card, Chip, Grid, useTheme } from '@mui/material';
 import { useGlassmorphism } from './hooks/useGlassmorphism';
 import cmuLogo from './assets/cmu.png';
 import autLogo from './assets/aut.png';
@@ -95,11 +95,16 @@ const aboutSections = [
   },
 ];
 
-const skills = [
-  'Figma', 'Miro', 'Notion', 'Photoshop', 'Illustrator', 'React', 'Vue', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'User Research', 'Wireframing', 'Prototyping', 'Branding', 'Design Systems', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Agile', 'Scrum', 'Adobe AfterEffects', 'SolidWorks', 'G CODE', 'Siemens NX', 'Lightroom', 'Visual Storytelling','Astrophotography','Power BI','R','Python','MATLAB','NET LOGO','Internet of Things','Data Analysis','Data Visualization', 'Julia (In progress)', 'AI/ML (PyTorch, TensorFlow, Scikit-learn, etc.)', 'SQL', 'NoSQL', 'GitHub', 'Docker', 'K8s', 'Architecture Visualization','Network','CloudFlare','Linux','Digital Marketing Strategy','Product Photography', 'Rendering','Competitive Analysis','Negotiation','Design Thinking','Rapid Prototyping','Manufacturing Processes', 'Material Selection','Interface Design'
-];
+const skills = {
+  "Creative/Design Tools": ["Figma", "Solidworks", "After Effects", "Premier Pro", "Photoshop", "Illustrator"],
+  "Programming": ["Python", "C++", "C", "Docker", "React", "Vue", "HTML", "CSS", "JavaScript", "TypeScript"],
+  "System Design": ["NetLogo", "Ansys", "Abaqus", "Comsol", "Magnet Design", "Econometrics", "Macro Modeling", "BWM Analysis"],
+  "Design Skills": ["User Research", "Wireframing", "Prototyping", "Branding", "Design Systems"],
+  "Soft Skills": ["Leadership", "Teamwork", "Communication", "Problem Solving", "Time Negotiation", "Dynamic Capabilities", "Creativity"],
+  "Project Management": ["Agile", "Scrum", "Notion", "Trello", "Monday.com", "Team Collaboration", "Accounting", "Financial Analysis"]
+};
 
-const aboutText = `I'm a Product Innovator with concentration in Mechanical Engineering with graduate studies in Marketing; I'm an alumni of Carnegie Mellon University in human-centered innovation; for more than a decade, I've taken photographs of the night sky, and I've attended photography exhibitions at Lisboa Jubilee Art, Zanjan, etc. My passion for exploring the scientific world never settles down. My Metaphysics for innovation is to be the bridge between Scientist and Technologists to bring what's next to the market. Currently, I'm working at CCC Intelligent Solutions to expand my knowledge and skillset by applying what I've learned into practice and am open to the new experiences in edge deep tech space (Interplanetary Travel, Battery Systems, Quantum Computing)`;
+const aboutText = `Product Manager in technology with graduate studies in Innovation and Marketing. As a Carnegie Mellon University alumni focused on Human-Centered Innovation, I bridge strategy, technology, and human insight to build meaningful products.`;
 
 const logoMap = {
   cmu: cmuLogo,
@@ -213,6 +218,19 @@ function AboutCard({ logo, title, subtitle, description, date }) {
 export default function AboutPage() {
   const theme = useTheme();
   const glassmorphism = useGlassmorphism();
+  const noisyBackgroundStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      inset: 0,
+      backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E')`,
+      opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
+      pointerEvents: 'none',
+      zIndex: 0,
+    },
+  };
   return (
     <>
       <SEO 
@@ -255,18 +273,18 @@ export default function AboutPage() {
         </Typography>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', gap: 4, mb: 4 }}>
           <Box sx={{ flex: 2 }}>
-            <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2 }}>
+            <Typography variant="h6" sx={{ color: theme.palette.text.secondary, mb: 2, fontWeight: theme.typography.body1.fontWeight }}>
               {aboutText}
             </Typography>
           </Box>
           <Box sx={{ flex: 0, display: 'flex-end', justifyContent: 'center' }}>
             <Box
               component="img"
-              src={require('./assets/danyal-head.jpeg')}
+              src="/images/profile-2.jpg"
               alt="Danyal Ghanbari"
               sx={{ 
-                width: 140, 
-                height: 180, 
+                width: 360, 
+                height: 280, 
                 objectFit: 'cover',
                 borderRadius: theme.shape.borderRadius,
                 boxShadow: '0 4px 30px rgba(0,0,0,0.10)',
@@ -289,39 +307,44 @@ export default function AboutPage() {
           <Typography variant="h5" sx={{ color: theme.palette.text.secondary, mb: 3, fontWeight: theme.typography.body1.fontWeight }}>
             Skills
           </Typography>
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-            {skills.map((skill, index) => (
-              <Box
-                key={index}
-                sx={{
-                  ...glassmorphism.base,
-                  ...glassmorphism.withHighlights,
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    inset: 0,
-                    backgroundImage: `url('data:image/svg+xml,%3Csvg viewBox=\\"0 0 512 512\\" xmlns=\\"http://www.w3.org/2000/svg\\"%3E%3Cfilter id=\\"noiseFilter\\"%3E%3CfeTurbulence type=\\"fractalNoise\\" baseFrequency=\\"0.8\\" numOctaves=\\"3\\" stitchTiles=\\"stitch\\"/%3E%3C/filter%3E%3Crect width=\\"100%\\" height=\\"100%\\" filter=\\"url(%23noiseFilter)\\"/%3E%3C/svg%3E')`,
-                    opacity: theme.palette.mode === 'dark' ? 0.05 : 0.1,
-                    pointerEvents: 'none',
-                    zIndex: 0,
-                  },
-                  color: theme.palette.text.secondary,
-                  px: 2,
-                  py: 1,
-                  borderRadius: theme.shape.borderRadius,
-                  border: `1px solid ${theme.palette.divider}`,
-                  fontSize: theme.typography.body2.fontSize,
-                  fontWeight: theme.typography.body1.fontWeight,
-                  display: 'inline-block',
-                  mb: 1,
-                }}
-              >
-                {skill}
-              </Box>
+          <Grid container spacing={3}>
+            {Object.entries(skills).map(([category, skillList]) => (
+              <Grid item xs={12} md={6} key={category}>
+                <Card
+                  sx={{
+                    ...glassmorphism.base,
+                    ...glassmorphism.withHighlights,
+                    ...glassmorphism.hover,
+                    ...noisyBackgroundStyle,
+                    p: 3,
+                    borderRadius: theme.shape.borderRadius,
+                    boxShadow: 0,
+                  }}
+                >
+                  <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 2 }}>
+                    {category}
+                  </Typography>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                    {skillList.map((skill, index) => (
+                      <Chip
+                        key={index}
+                        label={skill}
+                        size="small"
+                        sx={{
+                          ...glassmorphism.base,
+                          borderWidth: '1px',
+                          borderStyle: 'solid',
+                          borderColor: 'rgba(255, 255, 255, 0.2)',
+                          color: 'text.secondary',
+                        }}
+                        variant="outlined"
+                      />
+                    ))}
+                  </Box>
+                </Card>
+              </Grid>
             ))}
-          </Box>
+          </Grid>
         </Box>
         {/* Lifetime Roadmap Section */}
         <LifetimeRoadmap />

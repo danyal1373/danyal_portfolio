@@ -112,27 +112,11 @@
     "passwordProtected": true
   },
   {
-    "id": "morphing-wall",
-    "title": "Interactive Morphing Wall",
-    "subtitle": "Smart Wall",
-    "description": "Interactive Art",
-    "image": "/images/projects/sustainable-packaging-thumb.jpg",
-    "tags": ["Design", "Digital Control", "Shape Memory Alloys"],
-    "category": "Product Development",
-    "featured": false,
-    "date": "2023",
-    "client": "Personal Project",
-    "role": "Engineer-Creator",
-    "duration": "12 months",
-    "contentFile": "morphing-wall.md",
-    "passwordProtected": false
-  },
-  {
     "id": "e-bike-prototype",
-    "title": "Design and Prototyping an Electric Motorcycle",
+    "title": "EV Sports Motorcycle",
     "subtitle": "EV and Mobility",
     "description": "Winning Team",
-    "image": "/images/projects/pakrun-solo.png",
+    "image": "/images/projects/pakrun-thumb.png",
     "tags": ["EV", "Motorbike", "Suspension Design", "FEM", "Vehicle Dynamics"],
     "category": "Engineering Design",
     "featured": true,
@@ -141,6 +125,22 @@
     "role": "Mechanical Engineer",
     "duration": "16 months",
     "contentFile": "e-bike-prototype.md",
+    "passwordProtected": false
+  },
+  {
+    "id": "morphing-wall",
+    "title": "Interactive Morphing Wall",
+    "subtitle": "SHAPE MEMORY ALLOY ACTUATORS",
+    "description": "Interactive Art",
+    "image": "/images/projects/morph-thumb.png",
+    "tags": ["Design", "Digital Control", "Shape Memory Alloys"],
+    "category": "Product Development",
+    "featured": true,
+    "date": "2023",
+    "client": "Personal Project",
+    "role": "Engineer-Creator",
+    "duration": "12 months",
+    "contentFile": "morphing-wall.md",
     "passwordProtected": false
   },
   {

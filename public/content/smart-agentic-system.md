@@ -68,7 +68,7 @@ Transform reporting from static documentation to intelligent decision-support in
 ```card2
 size: 2/3
 title: Core Opportunity
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 
 # Time Saving
@@ -80,7 +80,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```card2
 size: 1/3
 title: Financial Benefit
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Cost Cutting
 
@@ -89,7 +89,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 ```
 ```card2
 size: 1/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # Going from 8 hours per report
 
@@ -99,7 +99,7 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 
 ```card2
 size: 2/3
-thumb: /images/projects/ignik-outdoors-thumb.jpg
+
 
 # What we did
 

@@ -87,14 +87,9 @@ const resumeSections = [
   }
 ];
 
-const skills = {
-  "Creative/Design Tools": ["Figma", "Solidworks", "After Effects", "Premier Pro", "Photoshop", "Illustrator"],
-  "Programming": ["Python", "C++", "C", "Docker", "React", "Vue", "HTML", "CSS", "JavaScript", "TypeScript"],
-  "System Design": ["NetLogo", "Ansys", "Abaqus", "Comsol", "Magnet Design", "Econometrics", "Macro Modeling", "BWM Analysis"],
-  "Design Skills": ["User Research", "Wireframing", "Prototyping", "Branding", "Design Systems"],
-  "Soft Skills": ["Leadership", "Teamwork", "Communication", "Problem Solving", "Time Negotiation", "Dynamic Capabilities", "Creativity"],
-  "Project Management": ["Agile", "Scrum", "Notion", "Trello", "Monday.com", "Team Collaboration","Accounting", "Financial Analysis"]
-};
+const skills = [
+  'Figma', 'Miro', 'Notion', 'Photoshop', 'Illustrator', 'React', 'Vue', 'HTML', 'CSS', 'JavaScript', 'TypeScript', 'User Research', 'Wireframing', 'Prototyping', 'Branding', 'Design Systems', 'Leadership', 'Teamwork', 'Communication', 'Problem Solving', 'Agile', 'Scrum', 'Adobe AfterEffects', 'SolidWorks', 'G CODE', 'Siemens NX', 'Lightroom', 'Visual Storytelling', 'Astrophotography', 'Power BI', 'R', 'Python', 'MATLAB', 'NET LOGO', 'Internet of Things', 'Data Analysis', 'Data Visualization', 'Julia (In progress)', 'AI/ML (PyTorch, TensorFlow, Scikit-learn, etc.)', 'SQL', 'NoSQL', 'GitHub', 'Docker', 'K8s', 'Architecture Visualization', 'Network', 'CloudFlare', 'Linux', 'Digital Marketing Strategy', 'Product Photography', 'Rendering', 'Competitive Analysis', 'Negotiation', 'Design Thinking', 'Rapid Prototyping', 'Manufacturing Processes', 'Material Selection', 'Interface Design'
+];
 
 export default function ResumePage() {
   const theme = useTheme();
@@ -199,42 +194,29 @@ export default function ResumePage() {
           <Typography variant="h5" sx={{ color: theme.palette.text.secondary, fontWeight: theme.typography.body1.fontWeight, mb: 3 }}>
             Skills
           </Typography>
-          <Grid container spacing={3}>
-            {Object.entries(skills).map(([category, skillList]) => (
-              <Grid item xs={12} md={6} key={category}>
-                <Card sx={{ 
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+            {skills.map((skill, index) => (
+              <Box
+                key={index}
+                sx={{
                   ...glassmorphism.base,
                   ...glassmorphism.withHighlights,
-                  ...glassmorphism.hover,
                   ...noisyBackgroundStyle,
-                  p: 3, 
-                  borderRadius: theme.shape.borderRadius, 
-                  boxShadow: 0 
-                }}>
-                  <Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: theme.typography.h6.fontWeight, mb: 2 }}>
-                    {category}
-                  </Typography>
-                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                    {skillList.map((skill, index) => (
-                      <Chip
-                        key={index}
-                        label={skill}
-                        size="small"
-                        sx={{
-                          ...glassmorphism.base,
-                          borderWidth: '1px',
-                          borderStyle: 'solid',
-                          borderColor: 'rgba(255, 255, 255, 0.2)',
-                          color: 'text.secondary',
-                        }}
-                        variant="outlined"
-                      />
-                    ))}
-                  </Box>
-                </Card>
-              </Grid>
+                  color: theme.palette.text.secondary,
+                  px: 2,
+                  py: 1,
+                  borderRadius: theme.shape.borderRadius,
+                  border: `1px solid ${theme.palette.divider}`,
+                  fontSize: theme.typography.body2.fontSize,
+                  fontWeight: theme.typography.body1.fontWeight,
+                  display: 'inline-block',
+                  mb: 1,
+                }}
+              >
+                {skill}
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </Box>
 
         {/* Experience, Education, and Honors Sections */}
