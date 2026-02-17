@@ -578,7 +578,11 @@ const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
                               const m = line.match(/^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$/);
                               if (m) {
                                 const key = m[1];
-                                propsObj[key] = m[2];
+                                let val = m[2];
+                                if (val === 'true') val = true;
+                                else if (val === 'false') val = false;
+                                else if (!isNaN(Number(val))) val = Number(val);
+                                propsObj[key] = val;
                               }
                             });
                             return (

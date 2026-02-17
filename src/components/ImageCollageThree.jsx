@@ -10,27 +10,41 @@ export default function ImageCollageThree({
   alt2 = '',
   alt3 = '',
   caption = '',
+  gap = 1.5,
+  leftRatio = 2,
+  rightRatio = 1,
+  topAspect = '16 / 9',
+  bottomAspect = '16 / 9',
+  fit = 'cover',
+  rightFit,
+  rightImageWidth = '100%',
+  rightImageHeight = '100%',
+  mobileTopHeight = 220,
+  mobileBottomHeight = 220,
+  mobilePortraitHeight = 320,
+  noGlass = false,
 }) {
   const theme = useTheme();
+  const hasSecondImage = Boolean(image2);
 
-  if (!image1 || !image2 || !image3) {
+  if (!image1 || !image3) {
     return null;
   }
 
-  return (
-    <GlassSection sx={{ p: 2 }}>
+  const content = (
+    <Box sx={{ p: 2 }}>
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' },
-          gap: 1.5,
+          gridTemplateColumns: { xs: '1fr', md: `${leftRatio}fr ${rightRatio}fr` },
+          gap,
         }}
       >
         <Box
           sx={{
             display: 'grid',
-            gridTemplateRows: { xs: 'auto auto', md: '1fr 1fr' },
-            gap: 1.5,
+            gridTemplateRows: { xs: hasSecondImage ? 'auto auto' : 'auto', md: hasSecondImage ? '1fr 1fr' : '1fr' },
+            gap,
             gridColumn: { xs: '1 / -1', md: '1 / 2' },
           }}
         >
@@ -40,30 +54,34 @@ export default function ImageCollageThree({
             alt={alt1}
             sx={{
               width: '100%',
-              height: { xs: 220, md: '100%' },
-              aspectRatio: { xs: 'auto', md: '16 / 9' },
-              objectFit: 'cover',
+              height: { xs: mobileTopHeight, md: '100%' },
+              aspectRatio: { xs: 'auto', md: topAspect },
+              objectFit: fit,
               borderRadius: theme.shape.borderRadius,
             }}
           />
-          <Box
-            component="img"
-            src={image2}
-            alt={alt2}
-            sx={{
-              width: '100%',
-              height: { xs: 220, md: '100%' },
-              aspectRatio: { xs: 'auto', md: '16 / 9' },
-              objectFit: 'cover',
-              borderRadius: theme.shape.borderRadius,
-            }}
-          />
+          {hasSecondImage ? (
+            <Box
+              component="img"
+              src={image2}
+              alt={alt2}
+              sx={{
+                width: '100%',
+                height: { xs: mobileBottomHeight, md: '100%' },
+                aspectRatio: { xs: 'auto', md: bottomAspect },
+                objectFit: fit,
+                borderRadius: theme.shape.borderRadius,
+              }}
+            />
+          ) : null}
         </Box>
         <Box
           sx={{
             gridColumn: { xs: '1 / -1', md: '2 / 3' },
             display: 'flex',
             minHeight: 0,
+            alignItems: { xs: 'stretch', md: 'flex-start' },
+            justifyContent: { xs: 'center', md: 'flex-start' },
           }}
         >
           <Box
@@ -71,10 +89,14 @@ export default function ImageCollageThree({
             src={image3}
             alt={alt3}
             sx={{
-              width: '100%',
-              height: { xs: 320, md: '100%' },
-              objectFit: 'cover',
+              width: { xs: '100%', md: rightImageWidth },
+              height: { xs: mobilePortraitHeight, md: rightImageHeight },
+              maxWidth: '100%',
+              maxHeight: '100%',
+              objectFit: rightFit || fit,
               borderRadius: theme.shape.borderRadius,
+              mx: { xs: 0, md: 0 },
+              my: { xs: 0, md: 0 },
             }}
           />
         </Box>
@@ -84,7 +106,13 @@ export default function ImageCollageThree({
           {caption}
         </Typography>
       ) : null}
-    </GlassSection>
+    </Box>
   );
+
+  if (noGlass) {
+    return content;
+  }
+
+  return <GlassSection sx={{ p: 0 }}>{content}</GlassSection>;
 }
 
