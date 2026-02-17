@@ -1,6 +1,6 @@
 # Highmark Center for Student Activities Branding - Brand Design
 
-![Highmark Center Brand Identity](/images/projects/highmark-center-brand.jpg)
+![Highmark Center Brand Identity](/images/projects/cmu-wellness.png)
 
 ## Project Overview
 

@@ -1,149 +1,103 @@
-# Design and Prototyping an Electric Motorcycle - EV and Mobility
 
-![Electric Motorcycle Prototype](/images/projects/e-bike-prototype.jpg)
+![Pakrun Hero](/images/projects/Pakrun-hero.jpg)
 
-## Project Overview
 
-The Electric Motorcycle project represents a comprehensive design and prototyping effort focused on creating a next-generation electric vehicle for urban mobility. This project combines mechanical engineering, electrical systems design, and user experience considerations to develop a sustainable, efficient, and user-friendly electric motorcycle.
-
-## The Challenge
-
-Urban transportation faces significant challenges:
-- **Environmental Impact**: Traditional vehicles contribute to air pollution
-- **Energy Efficiency**: Conventional engines waste significant energy
-- **Urban Congestion**: Large vehicles contribute to traffic problems
-- **Cost of Ownership**: High fuel and maintenance costs for traditional vehicles
-
-## Our Solution
-
-We developed a cutting-edge electric motorcycle that:
-- **Zero Emissions**: Completely electric powertrain with no direct emissions
-- **High Efficiency**: Advanced motor and battery technology for optimal performance
-- **Urban Optimized**: Compact design perfect for city commuting
-- **Cost Effective**: Lower operating costs compared to traditional vehicles
-
-## Design Process
-
-### Research & Discovery
-- **Market Analysis**: Studied existing electric motorcycle solutions
-- **User Research**: Interviewed commuters, delivery drivers, and enthusiasts
-- **Technology Assessment**: Evaluated motor, battery, and control systems
-- **Regulatory Compliance**: Analyzed safety and emissions requirements
-
-### Engineering Design
-- **Mechanical Design**: Chassis, suspension, and structural components
-- **Electrical Systems**: Motor, battery, and control electronics
-- **Safety Systems**: Braking, lighting, and emergency systems
-- **Aerodynamic Design**: Optimized for efficiency and performance
-
-### Prototyping & Testing
-- **3D Modeling**: Comprehensive CAD models for all components
-- **Prototype Fabrication**: Physical prototypes for testing and validation
-- **Performance Testing**: Speed, range, and efficiency measurements
-- **Safety Testing**: Crash testing and safety system validation
-
-## Key Features
-
-### Electric Powertrain
-- **High-Efficiency Motor**: Brushless DC motor with 95% efficiency
-- **Advanced Battery**: Lithium-ion battery with 200-mile range
-- **Smart Charging**: Fast charging capability with intelligent management
-- **Regenerative Braking**: Energy recovery during deceleration
-
-### Suspension Design
-- **Custom Suspension**: Optimized for electric vehicle characteristics
-- **Adjustable Settings**: Rider-adjustable suspension for different conditions
-- **Lightweight Construction**: Advanced materials for optimal performance
-- **Durability**: Designed for long-term reliability and low maintenance
-
-### Smart Features
-- **Mobile App Integration**: Smartphone connectivity for monitoring and control
-- **GPS Navigation**: Built-in navigation with route optimization
-- **Theft Protection**: Advanced security system with tracking capabilities
-- **Performance Monitoring**: Real-time data on battery, speed, and efficiency
-
-### Safety Systems
-- **Advanced Braking**: ABS and regenerative braking for optimal stopping
-- **LED Lighting**: High-visibility lighting for safety
-- **Crash Protection**: Reinforced frame and impact-absorbing design
-- **Emergency Systems**: Automatic emergency calls and location sharing
-
-## Technical Architecture
-
-### Mechanical Components
-- **Aluminum Frame**: Lightweight, strong chassis design
-- **Carbon Fiber Body**: Advanced materials for weight reduction
-- **Custom Wheels**: Optimized for electric vehicle performance
-- **Modular Design**: Easy maintenance and component replacement
-
-### Electrical Systems
-- **Motor Controller**: Advanced control algorithms for smooth operation
-- **Battery Management**: Intelligent battery monitoring and protection
-- **Charging System**: Fast charging with thermal management
-- **Power Distribution**: Efficient electrical system design
-
-### Control Systems
-- **Electronic Control Unit**: Centralized management of all systems
-- **Sensors**: Comprehensive monitoring of vehicle performance
-- **User Interface**: Intuitive controls and displays
-- **Connectivity**: WiFi and Bluetooth for remote monitoring
-
-## User Experience Design
-
-### Rider Interface
-- **Digital Dashboard**: Clear display of speed, battery, and navigation
-- **Touch Controls**: Intuitive interface for all vehicle functions
-- **Voice Commands**: Hands-free operation for safety
-- **Mobile App**: Comprehensive control and monitoring from smartphone
-
-### Charging Experience
-- **Fast Charging**: 80% charge in 30 minutes
-- **Smart Scheduling**: Automatic charging during off-peak hours
-- **Public Charging**: Compatibility with standard charging stations
-- **Home Integration**: Seamless integration with home energy systems
-
-### Maintenance
-- **Predictive Maintenance**: AI-powered system health monitoring
-- **Modular Design**: Easy component replacement and upgrades
-- **Remote Diagnostics**: Cloud-based monitoring and troubleshooting
-- **Service Network**: Comprehensive support and maintenance network
-
-## Results & Impact
-
-### Performance Metrics
-- **Range**: 200 miles on single charge
-- **Top Speed**: 80 mph with smooth acceleration
-- **Charging Time**: 30 minutes for 80% charge
-- **Efficiency**: 95% energy conversion efficiency
-
-### Competition Success
-- **First Place Design**: Awarded top honors in IMDC competition
-- **Innovation Recognition**: Industry recognition for design innovation
-- **Commercial Interest**: Multiple companies interested in licensing
-- **Patent Applications**: Several patents filed for innovative features
-
-### Environmental Impact
-- **Zero Emissions**: No direct emissions during operation
-- **Energy Efficiency**: 80% more efficient than traditional motorcycles
-- **Sustainable Materials**: Recyclable and environmentally friendly components
-- **Lifecycle Analysis**: Comprehensive environmental impact assessment
-
-## Lessons Learned
-
-This project reinforced the importance of:
-- **Systems Integration**: Balancing mechanical, electrical, and software requirements
-- **User-Centered Design**: Focusing on rider needs and safety
-- **Performance Optimization**: Balancing efficiency, range, and cost
-- **Safety Engineering**: Prioritizing rider safety in all design decisions
-
-## Future Development
-
-Plans for future iterations include:
-- **Autonomous Features**: Advanced driver assistance systems
-- **Battery Technology**: Next-generation batteries for extended range
-- **Connectivity**: Enhanced IoT integration and smart city compatibility
-- **Manufacturing**: Scalable production processes for commercial launch
+```wwh
+Why: The 5th Iranian Machine Design Competition challenged university teams to design and construct a civic electric motorcycle capable of competing in a full race weekend, including acceleration, speed, endurance, and reliability tests. The project required translating theoretical mechanical and electrical engineering knowledge into a fully operational, high-performance vehicle under strict competition constraints and timelines. Beyond performance, the motorcycle needed to satisfy structural integrity, manufacturability, and cohesive industrial design standards across two formal evaluation phases: design and construction.
 
 ---
+What: As part of a thirteen-member interdisciplinary team formed under the name Pakrun, we designed and prototyped a fully functional electric sports motorcycle from the ground up. The project encompassed complete system architecture, including powertrain design, suspension system, braking system, chassis fabrication, battery selection, body development, and electrical integration. Our team secured first place in the design phase of the competition. In the final performance tests, the motorcycle achieved first place in the 100-meter speed competition, reaching over 140 km/h.
 
-*This project demonstrates my ability to design complex electromechanical systems that balance performance, safety, and user experience requirements.* 
+---
+How: We began with benchmarking peer electric motorcycles and analyzing competition requirements to establish performance targets for acceleration, top speed, and structural stability. I led the design of the suspension and braking systems, ensuring dynamic stability under high acceleration and race conditions. I also contributed to motor power selection, speed and acceleration calculations, and acted as the intermediary between engineering and industrial design to maintain alignment between performance constraints and aesthetic intent.
+```
+
+<!-- bg:none -->
+# Team Pakrun
+
+During the manufacturing phase, I joined a small fabrication team responsible for constructing the fiberglass and composite body. We executed CNC preparation, mold development, forging, surface finishing, and painting. The chassis was welded and assembled in-house, suspension components were integrated, battery compartments engineered, and wiring for actuators, sensors, and motor systems completed. Less than a week before the final race, an accidental fire damaged the motorcycles, forcing a complete rebuild under extreme time pressure. The team worked continuously to reconstruct and test the vehicle before competition, ultimately delivering a race-ready system.
+
+
+```video
+src: https://stream.mux.com/U3KUB02p5n8YEhQed3xSlnqB2rjTIu00R2qQsYFO4007zM.m3u8
+poster: /images/projects/repair-methods-wp.png
+controls: true
+autoplay: false
+loop: false
+muted: false
+aspectRatio: 16 / 9
+caption: Repair Methods Demo
+```
+
+
+![Pakrun Burnet](/images/projects/pakrun-burnt.jpg)
+![Pakrun Team](/images/projects/pakrun-team-2.jpg)
+
+```card2
+size: 2/3
+title: Core Opportunity
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Market Scope
+
+---
+## In 2015, electric motorcycle performance engineering was still emerging within academic competitions.
+```
+
+```card2
+size: 1/3
+title: Fly Pakrun
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# The X Factor
+
+---
+## Nailed 140 kmh in 100m race
+```
+```card2
+size: 1/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# From Ashes to the Race-line
+
+---
+## Rebuilt a totally burnet bike in just **1 Week**
+```
+
+```card2
+size: 2/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Our Team
+
+---
+## “13 curious engineers and designer, took on the challenge of creating something unique”
+```
+
+<!-- bg:none -->
+# Design Method
+
+### Discover
+
+We analyzed competition constraints, benchmarked peer electric motorcycles, and defined performance targets for speed, acceleration, endurance, and handling. System-level interdependencies between motor output, weight distribution, battery capacity, and suspension geometry were mapped early in the process.systemic gap.
+
+### Define
+
+The challenge was framed as designing a race-capable electric motorcycle that balanced power, structural integrity, and manufacturability within limited resources and time. Clear subsystem ownership was established, and performance calculations informed motor selection, braking capacity, and suspension geometry.
+
+### Develop
+
+Suspension and braking systems were engineered to support high-speed stability and safe deceleration under race conditions. Powertrain components were selected based on torque and acceleration modeling. The chassis was fabricated and assembled in-house, followed by battery integration, electrical wiring, and composite body construction using fiberglass and carbon fiber techniques. After the fire incident, rapid redesign and reconstruction efforts were executed to restore structural and functional integrity.
+![Workers at work](/images/projects/workers-at-work.jpg)
+![Pakrun Re-Built](/images/projects/pakrun-solo.jpg)
+![Me Smiling, rolling, pushing](/images/projects/dandan.jpg)
+### Deliver
+The motorcycle passed design evaluation and won first place in the competition’s design phase. In performance testing, it achieved first place in the 100-meter acceleration event, exceeding 140 km/h, demonstrating successful integration of mechanical, electrical, and structural systems under competitive constraints.
+
+```extlink
+title: CCC Intelligent Solutions
+url: https://www.cccis.com
+openInNew: true
+```
+
+

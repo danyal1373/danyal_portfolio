@@ -1,10 +1,28 @@
-# Workflow Digital Analyzer - **CONFIDENTIAL**
+```nda
+Certain engineering drawings and performance benchmarks are under NDA. This page shows only high-level visuals and public-ready summaries.
+For more detailed information about the project please reach out to Danyal.
+```
 
-![Workflow Digital Analyzer Interface](/images/projects/wda-product.jpg)
+
+# Smart Insutrance Service Prediction Tool
+
+![Workflow Digital Analyzer Interface](/images/projects/wda-5.png)
 
 ## Project Overview
 
 The Workflow Digital Analyzer project represents a confidential software product designed to optimize business processes through intelligent workflow analysis and automation. This project combines advanced analytics, machine learning, and user experience design to create a powerful tool for process optimization and digital transformation.
+
+
+```video
+src: https://stream.mux.com/7YWDO91j1zwIKpEDIM01DvRL1OBf900RUCQB1OzT1GutE.m3u8
+poster: /images/projects/wda-wp.png
+controls: true
+autoplay: false
+loop: false
+muted: false
+aspectRatio: 16 / 9
+caption: Repair Methods
+```
 
 ## The Challenge
 
@@ -29,6 +47,7 @@ We developed an intelligent workflow analysis platform that:
 - **User Research**: Interviewed process owners and end users
 - **Technology Assessment**: Evaluated existing systems and integration requirements
 - **Compliance Review**: Analyzed regulatory requirements and reporting needs
+![Workflow Digital Analyzer Process](/images/projects/wda-process.png)
 
 ### System Architecture Design
 - **Modular Design**: Scalable components for different process types
@@ -41,6 +60,11 @@ We developed an intelligent workflow analysis platform that:
 - **Visual Analytics**: Clear, actionable insights through data visualization
 - **Role-based Access**: Customized views for different user types
 - **Mobile Optimization**: Responsive design for on-the-go monitoring
+
+![Workflow Digital Analyzer 1](/images/projects/wda-1.png)
+![Workflow Digital Analyzer 2](/images/projects/wda-2.png)
+![Workflow Digital Analyzer 3](/images/projects/wda-3.png)
+![Workflow Digital Analyzer 4](/images/projects/wda-4.png)
 
 ## Key Features
 
@@ -152,4 +176,8 @@ Plans for future iterations include:
 
 ---
 
-*This project demonstrates my ability to design complex enterprise software systems that optimize business processes and drive digital transformation.* 
+```extlink
+title: CCC Intelligent Solutions
+url: https://www.cccis.com
+openInNew: true
+```
