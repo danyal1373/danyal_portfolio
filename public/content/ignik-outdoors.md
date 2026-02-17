@@ -129,6 +129,16 @@ thumb: /images/projects/ignik-outdoors-thumb.jpg
 Key Insight:
 Thermal discomfort during stationary activities (eating, gathering, supervising children) is the primary trigger for early retreat indoors.
 
+```gallery
+aspectRatio: 16 / 9
+seconds: 5
+item: /images/projects/phase-2/position-map/position-1.png | Page 1
+item: /images/projects/phase-2/position-map/position-2.png | Page 2
+item: /images/projects/phase-2/position-map/position-3.png | Page 3
+item: /images/projects/phase-2/position-map/position-4.png | Page 4
+
+```
+
 ### Define
 
 
@@ -145,6 +155,39 @@ Product Requirements:
 - Durable in wet environments
 
 - Cohesive with Ignik’s design language
+
+```gallery
+aspectRatio: 16 / 9
+seconds: 5
+item: /images/projects/phase-2/voa-1.png | Page 1
+item: /images/projects/phase-2/voa-2.png | Page 2
+item: /images/projects/phase-2/voa-3.png | Page 3
+item: /images/projects/phase-2/voa-4.png | Page 4
+item: /images/projects/phase-2/voa-5.png | Page 5
+item: /images/projects/phase-2/voa-6.png | Page 6
+item: /images/projects/phase-2/voa-7.png | Page 7
+item: /images/projects/phase-2/voa-8.png | Page 8
+item: /images/projects/phase-2/voa-9.png | Page 9
+item: /images/projects/phase-2/voa-10.png | Page 10
+item: /images/projects/phase-2/voa-11.png | Page 11
+item: /images/projects/phase-2/voa-12.png | Page 12
+item: /images/projects/phase-2/voa-13.png | Page 13
+item: /images/projects/phase-2/voa-14.png | Page 14
+item: /images/projects/phase-2/voa-15.png | Page 15
+item: /images/projects/phase-2/voa-16.png | Page 16
+item: /images/projects/phase-2/voa-17.png | Page 17
+item: /images/projects/phase-2/voa-18.png | Page 18
+item: /images/projects/phase-2/voa-19.png | Page 19
+item: /images/projects/phase-2/voa-20.png | Page 20
+item: /images/projects/phase-2/voa-21.png | Page 21
+item: /images/projects/phase-2/voa-22.png | Page 22
+item: /images/projects/phase-2/voa-23.png | Page 23
+item: /images/projects/phase-2/voa-24.png | Page 24
+item: /images/projects/phase-2/voa-25.png | Page 25
+item: /images/projects/phase-2/voa-26.png | Page 26
+item: /images/projects/phase-2/voa-27.png | Page 27
+item: /images/projects/phase-2/voa-28.png | Page 28
+```
 
 ### Develop
 
@@ -177,6 +220,8 @@ Outcome:
 - Strengthened Ignik’s sustainable innovation narrative.
 
 - Opened pathway for ecosystem expansion into modular outdoor comfort systems.
+
+![Ignik Outdoors Product](/images/projects/ignik-thumb.png)
 
 ```extlink
 title: Project Blog

@@ -26,7 +26,7 @@ Created an Agentic Reporting system which saves company an estimate of **$600k y
 
 
 ```video
-src: https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4
+src: https://stream.mux.com/l0100kt00PXpWnbUgwlVxlU0002CLSXiQmdmD01PTcIXKnruU.m3u8
 poster: /images/projects/ccc-wo.png
 controls: true
 autoplay: false

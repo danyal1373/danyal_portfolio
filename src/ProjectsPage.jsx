@@ -172,7 +172,7 @@ export default function ProjectsPage() {
   });
 
   const projectsByCategory = categories.reduce((acc, category) => {
-    const projs = allProjects.filter(p => p.category === category && !p.featured);
+    const projs = allProjects.filter(p => p.category === category);
     if (projs.length > 0) {
       acc[category] = projs;
     }

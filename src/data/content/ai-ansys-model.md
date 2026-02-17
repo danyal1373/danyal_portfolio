@@ -1,6 +1,30 @@
-# Similarity Identifier, AI for Industrial Uses - Ansys Product Proposal
+# Grundfos Pump Maintanance Prediction Model
 
-![AI Ansys Model Interface](/images/projects/grundfos.png)
+```gallery
+aspectRatio: 16 / 9
+seconds: 5
+item: /images/projects/grundfos/Grundfos_Page_01.png | Page 1
+item: /images/projects/grundfos/Grundfos_Page_02.png | Page 2
+item: /images/projects/grundfos/Grundfos_Page_03.png | Page 3
+item: /images/projects/grundfos/Grundfos_Page_04.png | Page 4
+item: /images/projects/grundfos/Grundfos_Page_05.png | Page 5
+item: /images/projects/grundfos/Grundfos_Page_06.png | Page 6
+item: /images/projects/grundfos/Grundfos_Page_07.png | Page 7
+item: /images/projects/grundfos/Grundfos_Page_08.png | Page 8
+item: /images/projects/grundfos/Grundfos_Page_09.png | Page 9
+item: /images/projects/grundfos/Grundfos_Page_10.png | Page 10
+item: /images/projects/grundfos/Grundfos_Page_11.png | Page 11
+item: /images/projects/grundfos/Grundfos_Page_12.png | Page 12
+item: /images/projects/grundfos/Grundfos_Page_13.png | Page 13
+item: /images/projects/grundfos/Grundfos_Page_14.png | Page 14
+item: /images/projects/grundfos/Grundfos_Page_15.png | Page 15
+item: /images/projects/grundfos/Grundfos_Page_16.png | Page 16
+item: /images/projects/grundfos/Grundfos_Page_17.png | Page 17
+item: /images/projects/grundfos/Grundfos_Page_18.png | Page 18
+item: /images/projects/grundfos/Grundfos_Page_19.png | Page 19
+item: /images/projects/grundfos/Grundfos_Page_20.png | Page 20
+item: /images/projects/grundfos/Grundfos_Page_21.png | Page 21
+```
 
 ## Project Overview
 

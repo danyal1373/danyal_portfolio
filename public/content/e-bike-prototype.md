@@ -79,8 +79,9 @@ size: 2/3
 
 ### Discover
 
-We analyzed competition constraints, benchmarked peer electric motorcycles, and defined performance targets for speed, acceleration, endurance, and handling. System-level interdependencies between motor output, weight distribution, battery capacity, and suspension geometry were mapped early in the process.systemic gap.
+We analyzed competition constraints, benchmarked peer electric motorcycles, and defined performance targets for speed, acceleration, endurance, and handling. System-level interdependencies between motor output, weight distribution, battery capacity, and suspension geometry were mapped early in the process.
 
+![Pakrun Diagram 1](/images/projects/ev-pakrun-diagram-2.png)
 ### Define
 
 The challenge was framed as designing a race-capable electric motorcycle that balanced power, structural integrity, and manufacturability within limited resources and time. Clear subsystem ownership was established, and performance calculations informed motor selection, braking capacity, and suspension geometry.
@@ -96,6 +97,8 @@ seconds: 6
 ### Develop
 
 Suspension and braking systems were engineered to support high-speed stability and safe deceleration under race conditions. Powertrain components were selected based on torque and acceleration modeling. The chassis was fabricated and assembled in-house, followed by battery integration, electrical wiring, and composite body construction using fiberglass and carbon fiber techniques. After the fire incident, rapid redesign and reconstruction efforts were executed to restore structural and functional integrity.
+![Pakrun Diagram 2](/images/projects/ev-pakrun-diagram.png)
+
 ```album3
 image1: /images/projects/dandan.png
 alt1: Workers at work
