@@ -5,18 +5,14 @@ import {
   Chip, 
   Grid, 
   Card, 
-  CardContent, 
-  Divider,
   Skeleton,
-  Button,
-  IconButton,
-  Alert
+  Button
 } from '@mui/material';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import LockIcon from '@mui/icons-material/Lock';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+// import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PersonIcon from '@mui/icons-material/Person';
 import BusinessIcon from '@mui/icons-material/Business';
@@ -179,27 +175,8 @@ const ProjectDetailPage = () => {
           }}
         >
           <Grid container spacing={4}>
-            {/* Project Image */}
-            <Grid item xs={12} md={6}>
-              <Box
-                component="img"
-                src={project.image}
-                alt={project.title}
-                sx={{
-                  width: '100%',
-                  height: 300,
-                  objectFit: 'cover',
-                  borderRadius: theme.shape.borderRadius,
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                }}
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/600x300?text=Project+Image';
-                }}
-              />
-            </Grid>
-
             {/* Project Info */}
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12}>
               <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                 <Typography variant="overline" sx={{ color: theme.palette.primary.main, fontWeight: theme.typography.h2.fontWeight }}>
                   {project.category}
@@ -345,36 +322,41 @@ const ProjectDetailPage = () => {
 
         {/* Project Content */}
         {(!project.passwordProtected || isProjectUnlocked(projectId)) ? (
-          <Card
-            sx={{
-              ...glassmorphism.base,
-              ...glassmorphism.withHighlights,
-              ...glassmorphism.hover,
-              ...noisyBackgroundStyle,
-              p: 4,
-              borderRadius: theme.shape.borderRadius * 2,
-            }}
-          >
+          <>
             {contentError ? (
-              <Box sx={{ textAlign: 'center', py: 4 }}>
-                <Typography variant="h6" sx={{ color: theme.palette.error.main, mb: 2 }}>
-                  Content Loading Error
-                </Typography>
-                <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2 }}>
-                  {contentError}
-                </Typography>
-                <Button 
-                  variant="outlined" 
-                  onClick={() => window.location.reload()}
-                  sx={{ mt: 2 }}
-                >
-                  Retry
-                </Button>
-              </Box>
+              <Card
+                sx={{
+                  ...glassmorphism.base,
+                  ...glassmorphism.withHighlights,
+                  ...glassmorphism.hover,
+                  ...noisyBackgroundStyle,
+                  p: 4,
+                  borderRadius: theme.shape.borderRadius * 2,
+                  mb: 4,
+                }}
+              >
+                <Box sx={{ textAlign: 'center', py: 4 }}>
+                  <Typography variant="h6" sx={{ color: theme.palette.error.main, mb: 2 }}>
+                    Content Loading Error
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: theme.palette.text.secondary, mb: 2 }}>
+                    {contentError}
+                  </Typography>
+                  <Button 
+                    variant="outlined" 
+                    onClick={() => window.location.reload()}
+                    sx={{ mt: 2 }}
+                  >
+                    Retry
+                  </Button>
+                </Box>
+              </Card>
             ) : (
-              <MarkdownRenderer content={content} />
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                <MarkdownRenderer content={content} sectionByH2 />
+              </Box>
             )}
-          </Card>
+          </>
         ) : (
           <Card
             sx={{

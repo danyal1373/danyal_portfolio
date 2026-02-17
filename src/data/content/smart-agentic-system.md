@@ -1,143 +1,231 @@
-# Smart Agentic Reporting System - Faster Insights, Smarter Decisions
 
-![Smart Agentic System Dashboard](/images/projects/smart-agentic-dashboard.jpg)
+```nda
+Certain engineering drawings and performance benchmarks are under NDA. This page shows only high-level visuals and public-ready summaries.
+For more detailed information about the project please reach out to Danyal.
+```
 
-## Project Overview
+![Smart Agentic System Dashboard](/images/projects/agentic-reporting-home.png)
+![Smart Agentic System Dashboard](/images/projects/agentic-reporting-second.png)
 
-The Smart Agentic Reporting System represents a cutting-edge AI-powered platform designed to revolutionize how organizations analyze data and generate insights. This project demonstrates the integration of artificial intelligence, user experience design, and advanced analytics to create an intelligent reporting solution.
+
+
+```wwh
+Why: Internal teams were spending significant time assembling reports to explain model decisions, extract insights, and support business/customer conversations. The reporting process was fragmented, manual, and slow — limiting responsiveness and clarity in customer-facing interactions.
+
+---
+What: We designed and prototyped a smart agentic reporting system that autonomously generated contextualized analyses explaining internal model outputs and surfaced decision-relevant insights for business teams and customers.
+
+---
+How: Through user observation, agentic systems research, LLM benchmarking, and infrastructure optimization, we architected a modular multi-agent system capable of accelerating report generation while improving interpretability and decision support quality.
+```
+
+<!-- bg:none -->
+# Project Overview
+
+Created an Agentic Reporting system which saves company an estimate of **$600k yearly** and saves team's time for a **200 hours** of effort weekly.
+
+
+
+```video
+src: https://stream.mux.com/fT5y52lvchQeRfAnqimYXfwcVGf4Cr4W1xjsm6o5S5w.m3u8
+poster: /images/projects/ccc-wo.png
+controls: true
+autoplay: false
+loop: false
+muted: false
+aspectRatio: 16 / 9
+caption: Agentic Reporting Demo
+```
+
 
 ## The Challenge
 
-Organizations struggle with:
-- **Manual Data Analysis**: Time-consuming manual processes for data interpretation
-- **Inconsistent Insights**: Human bias and error in reporting
-- **Scalability Issues**: Limited capacity to handle large datasets
-- **Decision Delays**: Slow turnaround times for critical business insights
+### Customer Pain Point
 
-## Our Solution
+- Teams manually stitching together reports.
 
-We developed an intelligent agentic system that:
-- **Automates Analysis**: AI-powered data processing and pattern recognition
-- **Generates Insights**: Automated report generation with actionable recommendations
-- **Learns Continuously**: Adaptive algorithms that improve over time
-- **Ensures Accuracy**: Consistent, unbiased analysis across all datasets
+- Difficulty articulating why internal models produced certain outputs.
 
-## Design Process
+- Delayed turnaround for business and customer-facing reporting.
 
-### Research & Discovery
-- Analyzed existing reporting workflows and pain points
-- Conducted user interviews with data analysts and business stakeholders
-- Studied current AI/ML solutions in the market
-- Identified key requirements for intelligent automation
+- Cognitive overload in navigating model-level details.
 
-### System Architecture Design
-- Designed modular AI components for different analysis types
-- Created scalable data processing pipeline
-- Developed intuitive user interface for human-AI collaboration
-- Planned for real-time data integration capabilities
+### Organizational Constraint
 
-### User Experience Design
-- Designed intuitive dashboard for monitoring AI analysis
-- Created natural language query interface
-- Developed customizable report templates
-- Implemented real-time notification system
+- High levels of regulatory pressure about data governance.
 
-## Key Features
+- Need for explainability and transparency in model-driven decisions.
 
-### Intelligent Data Processing
-- **Multi-format Support**: Handles CSV, JSON, SQL databases, and APIs
-- **Real-time Processing**: Live data analysis and updates
-- **Pattern Recognition**: Advanced ML algorithms for trend detection
-- **Anomaly Detection**: Automatic identification of unusual patterns
+- Reports must be technically accurate yet digestible for non-technical stakeholders.
 
-### Automated Report Generation
-- **Natural Language Reports**: AI-generated insights in plain English
-- **Visual Analytics**: Interactive charts and graphs
-- **Customizable Templates**: Branded report formats
-- **Scheduled Delivery**: Automated report distribution
+- Performance and latency constraints for real-time usability.
 
-### Human-AI Collaboration
-- **Interactive Interface**: Users can guide AI analysis
-- **Explainable AI**: Clear reasoning for all insights
-- **Feedback Loop**: Continuous learning from user corrections
-- **Role-based Access**: Different capabilities for different user types
+### Strategic Opportunity
 
-## Technical Architecture
+Transform reporting from static documentation to intelligent decision-support interface.
 
-### AI/ML Components
-- **Natural Language Processing**: For query understanding and report generation
-- **Machine Learning Models**: For pattern recognition and prediction
-- **Computer Vision**: For chart and graph analysis
-- **Reinforcement Learning**: For continuous system improvement
 
-### Frontend Technologies
-- **React**: Modern, responsive user interface
-- **D3.js**: Advanced data visualization
-- **Material-UI**: Consistent design system
-- **Real-time Updates**: WebSocket integration
+```card2
+size: 2/3
+title: Core Opportunity
+thumb: /images/projects/ignik-outdoors-thumb.jpg
 
-### Backend Infrastructure
-- **Node.js**: Scalable server architecture
-- **Python**: AI/ML processing pipeline
-- **PostgreSQL**: Structured data storage
-- **Redis**: Caching and session management
 
-## User Experience Design
-
-### Dashboard Interface
-- **Real-time Monitoring**: Live system status and analysis progress
-- **Quick Actions**: One-click report generation
-- **Search & Filter**: Easy navigation through historical reports
-- **Customizable Layout**: Personalized dashboard arrangement
-
-### Report Viewer
-- **Interactive Charts**: Clickable visualizations with drill-down capabilities
-- **Export Options**: PDF, Excel, PowerPoint formats
-- **Sharing Features**: Secure link sharing with access controls
-- **Version Control**: Track changes and maintain report history
-
-### Query Interface
-- **Natural Language Input**: "Show me sales trends for Q3"
-- **Query Builder**: Visual interface for complex queries
-- **Saved Queries**: Reusable analysis templates
-- **Query History**: Track and repeat previous analyses
-
-## Results & Impact
-
-### Performance Improvements
-- **90% Reduction** in report generation time
-- **75% Increase** in data analysis accuracy
-- **60% Decrease** in manual data processing
-- **Real-time Insights** available 24/7
-
-### User Adoption
-- **95% User Satisfaction** score
-- **80% Reduction** in training time for new users
-- **50% Increase** in report consumption
-- **Positive Feedback** from all stakeholder groups
-
-### Business Impact
-- **Faster Decision Making**: Reduced time from data to action
-- **Improved Accuracy**: Consistent, unbiased analysis
-- **Cost Savings**: Reduced manual analysis overhead
-- **Competitive Advantage**: Advanced analytics capabilities
-
-## Lessons Learned
-
-This project reinforced the importance of:
-- **Human-AI Collaboration**: Balancing automation with human oversight
-- **Explainable AI**: Making AI decisions transparent and understandable
-- **User-Centered Design**: Focusing on user needs in AI applications
-- **Iterative Development**: Continuous improvement based on user feedback
-
-## Future Development
-
-Plans for future iterations include:
-- **Advanced NLP**: More sophisticated natural language understanding
-- **Predictive Analytics**: Forecasting capabilities for trend prediction
-- **Mobile Integration**: Native mobile apps for on-the-go insights
-- **API Ecosystem**: Third-party integrations and plugins
+# Time Saving
 
 ---
+## Decrease time spent creating reports 200 hours a week.
+```
 
-*This project demonstrates my ability to design and implement complex AI-powered systems that bridge the gap between advanced technology and practical business needs.* 
+```card2
+size: 1/3
+title: Financial Benefit
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Cost Cutting
+
+---
+## Saved company $600k annually.
+```
+```card2
+size: 1/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Going from 8 hours per report
+
+---
+## To creating a report in 3 minutes.
+```
+
+```card2
+size: 2/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# What we did
+
+---
+## “We facilitated creation of model related insights at scale”
+```
+
+
+<!-- bg:none -->
+# Design Method
+
+### Discover
+
+- Observed internal workflows of report generation.
+
+- Identified repetitive synthesis tasks across teams.
+
+- Mapped friction in translating model outputs into business narratives.
+
+- Conducted research into agentic architectures and orchestration frameworks.
+
+Technical Exploration:
+
+- Evaluated agentic frameworks (e.g., CrewAI, Amazon Bedrock AgentCore).
+
+- Benchmarked LLMs and SLMs for latency, reasoning depth, and cost efficiency (Haiku, OpenAI, Amazon Nova, Mistral, A21 Labs, Llama).
+
+- Investigated MCP server optimization strategies.
+
+Key Insight:
+The bottleneck was not model performance, it was structured explanation and contextual synthesis to justify the performance to customers.
+
+### Define
+
+
+**“How might we design an autonomous system that interprets, contextualizes, and communicates model decisions at business speed?”**
+
+Product Requirements:
+- Restricted data access control
+
+- Multi-agent orchestration
+
+- Modular explainability layer
+
+- Low-latency response
+
+- Scalable infrastructure
+
+- Business-readable outputs
+
+### Develop
+
+Architectural Decisions
+
+Designed an agentic pipeline separating:
+
+- Data retrieval
+
+- Context masking (MCP masking)
+
+- Vectorized retrieval gateway
+
+- Analytical synthesis
+ 
+- Narrative generation
+
+![Smart Agentic System Architecture](/images/projects/solution-architecture.png)
+
+Performance Optimization
+
+- Benchmarked LLM vs. SLM tradeoffs for cost vs. reasoning depth.
+
+- Explored gateway vectorizers to reduce retrieval overhead.
+ 
+- Optimized MCP server efficiency for faster contextual assembly.
+
+![SLM Benchmarking](/images/projects/benchmark.png)
+
+Product Layer
+
+- Designed reporting interface and interactive demos.
+
+- Built prototype flows for executive showcase.
+ 
+- Framed outputs around decision-support rather than technical verbosity.
+
+Key Tradeoffs:
+
+- Model complexity vs. inference speed
+
+- Depth of explanation vs. cognitive simplicity
+ 
+- Infrastructure cost vs. scalability
+ 
+- Autonomy vs. controllability of agent chains
+
+![Workflow Builder](/images/projects/workflow-builder.png)
+### Deliver
+
+Outcome:
+
+- Functional prototype of an agentic reporting system.
+
+- Reduced manual reporting overhead.
+ 
+- Improved speed of relevant insight generation.
+ 
+- Increased clarity for business teams selecting product packages.
+ 
+- Generated executive-level excitement and investment interest.
+
+Role:
+
+- Led product interface design.
+ 
+- Conducted technical research and benchmarking.
+ 
+- Synthesized cross-functional input (technology managers, PMs, business).
+
+- Created demos that secured leadership buy-in.
+
+```extlink
+title: CCC Intelligent Solutions
+url: https://www.cccis.com
+openInNew: true
+```
+
+
+

@@ -6,6 +6,17 @@
 
 Ignik Outdoors represents a breakthrough in sustainable outdoor heating technology, designed specifically for outdoor enthusiasts who value both comfort and environmental responsibility. This project showcases the intersection of mechanical engineering, user-centered design, and sustainable innovation.
 
+```video
+src: https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4
+poster: /images/projects/ignik-outdoors-heater.jpg
+controls: true
+autoplay: false
+loop: false
+muted: false
+aspectRatio: 16 / 9
+caption: Placeholder demo video
+```
+
 ## The Challenge
 
 Outdoor enthusiasts often face the dilemma of staying warm during cold weather activities while maintaining their commitment to environmental sustainability. Traditional heating solutions either rely on fossil fuels or provide insufficient warmth for extended outdoor use.
@@ -19,6 +30,16 @@ We developed a revolutionary heating system that combines:
 - **Durable construction** for harsh environments
 
 ## Design Process
+
+```wwh
+Why: Short rationale…
+
+---
+What: Scope and features…
+
+---
+How: Process, tools, methods…
+```
 
 ### Research Phase
 - Conducted user interviews with outdoor enthusiasts
@@ -59,6 +80,19 @@ We developed a revolutionary heating system that combines:
 - Collapsible design for easy transport
 - Quick setup and takedown
 - Durable materials for outdoor use
+
+```card2
+layout: 1/3-2/3
+
+## Heater core
+- Biomass combustion path schematic
+- Heat exchanger geometry
+
+---
+## Field feedback
+- Setup time improvements
+- Heat distribution in wind
+```
 
 ## Technical Specifications
 
@@ -104,6 +138,10 @@ Plans for future iterations include:
 - Solar charging capabilities
 - Expanded product line for different use cases
 - International market expansion
+
+```nda
+Certain engineering drawings and performance benchmarks are under NDA. This page shows only high-level visuals and public-ready summaries.
+```
 
 ---
 

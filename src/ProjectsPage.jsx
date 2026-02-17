@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Typography, Card, Divider, Grid, Chip } from '@mui/material';
 import AnimatedCircle from './components/AnimatedCircle';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
@@ -16,6 +16,8 @@ const FeaturedProjectCard = ({ project }) => {
   const navigate = useNavigate();
   const { isProjectUnlocked } = usePassword();
   const glassmorphism = useGlassmorphism();
+  const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const handleProjectClick = () => {
     navigate(`/projects/${project.id}`);
@@ -52,26 +54,34 @@ const FeaturedProjectCard = ({ project }) => {
         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
       onClick={handleProjectClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
       variant="elevation"
       elevation={0}
     >
       <Box
         component="img"
+        className="featured-project-image"
         src={project.image}
         alt={project.title}
         sx={{
           position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          maxHeight: '60%',
-          maxWidth: { xs: '80%', md: '50%' },
-          objectFit: 'contain',
-          opacity: 0.5,
-          filter: theme.palette.mode === 'dark' ? 'brightness(0) invert(1)' : 'none',
+          top: 0,
+          right: 0,
+          width: { xs: '58%', md: '66%' },
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          opacity: isHovered && !imageError ? 1 : 0,
+          transform: isHovered ? 'translateX(0)' : 'translateX(18px)',
+          transition: 'opacity 0.35s ease, transform 0.35s ease',
+          filter: 'none',
           zIndex: 0,
+          pointerEvents: 'none',
         }}
-        onError={(e) => { e.target.src = 'https://via.placeholder.com/400x120?text=Image+Not+Found'; e.target.style.opacity = '0.1'; }}
+        onError={() => setImageError(true)}
       />
       
       <Box sx={{ position: 'absolute', top: { xs: 24, md: 32 }, left: { xs: 24, md: 32 }, textAlign: 'left', zIndex: 1 }}>

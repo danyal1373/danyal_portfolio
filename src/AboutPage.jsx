@@ -236,6 +236,8 @@ export default function AboutPage() {
         <AnimatedCircle color="#ECB145" size={800} frequency={0.25} phase={1.2} style={{ top: '50%', left: '60%' }} />
         <AnimatedCircle color="#21A6C0" size={800} frequency={0.21} phase={2.1} style={{ top: '50%', left: '50%' }} />
       </Box>
+      {/* --- SCROLLABLE FOREGROUND CONTENT --- */}
+      <Box sx={{ position: 'relative', zIndex: 1 }}>
       {/* Header Section */}
       <Box sx={{ maxWidth: 1100, mx: 'auto', width: '100%' }}>
         <Typography 
@@ -323,6 +325,7 @@ export default function AboutPage() {
         </Box>
         {/* Lifetime Roadmap Section */}
         <LifetimeRoadmap />
+      </Box>
       </Box>
     </Box>
     </>

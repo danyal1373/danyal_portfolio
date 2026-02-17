@@ -3,6 +3,14 @@ import featuredProjectsData from '../data/featured-projects.json';
 
 // Cache for markdown content
 const contentCache = new Map();
+const isDev = process.env.NODE_ENV === 'development';
+let contentModuleMap = null;
+try {
+  // CRA/webpack context for src/data/content/*.md (dev + build safe)
+  contentModuleMap = require.context('../data/content', false, /\.md$/);
+} catch (e) {
+  contentModuleMap = null;
+}
 
 /**
  * Load markdown content for a project
@@ -10,7 +18,8 @@ const contentCache = new Map();
  * @returns {Promise<string>} - The markdown content
  */
 export const loadProjectContent = async (contentFile) => {
-  if (contentCache.has(contentFile)) {
+  // In development, bypass the in-memory cache so content edits appear immediately
+  if (!isDev && contentCache.has(contentFile)) {
     return contentCache.get(contentFile);
   }
 
@@ -18,40 +27,72 @@ export const loadProjectContent = async (contentFile) => {
     // Try multiple paths for different build environments
     let content = null;
     
-    // Try public path first (for production builds)
-    try {
-      const publicResponse = await fetch(`/content/${contentFile}`);
-      if (publicResponse.ok) {
-        content = await publicResponse.text();
+    // Add a timestamp in dev to bust the dev server's request cache
+    const ts = isDev ? `?t=${Date.now()}` : '';
+
+    // In development, prefer src via dynamic import URL, then public
+    if (isDev) {
+      // First: webpack context (most reliable for local src markdown)
+      try {
+        if (contentModuleMap && contentModuleMap.keys().includes(`./${contentFile}`)) {
+          const assetUrl = contentModuleMap(`./${contentFile}`);
+          const resp = await fetch(`${assetUrl}${ts}`);
+          if (resp.ok) {
+            content = await resp.text();
+          }
+        }
+      } catch (e) {
+        // Ignore and try next path
       }
-    } catch (e) {
-      // Ignore and try next path
+
+      // Second: dynamic import URL
+      try {
+        const mod = await import(`../data/content/${contentFile}`);
+        const url = mod?.default;
+        if (typeof url === 'string') {
+          const resp = await fetch(`${url}${ts}`);
+          if (resp.ok) {
+            content = await resp.text();
+          }
+        }
+      } catch (e) {
+        // Ignore and try next path
+      }
     }
-    
-    // Try src path (for development)
+
+    // Try public path
     if (!content) {
       try {
-        const srcResponse = await fetch(`/src/data/content/${contentFile}`);
-        if (srcResponse.ok) {
-          content = await srcResponse.text();
+        const publicResponse = await fetch(`/content/${contentFile}${ts}`);
+        if (publicResponse.ok) {
+          content = await publicResponse.text();
+        }
+      } catch (e) {
+        // Ignore and try next path
+      }
+    }
+
+    // Final fallback: direct import URL then fetch
+    if (!content) {
+      try {
+        const module = await import(`../data/content/${contentFile}`);
+        const maybeUrl = module?.default;
+        if (typeof maybeUrl === 'string') {
+          const resp = await fetch(`${maybeUrl}${ts}`);
+          if (resp.ok) {
+            content = await resp.text();
+          }
         }
       } catch (e) {
         // Ignore and try next path
       }
     }
     
-    // Try direct import as fallback
-    if (!content) {
-      try {
-        const module = await import(`../data/content/${contentFile}`);
-        content = module.default;
-      } catch (e) {
-        // Ignore and try next path
-      }
-    }
-    
     if (content) {
-      contentCache.set(contentFile, content);
+      // Only cache in production to allow quick iteration during development
+      if (!isDev) {
+        contentCache.set(contentFile, content);
+      }
       return content;
     } else {
       throw new Error(`Content file ${contentFile} not found`);
@@ -75,7 +116,7 @@ export const getAllProjects = () => {
  * @returns {Array} - Array of featured projects
  */
 export const getFeaturedProjects = () => {
-  return featuredProjectsData;
+  return projectsData.filter(project => project.featured);
 };
 
 /**

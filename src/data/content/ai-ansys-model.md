@@ -1,6 +1,6 @@
 # Similarity Identifier, AI for Industrial Uses - Ansys Product Proposal
 
-![AI Ansys Model Interface](/images/projects/ai-ansys-model.jpg)
+![AI Ansys Model Interface](/images/projects/grundfos.png)
 
 ## Project Overview
 

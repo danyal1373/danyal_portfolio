@@ -1,6 +1,12 @@
-# AR/VR Digital Twin - Augmented Reality for Car Inspection
+```nda
+Certain engineering drawings and performance benchmarks are under NDA. This page shows only high-level visuals and public-ready summaries.
+For more detailed information about the project please reach out to Danyal.
+```
 
-![AR/VR Digital Twin Interface](/images/projects/ar-vr-digital-twin.jpg)
+
+# Augmented Reality for Car Inspection
+
+![AR/VR Digital Twin Interface](/images/projects/digital-twin-avp.png)
 
 ## Project Overview
 
@@ -151,6 +157,8 @@ Plans for future iterations include:
 - **Advanced Analytics**: Predictive maintenance capabilities
 - **Mobile AR**: Smartphone-based AR for field inspections
 
----
-
-*This project demonstrates my ability to design complex AR/VR systems that bridge advanced technology with practical industry applications.* 
+```extlink
+title: CCC Intelligent Solutions
+url: https://www.cccis.com
+openInNew: true
+```

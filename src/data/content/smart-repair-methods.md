@@ -1,149 +1,138 @@
-# Smart Repair Methods - Smarter Methods, Faster Repairs
+```nda
+Certain engineering drawings and performance benchmarks are under NDA. This page shows only high-level visuals and public-ready summaries.
+For more detailed information about the project please reach out to Danyal.
+```
 
-![Smart Repair System Interface](/images/projects/smart-repair-interface.jpg)
 
-## Project Overview
+![Repair Methods Main Dashboard](/images/projects/repair-methods-dashboard.png)
 
-The Smart Repair Methods project represents an innovative IoT-powered platform designed to revolutionize automotive repair processes. This project combines hardware sensors, mobile applications, and intelligent algorithms to create a comprehensive repair assistance system that reduces repair time and improves accuracy.
+
+
+```wwh
+Why: Collision repair shops operate in an environment where OEM repair manuals are dense, fragmented, paper-heavy and difficult to operationalize in real time. Technicians must manually interpret documentation alongside CCC-generated estimates, creating inefficiencies, inconsistency in execution, and potential compliance risk. As vehicles become more complex and OEM standards more stringent, the gap between static documentation and actionable repair workflow continues to widen. There was a clear opportunity to transform procedural knowledge into structured, context-specific guidance embedded directly into shop operations.
+
+---
+What: Repair Methods is an AI-powered platform that ingests OEM repair manuals and combines them with CCC estimate data to generate vehicle-specific repair procedures tailored to the exact damage profile. The system translates documentation into structured, digestible workflows, supported by concise data visualizations that enable technicians to select tools quickly and proceed with confidence. It integrates CCC’s parts database to accelerate ordering and delivery, and includes a Kanban-style tracking dashboard to improve shop-level visibility. The platform supports multiple stakeholders, with dedicated interfaces for repairers, adjusters, and customers, ensuring alignment, transparency, and compliance across the repair lifecycle. The product has been successfully published within the CCC product suite.
+
+---
+How: Following a Double Diamond methodology, we grounded the solution in existing in-house shop research and workflow observations. We began by analyzing how technicians interpret manuals and manage repair sequencing, identifying friction in translating estimates into compliant execution. The system architecture was designed to map estimate data to relevant OEM procedures through an AI-driven ingestion and contextualization pipeline. Outputs were structured to reduce cognitive load and fit naturally into existing shop workflows rather than disrupt them. By leveraging CCC’s established parts database and ecosystem position, the platform connects estimation, procedural guidance, procurement, and tracking into a cohesive operational layer.
+```
+
+<!-- bg:none -->
+# Project Overview
+
+Designed a solution to automate car repair methods creation for shops to improve efficiency and precision of car repair with a potential of **$250 Million** of annual reccuring revenue.
+
+
+
+```video
+src: https://stream.mux.com/00RhzKt2I02RvURJUfJPs82OKUUsGHnWKTitrzHyKnyps.m3u8
+poster: /images/projects/repair-methods-wp.png
+controls: true
+autoplay: false
+loop: false
+muted: false
+aspectRatio: 16 / 9
+caption: Repair Methods
+```
+
 
 ## The Challenge
 
-Automotive repair professionals face significant challenges:
-- **Diagnostic Complexity**: Modern vehicles require sophisticated diagnostic tools
-- **Time Pressure**: Customers expect faster repair turnaround times
-- **Skill Gap**: Varying levels of technician expertise
-- **Documentation Issues**: Inconsistent repair procedures and documentation
+### Customer Pain Point
 
-## Our Solution
+- The search for repair methods are very hard and time consuming.
 
-We developed an intelligent repair assistance system that:
-- **Automates Diagnostics**: IoT sensors provide real-time vehicle data
-- **Guides Repairs**: Step-by-step visual instructions for technicians
-- **Tracks Progress**: Real-time monitoring of repair procedures
-- **Ensures Quality**: Built-in quality checks and verification steps
+- Paper repair methods are vulnurable in shop environment.
 
-## Design Process
+- New cars has different ways of repair.
 
-### Research & Discovery
-- Conducted field research at automotive repair shops
-- Interviewed technicians, service managers, and customers
-- Analyzed existing repair workflows and pain points
-- Studied IoT and mobile solutions in the automotive industry
+- Communication overhead in a shop is burdonsome and cars are not that easily trackable.
 
-### System Architecture Design
-- Designed modular IoT sensor network for vehicle monitoring
-- Created scalable cloud infrastructure for data processing
-- Developed mobile application for technician interface
-- Planned for integration with existing shop management systems
+### Organizational Constraint
 
-### User Experience Design
-- Designed intuitive mobile interface for technicians
-- Created visual repair guides with augmented reality features
-- Developed dashboard for service managers
-- Implemented customer communication system
+- Leverage CCC Parts product.
 
-## Key Features
+- From estimation to repair, be with our customers.
 
-### Intelligent Diagnostics
-- **Real-time Monitoring**: IoT sensors track vehicle systems continuously
-- **Predictive Alerts**: Early warning system for potential issues
-- **Automated Testing**: Self-diagnostic procedures for common problems
-- **Data Integration**: Connects with vehicle manufacturer databases
+- Respect the shop dynamics and design for usability.
 
-### Visual Repair Guides
-- **Step-by-step Instructions**: Clear, visual repair procedures
-- **Augmented Reality**: Overlay instructions on actual vehicle components
-- **Video Tutorials**: Expert demonstrations for complex procedures
-- **Interactive Diagrams**: 3D models of vehicle systems
+- Design each facade so it help each user achieve their goal easier.
 
-### Technician Support
-- **Skill Assessment**: Adaptive interface based on technician experience
-- **Real-time Assistance**: Live support from expert technicians
-- **Progress Tracking**: Monitor repair completion and quality
-- **Knowledge Base**: Searchable database of repair procedures
+### Strategic Opportunity
 
-### Quality Assurance
-- **Built-in Checks**: Automated verification of repair steps
-- **Photo Documentation**: Automatic capture of repair progress
-- **Customer Communication**: Real-time updates to vehicle owners
-- **Warranty Compliance**: Ensures repairs meet manufacturer standards
+Design a tool that improve shop's journey of car repair.
 
-## Technical Architecture
+![Repair Methods - Inside](/images/projects/repair-methods-2.png)
+![Repair Methods - Repair Shops Side](/images/projects/repair-methods-3.png)
 
-### IoT Components
-- **Vehicle Sensors**: OBD-II compatible diagnostic sensors
-- **Environmental Sensors**: Temperature, humidity, and pressure monitoring
-- **Communication Modules**: Bluetooth and WiFi connectivity
-- **Power Management**: Long-lasting battery systems
+```card2
+size: 2/3
+title: Core Opportunity
+thumb: /images/projects/ignik-outdoors-thumb.jpg
 
-### Mobile Application
-- **Cross-platform Development**: iOS and Android compatibility
-- **Offline Capability**: Works without internet connection
-- **Real-time Sync**: Automatic data synchronization when online
-- **Push Notifications**: Instant alerts for critical issues
 
-### Cloud Infrastructure
-- **Scalable Architecture**: Handles multiple repair shops simultaneously
-- **Data Analytics**: Machine learning for repair optimization
-- **Security**: Encrypted data transmission and storage
-- **API Integration**: Connects with existing shop management systems
-
-## User Experience Design
-
-### Technician Interface
-- **Intuitive Navigation**: Easy-to-use mobile interface
-- **Quick Access**: Frequently used features readily available
-- **Customizable Layout**: Personalized dashboard arrangement
-- **Voice Commands**: Hands-free operation during repairs
-
-### Service Manager Dashboard
-- **Real-time Overview**: Live status of all active repairs
-- **Resource Management**: Track technician availability and skills
-- **Customer Communication**: Automated status updates
-- **Analytics**: Performance metrics and efficiency reports
-
-### Customer Portal
-- **Repair Status**: Real-time updates on vehicle repair progress
-- **Photo Updates**: Visual documentation of repair work
-- **Cost Transparency**: Detailed breakdown of repair costs
-- **Scheduling**: Easy appointment booking and rescheduling
-
-## Results & Impact
-
-### Performance Improvements
-- **40% Reduction** in average repair time
-- **60% Decrease** in diagnostic errors
-- **80% Improvement** in customer satisfaction
-- **50% Increase** in technician productivity
-
-### Quality Enhancements
-- **95% Accuracy** in diagnostic procedures
-- **90% Reduction** in warranty claims
-- **Consistent Quality** across all technician skill levels
-- **Improved Documentation** for all repair procedures
-
-### Business Impact
-- **Increased Revenue**: More repairs completed per day
-- **Reduced Costs**: Fewer errors and rework
-- **Customer Retention**: Higher satisfaction and trust
-- **Competitive Advantage**: Advanced technology differentiation
-
-## Lessons Learned
-
-This project reinforced the importance of:
-- **User-Centered Design**: Focusing on technician needs and workflows
-- **IoT Integration**: Seamless hardware and software connectivity
-- **Data Security**: Protecting sensitive vehicle and customer information
-- **Scalable Architecture**: Supporting multiple locations and users
-
-## Future Development
-
-Plans for future iterations include:
-- **AI-powered Diagnostics**: Machine learning for predictive maintenance
-- **Virtual Reality Training**: Immersive technician training modules
-- **Fleet Management**: Support for commercial vehicle fleets
-- **Mobile Service**: On-site repair capabilities
+# Bring on AI-Native
 
 ---
+## Collision repair is facing increasing complexity due to evolving vehicle technologies the industry lacked an AI-native bridge between estimation and compliant execution.
+```
 
-*This project demonstrates my ability to design complex IoT systems that bridge the gap between advanced technology and practical industry needs.* 
+```card2
+size: 1/3
+title: Financial Potential
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Money Opportunity
+
+---
+## 250 Million Dollar
+```
+```card2
+size: 1/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# From Collision to Road
+
+---
+## Reduce the down-time of a damaged car by improving the repair procedure.
+```
+
+```card2
+size: 2/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Our Promise
+
+---
+## “Making car repair process smooth, easy and enjoyable, with least confusion and downtime.”
+```
+
+
+<!-- bg:none -->
+# Design Method
+
+### Discover
+
+We leveraged in-house research and workflow studies to understand how shops currently interpret OEM manuals, select tools, and track repairs. Friction points were identified in procedural interpretation, sequencing, and coordination between stakeholders. A disconnect between estimate generation and procedural execution emerged as the central systemic gap.
+
+### Define
+
+The challenge was reframed from providing access to documentation to delivering dynamic, estimate-driven repair intelligence. Clear system requirements were established around contextual procedure generation, workflow compatibility, multi-role visibility, and OEM compliance integrity.
+
+### Develop
+
+We designed an AI ingestion pipeline capable of parsing OEM documentation and mapping it directly to estimate line items. Repair procedures were structured into clear, step-based visual flows. A Kanban-style dashboard was developed to support operational tracking. Interfaces were designed for repairers, adjusters, and customers to ensure ecosystem alignment.
+
+![Service Blue Print](/images/projects/service-blue-print.png)
+
+### Deliver
+The platform was integrated into the CCC product line, improving repair consistency, reducing time spent interpreting manuals, and strengthening compliance alignment. It establishes a new operational layer within the repair workflow.
+
+
+```extlink
+title: CCC Intelligent Solutions
+url: https://www.cccis.com
+openInNew: true
+```
+

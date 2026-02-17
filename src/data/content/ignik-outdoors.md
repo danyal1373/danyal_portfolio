@@ -1,110 +1,194 @@
-# Ignik Outdoors - Sustainable Outdoor Heating Solutions
 
-![Ignik Outdoors Heater](/images/projects/ignik-outdoors-heater.jpg)
+```nda
+Certain engineering drawings and performance benchmarks are under NDA. This page shows only high-level visuals and public-ready summaries.
+For more detailed information about the project please reach out to Danyal.
+```
 
-## Project Overview
+
+<!-- bg:none -->
+# Bringing warmth and comfort to the outdoors 
+
+
+![Ignik Outdoors Heater](/images/projects/ignik-outdoors-heater.png)
+
+
+```wwh
+Why: Ignik Outdoors wanted to extend the duration and comfort of outdoor experiences for families while aligning with their sustainability mission. Customers were abandoning outdoor activities early due to cold and wet conditions, and the widespread use of disposable green butane tanks conflicted with Ignik’s environmental positioning.
+
+---
+What: We designed a portable, battery-powered heated table system that enabled families to remain outdoors longer in cold and damp environments, without reliance on disposable fuel canisters. The product complemented Ignik’s existing lineup and opened adjacent category expansion opportunities.
+
+---
+How: Through customer data analysis, qualitative interviews, structured requirement definition, and iterative prototyping, we identified thermal comfort at shared gathering points (e.g., tables) as a leverage point. We engineered a transportable heated table powered by rechargeable energy sources already familiar to customers, ensuring ecosystem compatibility and sustainability alignment.
+```
+
+<!-- bg:none -->
+# Project Overview
 
 Ignik Outdoors represents a breakthrough in sustainable outdoor heating technology, designed specifically for outdoor enthusiasts who value both comfort and environmental responsibility. This project showcases the intersection of mechanical engineering, user-centered design, and sustainable innovation.
 
+
+
+
+```video
+src: https://stream.mux.com/CpUKCR3qLEQEU3XWgwq7FAuqcR6cfqBwHCnHGI5027Mo.m3u8
+poster: /images/projects/ignik-poster.png
+controls: true
+autoplay: false
+loop: false
+muted: false
+aspectRatio: 16 / 9
+caption: Ignink Outdoors Final Product Presentation
+```
+
+
 ## The Challenge
 
-Outdoor enthusiasts often face the dilemma of staying warm during cold weather activities while maintaining their commitment to environmental sustainability. Traditional heating solutions either rely on fossil fuels or provide insufficient warmth for extended outdoor use.
+### Customer Pain Point
 
-## Our Solution
+- Families (primary buyers) struggle with children’s discomfort in cold/rainy camping environments.
 
-We developed a revolutionary heating system that combines:
-- **Biomass fuel technology** for carbon-neutral operation
-- **Advanced heat distribution** for maximum efficiency
-- **Portable design** for outdoor mobility
-- **Durable construction** for harsh environments
+- Outdoor experiences end early due to thermal discomfort.
 
-## Design Process
+- Cold surfaces (tables, benches) amplify perceived environmental harshness.
 
-### Research Phase
-- Conducted user interviews with outdoor enthusiasts
-- Analyzed existing heating solutions in the market
-- Studied environmental impact of current technologies
-- Identified key pain points and user needs
+### Environmental Constraint
 
-### Ideation & Prototyping
-- Created multiple concept sketches and 3D models
-- Built functional prototypes for testing
-- Iterated on design based on user feedback
-- Optimized for manufacturing efficiency
+- Disposable green propane/butane tanks contribute to environmental degradation.
 
-### Testing & Validation
-- Field testing in various outdoor conditions
-- Performance analysis under different weather conditions
-- User experience testing with target demographic
-- Environmental impact assessment
+- Ignik’s brand positioning emphasizes sustainable alternatives.
 
-## Key Features
+### Product Portfolio Constraint
 
-### Sustainable Fuel System
-- Uses renewable biomass materials
-- Carbon-neutral operation
-- Minimal environmental footprint
-- Easy fuel sourcing and storage
+Product needed to:
 
-![Ignik Outdoors in Action](/images/projects/ignik-outdoors-action.jpg)
+- Fit within Ignik’s sustainability narrative
 
-### Advanced Heat Distribution
-- Patented heat circulation technology
-- 40% more efficient than traditional heaters
-- Consistent heat output in windy conditions
-- Adjustable heat intensity
+- Complement existing heating solutions
 
-### Portable Design
-- Lightweight construction (under 15 lbs)
-- Collapsible design for easy transport
-- Quick setup and takedown
-- Durable materials for outdoor use
+- Strengthen adjacent product prospects
 
-## Technical Specifications
+- Avoid cannibalization
 
-- **Dimensions**: 24" x 18" x 12" (collapsed)
-- **Weight**: 14.5 lbs
-- **Heat Output**: 15,000 BTU/hr
-- **Fuel Capacity**: 4 hours continuous use
-- **Operating Temperature**: -20°F to 120°F
-- **Materials**: Aircraft-grade aluminum, stainless steel
 
-## Results & Impact
+```card2
+size: 2/3
+title: Core Opportunity
+thumb: /images/projects/ignik-outdoors-thumb.jpg
 
-### Environmental Impact
-- 95% reduction in carbon emissions compared to propane heaters
-- 100% renewable fuel source
-- Minimal waste production
-- Biodegradable components
 
-### Market Success
-- Successfully launched on Kickstarter with 300% funding goal
-- Featured in major outdoor publications
-- Awarded "Best New Product" at Outdoor Retailer Show
-- Growing customer base of environmentally conscious outdoor enthusiasts
-
-### User Satisfaction
-- 4.8/5 star average rating
-- 92% customer satisfaction score
-- Strong repeat purchase rate
-- Positive testimonials from professional guides
-
-## Lessons Learned
-
-This project reinforced the importance of:
-- **User-centered design** in technical product development
-- **Sustainability** as a core design principle
-- **Iterative prototyping** for complex mechanical systems
-- **Cross-disciplinary collaboration** between engineering and design teams
-
-## Future Development
-
-Plans for future iterations include:
-- Integration with smart home systems
-- Solar charging capabilities
-- Expanded product line for different use cases
-- International market expansion
+# Market Scope
 
 ---
+### Create a new subcategory within portable outdoor comfort — shifting heating from ambient air to shared surfaces.
+```
 
-*This project demonstrates my ability to lead complex product development from concept to market launch, balancing technical innovation with user needs and environmental responsibility.* 
+```card2
+size: 1/3
+title: Product Strategy
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Vision
+
+---
+### a step toward decentralized, sustainable outdoor comfort ecosystems.
+```
+```card2
+size: 1/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# Who we are
+
+---
+## “We are people who live, work & play outside”
+```
+
+```card2
+size: 2/3
+thumb: /images/projects/ignik-outdoors-thumb.jpg
+
+# What we do
+
+---
+## “We help people get outside sooner and spend more time together”
+```
+
+
+## Design Method
+
+### Discover
+
+- Analyzed customer purchasing data → Families identified as dominant buyer segment.
+
+- Conducted qualitative interviews with outdoor users.
+
+- Field research in camping environments.
+
+- Identified that discomfort is amplified at shared gathering nodes (tables), not just ambient air.
+
+Key Insight:
+Thermal discomfort during stationary activities (eating, gathering, supervising children) is the primary trigger for early retreat indoors.
+
+### Define
+
+
+**“How might we provide the warmth and comfort of a fire, post activity, for multi-generational communities while spending time outdoors?”**
+
+Product Requirements:
+
+- PorTable and easy to set up. With its "plug and play" design, you can easily load it up in your vehicle and take it with you wherever you go. 
+
+- AdapTable no matter it's a sunny day at beach or a cold wintery night in your backyard
+
+- ComforTable with enough space to accommodate up to four people, it's the perfect place to enjoy a meal, play a game, or simply sit and chat with friends.
+
+- Durable in wet environments
+
+- Cohesive with Ignik’s design language
+
+### Develop
+
+- Structured brainstorming across industrial design, mechanical engineering, and software disciplines.
+
+- Iterative requirement refinement.
+
+- Evaluated heating distribution methods and energy efficiency tradeoffs.
+
+- Designed transport mechanisms aligned with how families carry gear.
+
+Key Tradeoffs:
+
+- Heat output vs. battery life
+
+- Weight vs. structural stability
+
+- Surface material conductivity vs. durability
+
+- Cost vs. sustainability positioning
+
+### Deliver
+
+Outcome:
+
+- A transportable heated table concept with no direct reliance on disposable fuel.
+
+- Unique market positioning (no direct comparable product category).
+
+- Strengthened Ignik’s sustainable innovation narrative.
+
+- Opened pathway for ecosystem expansion into modular outdoor comfort systems.
+
+```extlink
+title: Project Blog
+url: https://www.cmu.edu/iii/about/news/2023/ipd-fullcircle.html
+openInNew: true
+```
+
+```extlink
+title: Ignik Outdoors
+url: https://www.ignik.com/
+openInNew: true
+```
+
+
+

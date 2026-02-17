@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const PasswordContext = createContext();
 
 // Global password for all protected projects
-const GLOBAL_PASSWORD = 'portfolio2024';
+const GLOBAL_PASSWORD = 'Shoot4stars723';
 
 export const usePassword = () => {
   const context = useContext(PasswordContext);
