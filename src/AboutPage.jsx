@@ -97,8 +97,9 @@ const aboutSections = [
 
 const skills = {
   "Creative/Design Tools": ["Figma", "Solidworks", "After Effects", "Premier Pro", "Photoshop", "Illustrator"],
-  "Programming": ["Python", "C++", "C", "Docker", "React", "Vue", "HTML", "CSS", "JavaScript", "TypeScript"],
+  "Programming": ["Python", "C++", "C", "MATLAB", "Julia", "Git", "Docker", "K8s", "React", "Node.js", "Vue", "HTML", "CSS", "JavaScript", "TypeScript", "SQL", "Azure", "AWS"],
   "System Design": ["NetLogo", "Ansys", "Abaqus", "Comsol", "Magnet Design", "Econometrics", "Macro Modeling", "BWM Analysis"],
+  "Mechanical Engineering": ["Solidworks", "G CODE", "Siemens NX", "Autodesk Inventor", "Arduino", "Raspberry Pi", "ESP32", "Microcontrollers"],
   "Design Skills": ["User Research", "Wireframing", "Prototyping", "Branding", "Design Systems"],
   "Soft Skills": ["Leadership", "Teamwork", "Communication", "Problem Solving", "Time Negotiation", "Dynamic Capabilities", "Creativity"],
   "Project Management": ["Agile", "Scrum", "Notion", "Trello", "Monday.com", "Team Collaboration", "Accounting", "Financial Analysis"]

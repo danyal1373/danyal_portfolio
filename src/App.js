@@ -390,7 +390,7 @@ function HomePage() {
             </Typography>
             <CardContent sx={{ color: theme.palette.text.secondary, fontWeight: 400, fontSize: 16, position: 'relative', zIndex: 3 }}>
               <Typography paragraph>
-                Award Winning Innovator with background in Mechanical Engineer pursued graduate degrees in MBA (Marketing) and Integrated Innovation in Products and Services (MIIPS) from Carnegie Mellon University; This mix of my career and education has given me a unique perspective on human-centered innovation; for more than a decade, I've taken photographs of the night sky, and I've attended photography exhibitions at Lisboa Jubilee Art, Zanjan, etc. My passion for exploring new edges of technology and scientific world never settles in me. Currently, I'm working at CCC Intelligent Solutions as R&D Engineer and willing to explore beyond the horizon.
+                Product Manager in technology with graduate studies in Innovation and Marketing. As a Carnegie Mellon University alumni focused on Human-Centered Innovation, I bridge strategy, technology, and human insight to build meaningful products.
               </Typography>
             </CardContent>
           </Card>
