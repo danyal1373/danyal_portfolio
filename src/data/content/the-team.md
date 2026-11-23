@@ -1,12 +1,21 @@
 
 # Intelligent Marketing Campaign Budgeting Tool
 
-![Workflow Digital Analyzer Interface](/images/projects/wda-5.png)
+![The TEAM Intelligent Analyzer Interface](/images/projects/the-team/opening.png)
 
 ## Project Overview
 
 The Workflow Digital Analyzer project represents a confidential software product designed to optimize business processes through intelligent workflow analysis and automation. This project combines advanced analytics, machine learning, and user experience design to create a powerful tool for process optimization and digital transformation.
 
+```gallery
+aspectRatio: 16 / 9
+seconds: 5
+item: /images/projects/the-team/slide-1.png | Page 1
+item: /images/projects/the-team/slide-2.png | Page 2
+item: /images/projects/the-team/slide-3.png | Page 3
+item: /images/projects/the-team/slide-4.png | Page 4
+item: /images/projects/the-team/slide-5.png | Page 5
+```
 
 ```embed
 src: /the-team-demo/
@@ -22,7 +31,13 @@ Organizations struggle with workflow inefficiencies:
 - **Data Silos**: Information scattered across multiple systems
 - **Compliance Issues**: Difficulty tracking and maintaining regulatory requirements
 - **Resource Waste**: Inefficient allocation of time and personnel
+```gallery
+aspectRatio: 16 / 9
+seconds: 5
+item: /images/projects/the-team/process-1.png | Page 1
+item: /images/projects/the-team/process-2.png | Page 2
 
+```
 ## Our Solution
 
 We developed an intelligent workflow analysis platform that:
@@ -38,7 +53,6 @@ We developed an intelligent workflow analysis platform that:
 - **User Research**: Interviewed process owners and end users
 - **Technology Assessment**: Evaluated existing systems and integration requirements
 - **Compliance Review**: Analyzed regulatory requirements and reporting needs
-![Workflow Digital Analyzer Process](/images/projects/wda-process.png)
 
 ### System Architecture Design
 - **Modular Design**: Scalable components for different process types
@@ -51,11 +65,6 @@ We developed an intelligent workflow analysis platform that:
 - **Visual Analytics**: Clear, actionable insights through data visualization
 - **Role-based Access**: Customized views for different user types
 - **Mobile Optimization**: Responsive design for on-the-go monitoring
-
-![Workflow Digital Analyzer 1](/images/projects/wda-1.png)
-![Workflow Digital Analyzer 2](/images/projects/wda-2.png)
-![Workflow Digital Analyzer 3](/images/projects/wda-3.png)
-![Workflow Digital Analyzer 4](/images/projects/wda-4.png)
 
 ## Key Features
 
