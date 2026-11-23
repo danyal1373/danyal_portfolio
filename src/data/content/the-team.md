@@ -9,7 +9,7 @@ The Workflow Digital Analyzer project represents a confidential software product
 
 
 ```embed
-src: /embeds/the-team/fanyield%20%283%29.html
+src: /the-team-demo/
 title: The Team Interactive
 aspectRatio: 16 / 9
 caption: Interactive prototype
@@ -169,6 +169,6 @@ Plans for future iterations include:
 
 ```extlink
 title: Open Interactive Demo
-url: /the-team-demo
+url: /the-team-demo/
 openInNew: false
 ```
