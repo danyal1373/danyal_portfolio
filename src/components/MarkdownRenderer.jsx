@@ -11,6 +11,7 @@ import ExternalLinkCard from './ExternalLinkCard';
 import ImageCollageThree from './ImageCollageThree';
 import ImageCarouselTwo from './ImageCarouselTwo';
 import ImageGalleryCarousel from './ImageGalleryCarousel';
+import HtmlEmbedSection from './HtmlEmbedSection';
 
 const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
   const theme = useTheme();
@@ -314,6 +315,10 @@ const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
                   });
                   return <ImageGalleryCarousel {...propsObj} items={items} />;
                 }
+                if (lang === 'embed') {
+                  const propsObj = parseKeyValue(raw);
+                  return <HtmlEmbedSection {...propsObj} />;
+                }
                 if (lang === 'plain') {
                   return (
                     <Box sx={{ ...markdownStyles }}>
@@ -400,7 +405,7 @@ const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
 
             const parts = splitByH2OutsideFences(content);
 
-            const shortcodeLangs = new Set(['video', 'card2', 'wwh', 'nda', 'plain', 'extlink', 'album3', 'carousel2', 'gallery']);
+            const shortcodeLangs = new Set(['video', 'card2', 'wwh', 'nda', 'plain', 'extlink', 'album3', 'carousel2', 'gallery', 'embed']);
 
             const splitIntoBlocks = (text) => {
               const lines = text.split('\n');
@@ -634,6 +639,25 @@ const MarkdownRenderer = ({ content, sx = {}, sectionByH2 = false }) => {
                             return (
                               <Box key={i} sx={{ gridColumn: '1 / -1' }}>
                                 <ImageGalleryCarousel {...propsObj} items={items} />
+                              </Box>
+                            );
+                          }
+                          if (b.lang === 'embed') {
+                            const propsObj = {};
+                            b.body.split('\n').forEach((line) => {
+                              const m = line.match(/^\s*([A-Za-z0-9_-]+)\s*:\s*(.+)\s*$/);
+                              if (m) {
+                                const key = m[1];
+                                let val = m[2];
+                                if (val === 'true') val = true;
+                                else if (val === 'false') val = false;
+                                else if (!isNaN(Number(val))) val = Number(val);
+                                propsObj[key] = val;
+                              }
+                            });
+                            return (
+                              <Box key={i} sx={{ gridColumn: '1 / -1' }}>
+                                <HtmlEmbedSection {...propsObj} />
                               </Box>
                             );
                           }

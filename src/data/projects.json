@@ -222,5 +222,21 @@
     "duration": "6 months",
     "contentFile": "wda-product.md",
     "passwordProtected": true
+  },
+  {
+    "id": "the-team",
+    "title": "The.TEAM Creative Product",
+    "subtitle": "Intelligent Marketing Campaign Evaluator",
+    "description": "Smart Budgeting Tool",
+    "image": "/images/projects/financial-literacy-thumb.jpg",
+    "tags": ["UI/UX", "Product Design", "Software Development"],
+    "category": "Product Development",
+    "featured": false,
+    "date": "2026",
+    "client": "The.TEAM",
+    "role": "Creative AI Designer",
+    "duration": "6 hours",
+    "contentFile": "the-team.md",
+    "passwordProtected": true
   }
 ] 

@@ -48,6 +48,32 @@ function PlaceholderPage({ title }) {
   );
 }
 
+function TheTeamDemoPage() {
+  return (
+    <>
+      <SEO
+        title="The Team Demo - Danyal Ghanbari"
+        description="Interactive The Team demo."
+        url="/the-team-demo"
+      />
+      <Box sx={{ minHeight: '100vh', width: '100%', overflow: 'hidden' }}>
+        <Box
+          component="iframe"
+          src="/embeds/the-team/fanyield%20%283%29.html"
+          title="The Team Interactive Demo"
+          loading="lazy"
+          sx={{
+            width: '100%',
+            height: '100vh',
+            border: 0,
+            display: 'block',
+          }}
+        />
+      </Box>
+    </>
+  );
+}
+
 // Add SwappingFactionText component
 const factionText = {
   business: 'Business: Strategic thinking, leadership, and decision making drive innovation and growth.',
@@ -427,11 +453,12 @@ function HomePage() {
 
 export default function App() {
   const location = useLocation();
+  const isTheTeamDemoRoute = location.pathname === '/the-team-demo';
 
   return (
     <HelmetProvider>
       <PasswordProvider>
-        <Navbar />
+        {!isTheTeamDemoRoute ? <Navbar /> : null}
         <AnimatePresence mode="wait">
           <Suspense fallback={<PageLoader />}>
             <Routes location={location} key={location.pathname}>
@@ -444,6 +471,7 @@ export default function App() {
               <Route path="/research" element={<ResearchPageLazy />} />
               <Route path="/resume" element={<ResumePageLazy />} />
               <Route path="/project-outline" element={<ProjectOutlinePageLazy />} />
+              <Route path="/the-team-demo" element={<TheTeamDemoPage />} />
               <Route path="/swarm" element={
                 <Suspense fallback={<PageLoader />}>
                   <SwarmPageLazy />
@@ -452,7 +480,7 @@ export default function App() {
             </Routes>
           </Suspense>
         </AnimatePresence>
-        <Footer />
+        {!isTheTeamDemoRoute ? <Footer /> : null}
       </PasswordProvider>
     </HelmetProvider>
   );
