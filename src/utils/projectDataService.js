@@ -4,6 +4,11 @@ import featuredProjectsData from '../data/featured-projects.json';
 // Cache for markdown content
 const contentCache = new Map();
 const isDev = process.env.NODE_ENV === 'development';
+const looksLikeMarkdown = (text = '') => {
+  const trimmed = String(text).trimStart().toLowerCase();
+  // Guard against SPA fallback HTML accidentally returned for /content/*.md
+  return !(trimmed.startsWith('<!doctype html') || trimmed.startsWith('<html'));
+};
 let contentModuleMap = null;
 try {
   // CRA/webpack context for src/data/content/*.md (dev + build safe)
@@ -38,7 +43,10 @@ export const loadProjectContent = async (contentFile) => {
           const assetUrl = contentModuleMap(`./${contentFile}`);
           const resp = await fetch(`${assetUrl}${ts}`);
           if (resp.ok) {
-            content = await resp.text();
+            const text = await resp.text();
+            if (looksLikeMarkdown(text)) {
+              content = text;
+            }
           }
         }
       } catch (e) {
@@ -52,7 +60,10 @@ export const loadProjectContent = async (contentFile) => {
         if (typeof url === 'string') {
           const resp = await fetch(`${url}${ts}`);
           if (resp.ok) {
-            content = await resp.text();
+            const text = await resp.text();
+            if (looksLikeMarkdown(text)) {
+              content = text;
+            }
           }
         }
       } catch (e) {
@@ -65,7 +76,10 @@ export const loadProjectContent = async (contentFile) => {
       try {
         const publicResponse = await fetch(`/content/${contentFile}${ts}`);
         if (publicResponse.ok) {
-          content = await publicResponse.text();
+          const text = await publicResponse.text();
+          if (looksLikeMarkdown(text)) {
+            content = text;
+          }
         }
       } catch (e) {
         // Ignore and try next path
@@ -80,7 +94,10 @@ export const loadProjectContent = async (contentFile) => {
         if (typeof maybeUrl === 'string') {
           const resp = await fetch(`${maybeUrl}${ts}`);
           if (resp.ok) {
-            content = await resp.text();
+            const text = await resp.text();
+            if (looksLikeMarkdown(text)) {
+              content = text;
+            }
           }
         }
       } catch (e) {
